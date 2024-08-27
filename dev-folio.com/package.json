@@ -1,0 +1,81 @@
+{
+  "name": "dev-folio.com",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "email": "email dev",
+    "build": "npm run build:app",
+    "build:app": "tsc -b && vite build",
+    "build:email": "email build",
+    "preview": "vite preview",
+    "lint": "tsc -b && eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "router": "bun src/router/logic/index.ts && bunx eslint ./src/router --fix",
+    "emulators": "mkdir -p emulators-data/current-export && firebase emulators:start --only auth,functions,firestore,extensions --import=./emulators-data/current-export --export-on-exit=./emulators-data/current-export",
+    "analyze": "npx vite-bundle-visualizer",
+    "deploy:rules": "firebase deploy --only firestore:rules",
+    "deploy:function": "firebase deploy --only functions"
+  },
+  "dependencies": {
+    "@hookform/resolvers": "^3.9.0",
+    "@radix-ui/react-accordion": "^1.2.0",
+    "@radix-ui/react-avatar": "^1.1.0",
+    "@radix-ui/react-dialog": "^1.1.1",
+    "@radix-ui/react-dropdown-menu": "^2.1.1",
+    "@radix-ui/react-label": "^2.1.0",
+    "@radix-ui/react-popover": "^1.1.1",
+    "@radix-ui/react-select": "^2.1.1",
+    "@radix-ui/react-slot": "^1.1.0",
+    "@radix-ui/react-switch": "^1.1.0",
+    "@radix-ui/react-toast": "^1.2.1",
+    "@radix-ui/react-tooltip": "^1.1.2",
+    "@react-email/components": "0.0.22",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1",
+    "firebase": "^10.13.0",
+    "framer-motion": "^11.3.29",
+    "logrocket": "^8.1.2",
+    "lucide-react": "^0.429.0",
+    "luxon": "^3.5.0",
+    "markdown-to-jsx": "^7.5.0",
+    "nanoid": "^5.0.7",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-email": "2.1.6",
+    "react-github-btn": "^1.4.0",
+    "react-helmet": "^6.1.0",
+    "react-hook-form": "^7.52.2",
+    "react-hotkeys-hook": "^4.5.0",
+    "react-router-dom": "^6.26.1",
+    "react-textarea-autosize": "^8.5.3",
+    "react-wrap-balancer": "^1.1.1",
+    "tailwind-merge": "^2.5.2",
+    "tailwindcss-animate": "^1.0.7",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/html-to-text": "^9.0.4",
+    "@types/lodash.clonedeep": "^4.5.9",
+    "@types/luxon": "^3.4.2",
+    "@types/react": "^18.3.4",
+    "@types/react-dom": "^18.3.0",
+    "@types/react-helmet": "^6.1.11",
+    "@vitejs/plugin-react": "^4.3.1",
+    "autoprefixer": "^10.4.20",
+    "nodemon": "^3.1.4",
+    "postcss": "^8.4.41",
+    "tailwindcss": "^3.4.10",
+    "typescript": "^5.5.4",
+    "vite": "^5.4.2",
+    "vite-tsconfig-paths": "^5.0.1"
+  },
+  "overrides": {
+    "eslint-config-prettier": {
+      "eslint": "^8.57.0"
+    },
+    "eslint-plugin-turbo": {
+      "eslint": "^8.57.0"
+    }
+  }
+}
