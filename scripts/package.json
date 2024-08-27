@@ -2,7 +2,8 @@
   "private": true,
   "name": "dev-folio-scripts",
   "scripts": {
-    "start": "bun print-github-profiles.ts"
+    "start": "bun print-github-profiles.ts",
+    "dev": "bun check-github-profiles.ts"
   },
   "dependencies": {
     "dotenv": "^16.4.5",

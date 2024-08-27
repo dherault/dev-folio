@@ -2,14 +2,13 @@ import fs from 'node:fs'
 import path from 'node:path'
 
 import 'dotenv/config'
-
 import { Octokit } from 'octokit'
 
 const octokit = new Octokit({ auth: process.env.GITHUB_ACCESS_TOKEN })
 
 const topics = [
-  '3d',
-  'ajax',
+  // '3d',
+  // 'ajax',
   'algorithm',
   'amphp',
   'android',
@@ -253,12 +252,12 @@ for (const topic of topics) {
   console.log()
   console.log('Looking at topic', topic)
 
-  const repositories = await getPaginatedData(`/repositories?q=topic:${topic}`, 1)
+  const repositories = await getPaginatedData(`/search/repositories?q=topic:${topic}`, 1)
 
   for (const repository of repositories) {
-    console.log(`Looking at ${repository.owner.login}/${repository.name}`)
+    const commits = await getPaginatedData(`/repos/${repository.owner.login}/${repository.name}/commits`, 10)
 
-    const commits = await getPaginatedData(`/repos/${repository.owner.login}/${repository.name}/commits`, 1)
+    console.log(`Looking at ${repository.owner.login}/${repository.name}`, commits.length)
 
     for (const commit of commits) {
       if (!commit.commit.author.email.endsWith('@gmail.com')) continue
