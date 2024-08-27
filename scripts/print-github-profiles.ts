@@ -261,6 +261,8 @@ for (const topic of topics) {
     const commits = await getPaginatedData(`/repos/${repository.owner.login}/${repository.name}/commits`, 1)
 
     for (const commit of commits) {
+      if (!commit.commit.author.email.endsWith('@gmail.com')) continue
+      if (commit.commit.author.name.split(' ').length < 2) continue
       if (!commit.author?.login) continue
 
       users[commit.commit.author.email] = {
