@@ -18,8 +18,8 @@ export default defineConfig({
   build: {
     lib: {
       entry: path.resolve(__dirname, 'src/index.ts'),
-      name: 'Dev Folio',
-      fileName: 'dev-folio',
+      name: 'Dev Folio React',
+      fileName: 'dev-folio-react',
     },
     rollupOptions: {
       external: ['react', 'react/jsx-runtime'],
