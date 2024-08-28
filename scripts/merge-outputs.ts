@@ -4,6 +4,5 @@ import path from 'node:path'
 
 import import1 from './output-1.json'
 import import2 from './output-2.json'
-import import3 from './output-3.json'
 
-fs.writeFileSync(path.resolve(__dirname, 'output-final.json'), JSON.stringify({ ...import1, ...import2, ...import3 }, null, 2))
+fs.writeFileSync(path.resolve(__dirname, 'output-final.json'), JSON.stringify({ ...import1, ...import2 }, null, 2))
