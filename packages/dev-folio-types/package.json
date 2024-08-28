@@ -33,7 +33,7 @@
   "scripts": {
     "build": "tsc && vite build",
     "lint": "tsc && eslint src --ext ts",
-    "prepublishOnly": "npm run test && npm run build"
+    "prepublishOnly": "npm run build"
   },
   "devDependencies": {
     "typescript": "^5.5.4",
