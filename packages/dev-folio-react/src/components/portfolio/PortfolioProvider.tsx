@@ -15,10 +15,15 @@ function PortfolioProvider({ children, portfolio }: Props) {
   const finalPortfolio = portfolio ?? fetchedPortfolio
 
   const fetchRemotePortfolio = useCallback(async () => {
-    const response = await fetch('/portfolio.json')
-    const data = await response.json()
+    try {
+      const response = await fetch('/portfolio.json')
+      const data = await response.json()
 
-    setFetchedPortfolio(data)
+      setFetchedPortfolio(data)
+    }
+    catch (error) {
+      console.error('Failed to fetch portfolio', error)
+    }
   }, [])
 
   useEffect(() => {

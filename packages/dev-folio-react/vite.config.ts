@@ -5,6 +5,7 @@ import { defineConfig } from 'vite'
 import tsconfigPaths from 'vite-tsconfig-paths'
 import react from '@vitejs/plugin-react'
 import dts from 'vite-plugin-dts'
+import tailwindcss from 'tailwindcss'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
@@ -22,7 +23,19 @@ export default defineConfig({
       fileName: 'dev-folio-react',
     },
     rollupOptions: {
-      external: ['react', 'react/jsx-runtime'],
+      external: ['react', 'react-dom', 'tailwindcss'],
+      output: {
+        globals: {
+          react: 'React',
+          'react-dom': 'ReactDOM',
+          tailwindcss: 'tailwindcss',
+        },
+      },
+    },
+  },
+  css: {
+    postcss: {
+      plugins: [tailwindcss],
     },
   },
 })

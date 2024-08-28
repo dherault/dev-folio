@@ -1,7 +1,7 @@
 {
   "name": "dev-folio-react",
   "description": "Portfolios for developers done right",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "type": "module",
   "main": "./dist/dev-folio-react.umd.cjs",
   "module": "./dist/dev-folio-react.js",
@@ -10,7 +10,8 @@
       "import": "./dist/dev-folio-react.js",
       "require": "./dist/dev-folio-react.umd.cjs",
       "types": "./dist/src/index.d.ts"
-    }
+    },
+    "./dist/style.css": "./dist/style.css"
   },
   "types": "./dist/src/index.d.ts",
   "files": [
