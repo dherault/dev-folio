@@ -5,8 +5,10 @@ import { deployPortfolio } from '~firebase'
 import { Button } from '~components/ui/Button'
 import { Input } from '~components/ui/Input'
 
+const generateSubdomain = () => `dherault-${Math.random().toString(36).substring(7)}`
+
 function AdministratorDev() {
-  const [subdomain, setSubdomain] = useState('dherault')
+  const [subdomain, setSubdomain] = useState(generateSubdomain())
   const [loading, setLoading] = useState(false)
   const [url, setUrl] = useState('')
 
@@ -16,21 +18,33 @@ function AdministratorDev() {
 
     setLoading(true)
 
-    const { data: { url } } = await deployPortfolio({ subdomain })
+    try {
+      const { data: { url, error } } = await deployPortfolio({ subdomain })
 
-    setUrl(url)
+      if (error) {
+        console.error(error)
+      }
+      else {
+        setUrl(url ?? '')
+      }
+    }
+    catch {
+      //
+    }
 
     setLoading(false)
+    setSubdomain(generateSubdomain())
   }, [
     subdomain,
     loading,
   ])
 
   return (
-    <div className="w-fit flex items-center gap-2">
+    <div className="flex items-center gap-2">
       <Input
         value={subdomain}
         onChange={event => setSubdomain(event.target.value)}
+        className="w-64"
       />
       <Button
         onClick={handleDeploy}
