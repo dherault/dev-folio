@@ -7,7 +7,8 @@
     "build": "tsc -b && vite build",
     "lint": "tsc -b && eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "dev": "nodemon --watch src --exec 'npm run build && npm run copy-build'",
+    "dev": "nodemon --watch src,scripts --ext ts,tsx --exec 'npm run build && npm run prepare-build && npm run copy-build'",
+    "prepare-build": "bun scripts/prepare-build.ts",
     "copy-build": "cp -r dist/** ../../dev-folio.com/functions/data/build"
   },
   "dependencies": {
@@ -20,8 +21,11 @@
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react": "^4.3.1",
+    "autoprefixer": "^10.4.20",
     "globals": "^15.9.0",
     "nodemon": "^3.1.4",
+    "postcss": "^8.4.41",
+    "tailwindcss": "^3.4.10",
     "typescript": "^5.5.3",
     "vite": "^5.4.1"
   }

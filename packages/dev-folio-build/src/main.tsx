@@ -1,3 +1,5 @@
+import './index.css'
+
 import { createRoot } from 'react-dom/client'
 import { PortfolioProvider } from 'dev-folio-react'
 

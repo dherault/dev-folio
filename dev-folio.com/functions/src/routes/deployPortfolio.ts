@@ -8,6 +8,7 @@ import { getUserFromCallableRequest } from '../authentication/getUser'
 
 const storage = new Storage()
 const dataLocation = path.resolve(__dirname, '../../../../data/build')
+const indexDotHtmlBucketUrlReplacement = /{{bucketUrl}}/g
 
 const deployPortfolio = onCall(async request => {
   const { user, userDocument } = await getUserFromCallableRequest(request)
@@ -24,6 +25,14 @@ const deployPortfolio = onCall(async request => {
     [bucket] = await storage.createBucket(subdomain)
 
     await bucket.makePublic()
+    await bucket.setCorsConfiguration([
+      {
+        maxAgeSeconds: 3600,
+        method: ['GET'],
+        origin: ['https://*.dev-folio.com'],
+        responseHeader: ['Content-Type'],
+      },
+    ])
   }
 
   await deployBuild(bucket, dataLocation)
@@ -37,17 +46,37 @@ const deployPortfolio = onCall(async request => {
   }
 })
 
-async function deployBuild(bucket: Bucket, dir: string) {
-  for (const file of fs.readdirSync(dir)) {
-    if (fs.statSync(file).isDirectory()) {
-      await deployBuild(bucket, path.join(dir, file))
+async function deployBuild(bucket: Bucket, directoryLocation: string, initialDirectoryLocation = directoryLocation) {
+  const mockIndexDotHtmlFileName = `index-${bucket.name}.html`
+
+  for (const file of fs.readdirSync(directoryLocation)) {
+    let fileLocation = path.join(directoryLocation, file)
+
+    if (fs.statSync(fileLocation).isDirectory()) {
+      await deployBuild(bucket, fileLocation, initialDirectoryLocation)
 
       continue
     }
 
-    await bucket.upload(path.resolve(dir, file), {
+    const isIndexDotHtml = file === 'index.html'
+
+    if (isIndexDotHtml) {
+      const indexDotHtml = fs.readFileSync(fileLocation, 'utf-8')
+      const nextIndexDotHtml = indexDotHtml.replaceAll(indexDotHtmlBucketUrlReplacement, `https://storage.googleapis.com/${bucket.name}`)
+
+      fileLocation = path.join(directoryLocation, mockIndexDotHtmlFileName)
+
+      fs.writeFileSync(fileLocation, nextIndexDotHtml)
+    }
+
+    await bucket.upload(fileLocation, {
+      destination: isIndexDotHtml ? 'index.html' : path.relative(initialDirectoryLocation, fileLocation),
       public: true,
     })
+
+    if (isIndexDotHtml) {
+      fs.unlinkSync(fileLocation)
+    }
   }
 }
 

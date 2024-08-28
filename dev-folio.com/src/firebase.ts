@@ -36,7 +36,7 @@ export const storage = getStorage(app)
 
 export const functions = getFunctions(app)
 
-export const deployPortfolio = httpsCallable<{ subdomain: string}, { url?: string, error?: string }>(functions, 'deployPortfolio')
+export const deployPortfolio = httpsCallable<void, { message: string }>(functions, 'deployPortfolio')
 
 try {
   getPerformance(app)

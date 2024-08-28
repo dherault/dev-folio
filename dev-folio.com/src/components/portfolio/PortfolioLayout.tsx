@@ -10,7 +10,7 @@ import UserAvatarMenu from '~components/common/UserAvatarMenu'
 function PortfolioLayout({ children }: PropsWithChildren) {
   return (
     <div className="relative grow flex flex-col">
-      <nav className="px-4 flex justify-between border-b">
+      <nav className="px-4 h-[58px] flex justify-between border-b">
         <div className="py-2 flex items-center gap-4">
           <Link to="/~">
             <Logo className="h-8 text-blue" />
@@ -27,7 +27,7 @@ function PortfolioLayout({ children }: PropsWithChildren) {
           </div>
         </div>
       </nav>
-      <div className="mt-[72px] grow flex flex-col">
+      <div className="grow flex flex-col">
         {children}
       </div>
     </div>

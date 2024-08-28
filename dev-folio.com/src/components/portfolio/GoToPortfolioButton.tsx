@@ -7,7 +7,7 @@ import { Button } from '~components/ui/Button'
 function GoToPortfolioButton() {
   const { user } = useUser()
 
-  if (!(user?.portfolio.deployedAt && user.portfolio.subdomain)) return null
+  if (!(user?.portfolio.subdomain && user.portfolio.deployedAt)) return null
 
   return (
     <a
