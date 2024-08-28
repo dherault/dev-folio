@@ -22,6 +22,8 @@
     "lint": "npm run lint:app && npm run lint:functions",
     "lint:app": "cd dev-folio.com && npm run lint",
     "lint:functions": "cd dev-folio.com/functions && npm run lint",
+    "lint:dev-folio": "cd packages/dev-folio && npm run lint",
+    "lint:dev-folio-types": "cd packages/dev-folio-types && npm run lint",
     "test": ""
   },
   "devDependencies": {

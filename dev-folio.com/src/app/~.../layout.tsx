@@ -1,14 +1,14 @@
 import type { PropsWithChildren } from 'react'
 
 import AuthenticationBouncer from '~components/authentication/AuthenticationBouncer'
-import AppLayout from '~components/common/AppLayout'
+import PortfolioLayout from '~components/portfolio/PortfolioLayout'
 
 function Layout({ children }: PropsWithChildren) {
   return (
     <AuthenticationBouncer>
-      <AppLayout>
+      <PortfolioLayout>
         {children}
-      </AppLayout>
+      </PortfolioLayout>
     </AuthenticationBouncer>
   )
 }

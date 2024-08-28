@@ -1,9 +1,3 @@
-function Page() {
-  return (
-    <>
-      Page
-    </>
-  )
-}
+import Portfolio from '~components/portfolio/Portfolio'
 
-export default Page
+export default Portfolio

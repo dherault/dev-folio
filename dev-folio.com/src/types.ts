@@ -17,7 +17,35 @@ export type User = DatabaseResource<{
   signInProviders: SignInProvider[]
   hasSentSignupMessages: boolean
   isAdministrator: boolean
+  portfolio: Portfolio
 }>
+
+/* ---
+  Portfolio
+--- */
+
+export type PortfolioSocialMedia = 'github'
+  | 'linkedin'
+  | 'x'
+  | 'pinterest'
+  | 'tiktok'
+  | 'youtube'
+  | 'website'
+
+export type PortfolioSectionId = 'hero'
+  | 'skills'
+  | 'projects'
+  | 'contact'
+
+export type Portfolio = {
+  subdomain: string
+  sections: PortfolioSectionId[]
+  firstName: string
+  lastName: string
+  jobTitle: string
+  heroImageStoragePath: string
+  socialMediaUrls: Partial<Record<PortfolioSocialMedia, string>>
+}
 
 /* ---
   Authentication
