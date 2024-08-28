@@ -14,6 +14,7 @@ const TildeSubRouter = lazy(() => import('~router/subRouters/TildeSubRouter'))
 const AccountSubRouter = lazy(() => import('~router/subRouters/AccountSubRouter'))
 const SupportSubRouter = lazy(() => import('~router/subRouters/SupportSubRouter'))
 const LegalSubRouter = lazy(() => import('~router/subRouters/LegalSubRouter'))
+const OnboardingSubRouter = lazy(() => import('~router/subRouters/OnboardingSubRouter'))
 
 function Router() {
   return (
@@ -51,6 +52,10 @@ function Router() {
             <Route
               path="legal/*"
               element={<Suspense fallback={<CenteredSpinner />}><LegalSubRouter /></Suspense>}
+            />
+            <Route
+              path="onboarding/*"
+              element={<Suspense fallback={<CenteredSpinner />}><OnboardingSubRouter /></Suspense>}
             />
             <Route
               path="*"
