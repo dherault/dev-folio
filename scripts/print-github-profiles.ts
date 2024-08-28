@@ -9,12 +9,12 @@ const octokit = new Octokit({ auth: process.env.GITHUB_ACCESS_TOKEN })
 const topics = [
   // '3d',
   // 'ajax',
-  'algorithm',
-  'amphp',
-  'android',
-  'angular',
-  'ansible',
-  'api',
+  // 'algorithm',
+  // 'amphp',
+  // 'android',
+  // 'angular',
+  // 'ansible',
+  // 'api',
   'arduino',
   'aspnet',
   'awesome',
@@ -193,8 +193,7 @@ async function getPaginatedData(url: string, maxPages: number) {
     const response = await octokit.request(`GET ${url}`, {
       per_page: 100,
       headers: {
-        'X-GitHub-Api-Version':
-          '2022-11-28',
+        'X-GitHub-Api-Version': '2022-11-28',
       },
     })
 
@@ -245,7 +244,9 @@ function parseData(data) {
   return data
 }
 
-const users = {}
+let users: Record<string, any> = {}
+const checkedUsers: Record<string, boolean> = {}
+const noBlogUsers: Record<string, any> = {}
 const outputLocation = path.join(__dirname, 'output.json')
 
 for (const topic of topics) {
@@ -271,6 +272,34 @@ for (const topic of topics) {
       }
     }
 
-    fs.writeFileSync(outputLocation, JSON.stringify(users, null, 2))
+    console.log(Object.values(users).length, 'users')
+
+    for (const user of Object.values(users)) {
+      if (checkedUsers[user.email]) {
+        process.stdout.write('⚫️')
+
+        continue
+      }
+
+      checkedUsers[user.email] = true
+
+      const profile = await octokit.request('GET /users/{username}', {
+        username: user.username,
+      })
+
+      process.stdout.write(profile.data.blog ? '✅' : '❌')
+
+      await wait(800)
+
+      if (profile.data.blog) continue
+
+      noBlogUsers[user.email] = user
+    }
+
+    users = {}
+
+    fs.writeFileSync(outputLocation, JSON.stringify(noBlogUsers, null, 2))
+
+    process.stdout.write('\n')
   }
 }
