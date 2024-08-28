@@ -4,31 +4,44 @@ const storage = require('@google-cloud/storage')
 
 const app = express()
 
-app.get('/', async (req, res) => {
+app.get(['/', '/*'], async (req, res) => {
   const [subdomain] = req.subdomains
-  const storageClient = new storage.Storage()
-  const bucket = storageClient.bucket(subdomain)
-  const [buckedExists] = await bucket.exists()
 
-  if (!buckedExists) {
-    res.status(404).send('Project not found') // TODO 404 page
+  console.log('serving subdomain', subdomain)
 
-    return
+  try {
+    const storageClient = new storage.Storage()
+    const bucketId = `${subdomain}.dev-folio.com`
+    const bucket = storageClient.bucket(bucketId)
+    const [buckedExists] = await bucket.exists()
+
+    if (!buckedExists) {
+      res.status(404).send('Portfolio not found') // TODO 404 page
+
+      return
+    }
+
+    const url = req.originalUrl
+
+    console.log('url', url)
+
+    if (url === '/') {
+      const file = bucket.file('index.html')
+      const [fileBuffer] = await file.download()
+
+      res.setHeader('content-type', 'text/html')
+      res.send(fileBuffer)
+
+      return
+    }
+
+    res.redirect(301, `https://storage.googleapis.com/${bucketId}${url}`)
   }
+  catch (error) {
+    console.error(error)
 
-  const indexDotHtml = bucket.file('index.html')
-  const [indexDotHtmlExists] = await indexDotHtml.exists()
-
-  if (!indexDotHtmlExists) {
-    res.status(404).send('Project files not found') // TODO 404 page
-
-    return
+    res.status(500).send('Internal server error')
   }
-
-  const [indexDotHtmlBuffer] = await indexDotHtml.download()
-
-  res.setHeader('content-type', 'text/html')
-  res.send(indexDotHtmlBuffer)
 })
 
 // Listen to the App Engine-specified port, or 8080 otherwise

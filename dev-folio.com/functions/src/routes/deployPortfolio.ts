@@ -3,12 +3,12 @@ import path from 'node:path'
 
 import { HttpsError, onCall } from 'firebase-functions/v2/https'
 import { type Bucket, Storage } from '@google-cloud/storage'
+import type { Portfolio } from 'dev-folio-types'
 
 import { getUserFromCallableRequest } from '../authentication/getUser'
 
 const storage = new Storage()
 const dataLocation = path.resolve(__dirname, '../../../../data/build')
-const indexDotHtmlBucketUrlReplacement = /{{bucketUrl}}/g
 
 const deployPortfolio = onCall(async request => {
   const { user, userDocument } = await getUserFromCallableRequest(request)
@@ -17,12 +17,13 @@ const deployPortfolio = onCall(async request => {
   if (!user.portfolio.subdomain) throw new HttpsError('failed-precondition', 'You do not have a portfolio')
 
   const { subdomain } = user.portfolio
-  let bucket = storage.bucket(subdomain)
+  const bucketId = `${subdomain}.dev-folio.com`
+  let bucket = storage.bucket(bucketId)
 
   const [existingBucket] = await bucket.exists()
 
   if (!existingBucket) {
-    [bucket] = await storage.createBucket(subdomain)
+    [bucket] = await storage.createBucket(bucketId)
 
     await bucket.makePublic()
     await bucket.setCorsConfiguration([
@@ -35,10 +36,14 @@ const deployPortfolio = onCall(async request => {
     ])
   }
 
+  writePortfolioData(user.portfolio)
+
   await deployBuild(bucket, dataLocation)
 
+  cleanPortfolioData()
+
   await userDocument.update({
-    deployedAt: new Date().toISOString(),
+    'portfolio.deployedAt': new Date().toISOString(),
   })
 
   return {
@@ -46,11 +51,17 @@ const deployPortfolio = onCall(async request => {
   }
 })
 
-async function deployBuild(bucket: Bucket, directoryLocation: string, initialDirectoryLocation = directoryLocation) {
-  const mockIndexDotHtmlFileName = `index-${bucket.name}.html`
+function writePortfolioData(portfolio: Portfolio) {
+  fs.writeFileSync(path.join(dataLocation, 'portfolio.json'), JSON.stringify(portfolio, null, 2))
+}
 
+function cleanPortfolioData() {
+  fs.rmSync(path.join(dataLocation, 'portfolio.json'))
+}
+
+async function deployBuild(bucket: Bucket, directoryLocation: string, initialDirectoryLocation = directoryLocation) {
   for (const file of fs.readdirSync(directoryLocation)) {
-    let fileLocation = path.join(directoryLocation, file)
+    const fileLocation = path.join(directoryLocation, file)
 
     if (fs.statSync(fileLocation).isDirectory()) {
       await deployBuild(bucket, fileLocation, initialDirectoryLocation)
@@ -58,25 +69,10 @@ async function deployBuild(bucket: Bucket, directoryLocation: string, initialDir
       continue
     }
 
-    const isIndexDotHtml = file === 'index.html'
-
-    if (isIndexDotHtml) {
-      const indexDotHtml = fs.readFileSync(fileLocation, 'utf-8')
-      const nextIndexDotHtml = indexDotHtml.replaceAll(indexDotHtmlBucketUrlReplacement, `https://storage.googleapis.com/${bucket.name}`)
-
-      fileLocation = path.join(directoryLocation, mockIndexDotHtmlFileName)
-
-      fs.writeFileSync(fileLocation, nextIndexDotHtml)
-    }
-
     await bucket.upload(fileLocation, {
-      destination: isIndexDotHtml ? 'index.html' : path.relative(initialDirectoryLocation, fileLocation),
+      destination: path.relative(initialDirectoryLocation, fileLocation),
       public: true,
     })
-
-    if (isIndexDotHtml) {
-      fs.unlinkSync(fileLocation)
-    }
   }
 }
 

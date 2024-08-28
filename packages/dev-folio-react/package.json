@@ -5,6 +5,7 @@
   "type": "module",
   "main": "./dist/dev-folio-react.umd.cjs",
   "module": "./dist/dev-folio-react.js",
+  "types": "./dist/src/index.d.ts",
   "exports": {
     ".": {
       "import": "./dist/dev-folio-react.js",
@@ -13,7 +14,6 @@
     },
     "./dist/style.css": "./dist/style.css"
   },
-  "types": "./dist/src/index.d.ts",
   "files": [
     "dist"
   ],

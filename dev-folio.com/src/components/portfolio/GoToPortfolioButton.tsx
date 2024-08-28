@@ -11,7 +11,9 @@ function GoToPortfolioButton() {
 
   return (
     <a
-      href={`${user.portfolio.subdomain}.dev-folio.com`}
+      href={`https://${user.portfolio.subdomain}.dev-folio.com`}
+      target="_blank"
+      rel="noreferrer"
       className="border-l flex"
     >
       <Button

@@ -1,3 +1,4 @@
+import 'dev-folio-react/dist/style.css'
 import './index.css'
 
 import { createRoot } from 'react-dom/client'
