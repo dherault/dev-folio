@@ -7,7 +7,7 @@ import { cn } from '~utils/ui'
 import Spinner from '~components/common/Spinner'
 
 const buttonVariants = cva(
-  'flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50',
+  'flex items-center justify-center whitespace-nowrap text-sm font-medium transition-colors focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50',
   {
     variants: {
       variant: {
@@ -20,11 +20,11 @@ const buttonVariants = cva(
         link: 'text-neutral-900 underline-offset-4 hover:underline dark:text-neutral-50',
       },
       size: {
-        xs: 'h-8 rounded-md px-2',
-        sm: 'h-9 rounded-md px-3',
+        xs: 'h-8 px-2',
+        sm: 'h-9 px-3',
         default: 'h-10 px-4 py-2',
-        lg: 'h-11 rounded-md px-8',
-        xl: 'h-14 rounded-md px-12 text-xl',
+        lg: 'h-11 px-8',
+        xl: 'h-14 px-12 text-xl',
         icon: 'h-10 w-10',
         'icon-sm': 'h-8 w-8',
         'icon-xs': 'h-6 w-6',

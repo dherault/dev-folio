@@ -1,0 +1,28 @@
+{
+  "name": "dev-folio-build",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "build": "tsc -b && vite build",
+    "lint": "tsc -b && eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview",
+    "dev": "nodemon --watch src --exec 'npm run build && npm run copy-build'",
+    "copy-build": "cp -r dist/** ../../dev-folio.com/functions/data/build"
+  },
+  "dependencies": {
+    "dev-folio-react": "^0.0.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.9.0",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "globals": "^15.9.0",
+    "nodemon": "^3.1.4",
+    "typescript": "^5.5.3",
+    "vite": "^5.4.1"
+  }
+}

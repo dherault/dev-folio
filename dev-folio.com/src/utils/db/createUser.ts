@@ -19,6 +19,7 @@ function createUser(user: CreateUserArg): User {
     isAdministrator: false,
     portfolio: {
       subdomain: '',
+      deployedAt: '',
       sections: ['hero', 'skills', 'projects', 'contact'],
       firstName: '',
       lastName: '',

@@ -28,13 +28,14 @@ function UserAvatarMenu() {
       <DropdownMenuTrigger asChild>
         <Avatar>
           <AvatarImage src={user.imageUrl} />
-          <AvatarFallback className="bg-blue text-white select-none">
+          <AvatarFallback className="select-none">
             {initials}
           </AvatarFallback>
         </Avatar>
       </DropdownMenuTrigger>
       <DropdownMenuContent
         align="end"
+        alignOffset={-16}
         sideOffset={8}
       >
         {user.isAdministrator && (

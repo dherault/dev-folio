@@ -39,6 +39,7 @@ export type PortfolioSectionId = 'hero'
 
 export type Portfolio = {
   subdomain: string
+  deployedAt: string
   sections: PortfolioSectionId[]
   firstName: string
   lastName: string
