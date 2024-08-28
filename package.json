@@ -21,7 +21,8 @@
     "install:functions": "cd dev-folio.com/functions && npm install",
     "lint": "npm run lint:app && npm run lint:functions",
     "lint:app": "cd dev-folio.com && npm run lint",
-    "lint:functions": "cd dev-folio.com/functions && npm run lint"
+    "lint:functions": "cd dev-folio.com/functions && npm run lint",
+    "test": ""
   },
   "devDependencies": {
     "eslint": "^8.57.0",
