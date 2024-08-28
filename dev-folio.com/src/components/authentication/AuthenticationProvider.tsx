@@ -20,8 +20,7 @@ import {
   updateDoc,
 } from 'firebase/firestore'
 import LogRocket from 'logrocket'
-
-import type { SignInProvider, User } from '~types'
+import type { SignInProvider, User } from 'dev-folio-types'
 
 import { NULL_DOCUMENT_ID } from '~constants'
 

@@ -1,4 +1,4 @@
-import { User } from '~types'
+import { User } from 'dev-folio-types'
 
 type CreateUserArg = Omit<
   User,

@@ -5,8 +5,7 @@ import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'fire
 import * as z from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
-
-import { SignInProvider, type User } from '~types'
+import { SignInProvider, type User } from 'dev-folio-types'
 
 import { AUTHENTICATION_ERRORS } from '~constants'
 

@@ -1,7 +1,6 @@
 import { createContext } from 'react'
 import type { User as Viewer } from 'firebase/auth'
-
-import type { User } from '~types'
+import type { User } from 'dev-folio-types'
 
 export type UserContextType = {
   loading: boolean

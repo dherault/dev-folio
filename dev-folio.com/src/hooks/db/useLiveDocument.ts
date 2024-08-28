@@ -1,7 +1,6 @@
 import { useCallback, useEffect, useState } from 'react'
 import { type DocumentReference, onSnapshot } from 'firebase/firestore'
-
-import type { DatabaseResource } from '~types'
+import type { DatabaseResource } from 'dev-folio-types'
 
 function useLiveDocument<T extends DatabaseResource>(doc: DocumentReference, enabled = true) {
   const [data, setData] = useState<T | null>(null)

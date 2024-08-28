@@ -1,8 +1,7 @@
 import { logger } from 'firebase-functions'
 import type { Request } from 'firebase-functions'
 import type { CallableRequest } from 'firebase-functions/v2/https'
-
-import type { User } from '~types'
+import type { User } from 'dev-folio-types'
 
 import { auth, firestore } from '../firebase'
 

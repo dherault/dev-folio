@@ -1,7 +1,6 @@
 import { useCallback, useEffect, useState } from 'react'
 import { type Query, onSnapshot } from 'firebase/firestore'
-
-import type { DatabaseResource } from '~types'
+import type { DatabaseResource } from 'dev-folio-types'
 
 import useDebounce from '~hooks/common/useDebounce'
 

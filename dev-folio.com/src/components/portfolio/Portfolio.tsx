@@ -1,4 +1,4 @@
-import { PortfolioProvider } from 'dev-folio'
+import { PortfolioProvider } from 'dev-folio-react'
 
 import useUser from '~hooks/user/useUser'
 

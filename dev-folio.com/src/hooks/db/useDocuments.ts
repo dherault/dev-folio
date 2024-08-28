@@ -1,7 +1,6 @@
 import { useCallback, useEffect, useState } from 'react'
 import { type Query, getDocs } from 'firebase/firestore'
-
-import type { DatabaseResource } from '~types'
+import type { DatabaseResource } from 'dev-folio-types'
 
 function useDocuments<T extends DatabaseResource>(query: Query, enabled = true) {
   const [data, setData] = useState<T[]>([])
