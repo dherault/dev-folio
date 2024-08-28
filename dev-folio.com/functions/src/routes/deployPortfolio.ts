@@ -38,7 +38,7 @@ const deployPortfolio = onCall(async request => {
 
   writePortfolioData(user.portfolio)
 
-  await deployBuild(bucket, dataLocation)
+  await deployBuildFiles(bucket, dataLocation)
 
   cleanPortfolioData()
 
@@ -59,12 +59,12 @@ function cleanPortfolioData() {
   fs.rmSync(path.join(dataLocation, 'portfolio.json'))
 }
 
-async function deployBuild(bucket: Bucket, directoryLocation: string, initialDirectoryLocation = directoryLocation) {
+async function deployBuildFiles(bucket: Bucket, directoryLocation: string, initialDirectoryLocation = directoryLocation) {
   for (const file of fs.readdirSync(directoryLocation)) {
     const fileLocation = path.join(directoryLocation, file)
 
     if (fs.statSync(fileLocation).isDirectory()) {
-      await deployBuild(bucket, fileLocation, initialDirectoryLocation)
+      await deployBuildFiles(bucket, fileLocation, initialDirectoryLocation)
 
       continue
     }
