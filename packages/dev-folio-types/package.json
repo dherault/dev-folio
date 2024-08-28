@@ -1,0 +1,43 @@
+{
+  "name": "dev-folio-types",
+  "description": "Types for dev-folio.com",
+  "version": "0.0.0",
+  "type": "module",
+  "main": "./dist/dev-folio-types.umd.cjs",
+  "module": "./dist/dev-folio-types.js",
+  "exports": {
+    ".": {
+      "import": "./dist/dev-folio-types.js",
+      "require": "./dist/dev-folio-types.umd.cjs"
+    }
+  },
+  "types": "./dist/dev-folio-types.d.ts",
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dherault/dev-folio.git"
+  },
+  "bugs": {
+    "url": "https://github.com/dherault/dev-folio/issues"
+  },
+  "homepage": "https://github.com/dherault/dev-folio",
+  "keywords": [
+    "language",
+    "keyword",
+    "reserved"
+  ],
+  "author": "David Hérault <dherault@gmail.com> (https://github.com/dherault)",
+  "license": "GPL-3.0-only",
+  "scripts": {
+    "build": "tsc && vite build",
+    "lint": "tsc && eslint src --ext ts",
+    "prepublishOnly": "npm run test && npm run build"
+  },
+  "devDependencies": {
+    "typescript": "^5.5.4",
+    "vite": "^5.4.2",
+    "vite-plugin-dts": "^4.0.3"
+  }
+}
