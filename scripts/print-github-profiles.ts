@@ -15,14 +15,14 @@ const topics = [
   // 'angular',
   // 'ansible',
   // 'api',
-  'arduino',
-  'aspnet',
-  'awesome',
-  'aws',
-  'azure',
-  'babel',
-  'bash',
-  'bitcoin',
+  // 'arduino',
+  // 'aspnet',
+  // 'awesome',
+  // 'aws',
+  // 'azure',
+  // 'babel',
+  // 'bash',
+  // 'bitcoin',
   'bootstrap',
   'bot',
   'c',
@@ -253,23 +253,35 @@ for (const topic of topics) {
   console.log()
   console.log('Looking at topic', topic)
 
-  const repositories = await getPaginatedData(`/search/repositories?q=topic:${topic}`, 1)
+  let repositories: any[] = []
+
+  try {
+    repositories = await getPaginatedData(`/search/repositories?q=topic:${topic}&sort=updated`, 1)
+  }
+  catch {
+    continue
+  }
 
   for (const repository of repositories) {
-    const commits = await getPaginatedData(`/repos/${repository.owner.login}/${repository.name}/commits`, 10)
+    try {
+      const commits = await getPaginatedData(`/repos/${repository.owner.login}/${repository.name}/commits`, 10)
 
-    console.log(`Looking at ${repository.owner.login}/${repository.name}`, commits.length)
+      console.log(`Looking at ${repository.owner.login}/${repository.name}`, commits.length)
 
-    for (const commit of commits) {
-      if (!commit.commit.author.email.endsWith('@gmail.com')) continue
-      if (commit.commit.author.name.split(' ').length < 2) continue
-      if (!commit.author?.login) continue
+      for (const commit of commits) {
+        if (!commit.commit.author.email.endsWith('@gmail.com')) continue
+        if (commit.commit.author.name.split(' ').length < 2) continue
+        if (!commit.author?.login) continue
 
-      users[commit.commit.author.email] = {
-        name: commit.commit.author.name,
-        email: commit.commit.author.email,
-        username: commit.author.login,
+        users[commit.commit.author.email] = {
+          name: commit.commit.author.name,
+          email: commit.commit.author.email,
+          username: commit.author.login,
+        }
       }
+    }
+    catch {
+      //
     }
 
     console.log(Object.values(users).length, 'users')
@@ -283,9 +295,18 @@ for (const topic of topics) {
 
       checkedUsers[user.email] = true
 
-      const profile = await octokit.request('GET /users/{username}', {
-        username: user.username,
-      })
+      let profile: any = null
+
+      try {
+        profile = await octokit.request('GET /users/{username}', {
+          username: user.username,
+        })
+      }
+      catch {
+        //
+      }
+
+      if (!profile) continue
 
       process.stdout.write(profile.data.blog ? '✅' : '❌')
 

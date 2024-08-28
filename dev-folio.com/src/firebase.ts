@@ -10,7 +10,7 @@ import {
 } from 'firebase/auth'
 import { connectFirestoreEmulator, getFirestore } from 'firebase/firestore'
 import { connectStorageEmulator, getStorage } from 'firebase/storage'
-import { connectFunctionsEmulator, getFunctions } from 'firebase/functions'
+import { connectFunctionsEmulator, getFunctions, httpsCallable } from 'firebase/functions'
 import { getPerformance } from 'firebase/performance'
 // import { ReCaptchaV3Provider, initializeAppCheck } from 'firebase/app-check'
 
@@ -35,6 +35,8 @@ export const db = getFirestore(app)
 export const storage = getStorage(app)
 
 export const functions = getFunctions(app)
+
+export const deployPortfolio = httpsCallable<{ subdomain: string}, { url: string }>(functions, 'deployPortfolio')
 
 try {
   getPerformance(app)
