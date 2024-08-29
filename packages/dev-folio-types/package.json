@@ -1,17 +1,18 @@
 {
   "name": "dev-folio-types",
   "description": "Types for dev-folio.com",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "type": "module",
   "main": "./dist/dev-folio-types.umd.cjs",
   "module": "./dist/dev-folio-types.js",
+  "types": "./dist/dev-folio-types.d.ts",
   "exports": {
     ".": {
       "import": "./dist/dev-folio-types.js",
-      "require": "./dist/dev-folio-types.umd.cjs"
+      "require": "./dist/dev-folio-types.umd.cjs",
+      "types": "./dist/dev-folio-types.d.ts"
     }
   },
-  "types": "./dist/dev-folio-types.d.ts",
   "files": [
     "dist"
   ],
