@@ -18,11 +18,4 @@
     -moz-appearance: textfield !important;
   }
 
-  /* Border color */
-  *,
-  ::before,
-  ::after {
-    @apply border-neutral-200 dark:border-neutral-700;
-  }
-
 }

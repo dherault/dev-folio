@@ -2,7 +2,7 @@ import type { PropsWithChildren } from 'react'
 
 function PortfolioLayout({ children }: PropsWithChildren) {
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="tw-min-h-screen tw-flex tw-flex-col">
       {children}
     </div>
   )

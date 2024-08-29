@@ -106,6 +106,8 @@ function AuthenticationProvider({ children }: PropsWithChildren) {
       signInProviders: [signInProvider],
     })
 
+    if (viewer.displayName) createdUser.portfolio.name = viewer.displayName
+
     await setDoc(userDocument, createdUser)
 
     logAnalytics('signup', {
