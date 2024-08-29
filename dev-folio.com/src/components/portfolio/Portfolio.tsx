@@ -1,4 +1,9 @@
-import { PortfolioProvider } from 'dev-folio-react'
+import 'dev-folio-react/dist/style.css'
+import {
+  PortfolioHero,
+  PortfolioLayout,
+  PortfolioProvider,
+} from 'dev-folio-react'
 
 import useUser from '~hooks/user/useUser'
 
@@ -6,9 +11,11 @@ function Portfolio() {
   const { user } = useUser()
 
   return (
-    <PortfolioProvider portfolio={user?.portfolio}>
-      Foo
-    </PortfolioProvider>
+    <PortfolioLayout>
+      <PortfolioProvider portfolio={user?.portfolio}>
+        <PortfolioHero />
+      </PortfolioProvider>
+    </PortfolioLayout>
   )
 }
 
