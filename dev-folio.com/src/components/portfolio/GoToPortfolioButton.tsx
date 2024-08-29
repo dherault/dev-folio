@@ -21,7 +21,7 @@ function GoToPortfolioButton() {
         className="pl-2.5 h-auto"
       >
         <SquareArrowOutUpRight className="mr-2 h-4" />
-        Go to Portfolio
+        Go to portfolio
       </Button>
     </a>
   )

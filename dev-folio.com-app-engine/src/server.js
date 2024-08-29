@@ -5,11 +5,8 @@ const storage = require('@google-cloud/storage')
 const app = express()
 
 app.get(['/', '/*'], async (req, res) => {
-  const [subdomain] = req.subdomains
-
-  console.log('serving subdomain', subdomain)
-
   try {
+    const [subdomain] = req.subdomains
     const storageClient = new storage.Storage()
     const bucketId = `${subdomain}.dev-folio.com`
     const bucket = storageClient.bucket(bucketId)
@@ -23,7 +20,7 @@ app.get(['/', '/*'], async (req, res) => {
 
     const url = req.originalUrl
 
-    console.log('url', url)
+    console.log('serving bucketId and url', storageClient, url)
 
     if (url === '/') {
       const file = bucket.file('index.html')
