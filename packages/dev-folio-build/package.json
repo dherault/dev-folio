@@ -1,7 +1,6 @@
 {
-  "name": "dev-folio-build",
   "private": true,
-  "version": "0.0.0",
+  "name": "dev-folio-build",
   "type": "module",
   "scripts": {
     "build": "tsc -b && vite build",
@@ -12,7 +11,7 @@
     "copy-build": "cp -r dist/** ../../dev-folio.com/functions/data/build"
   },
   "dependencies": {
-    "dev-folio-react": "^0.0.1",
+    "dev-folio-react": "^0.0.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
