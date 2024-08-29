@@ -5,6 +5,7 @@ import { Label } from '~components/ui/Label'
 import { Checkbox } from '~components/ui/Checkbox'
 import TextareaAutosize from '~components/common/TextareaAutosize'
 import EmojiPicker from '~components/common/EmojiPicker'
+import PortfolioEditorHeroDescriptionInspiration from '~components/portfolio/editor/PortfolioEditorHeroDescriptionInspiration'
 
 function PortfolioEditorHero() {
   const { portfolio, setPortfolio } = usePortfolio()
@@ -50,9 +51,11 @@ function PortfolioEditorHero() {
           placeholder="I'm a full-stack developer..."
         />
         <div className="mt-1.5 flex justify-end">
-          <div className="text-xs text-blue hover:underline cursor-pointer">
-            Find some inspiration
-          </div>
+          <PortfolioEditorHeroDescriptionInspiration>
+            <div className="text-xs text-blue hover:underline cursor-pointer">
+              Find some inspiration
+            </div>
+          </PortfolioEditorHeroDescriptionInspiration>
         </div>
       </article>
     </div>

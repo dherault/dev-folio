@@ -1,4 +1,4 @@
-import type { PropsWithChildren } from 'react'
+import { type PropsWithChildren, useRef } from 'react'
 import { motion } from 'framer-motion'
 import _ from 'clsx'
 
@@ -8,11 +8,12 @@ import PortfolioEditor from '~components/portfolio/editor/PortfolioEditor'
 
 function PortfolioContainer({ children }: PropsWithChildren) {
   const { edited } = usePortfolio()
+  const initialEdited = useRef(edited)
 
   return (
-    <div className="relative grow overflow-hidden bg-neutral-background">
+    <div className="relative grow overflow-x-hidden overflow-y-auto bg-neutral-background">
       <motion.div
-        initial="close"
+        initial={initialEdited ? 'open' : 'close'}
         animate={edited ? 'open' : 'close'}
         variants={{
           open: {
@@ -33,7 +34,7 @@ function PortfolioContainer({ children }: PropsWithChildren) {
         <PortfolioEditor />
       </motion.div>
       <motion.div
-        initial="close"
+        initial={initialEdited ? 'open' : 'close'}
         animate={edited ? 'open' : 'close'}
         variants={{
           open: {
