@@ -8,6 +8,8 @@ export { default as PortfolioLayout } from '~components/portfolio/PortfolioLayou
 
 export { default as PortfolioProvider } from '~components/portfolio/PortfolioProvider'
 
+export { default as PortfolioHero } from '~components/portfolio/PortfolioHero'
+
 /* ---
   Hooks
 --- */

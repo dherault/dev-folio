@@ -1,15 +1,16 @@
-import { type PropsWithChildren, useCallback, useEffect, useState } from 'react'
+import { type PropsWithChildren, useCallback, useEffect, useMemo, useState } from 'react'
 import type { Portfolio } from 'dev-folio-types'
 
-import PortfolioContext from '~contexts/portfolio/PortfolioContext'
+import PortfolioContext, { type PortfolioContextType } from '~contexts/portfolio/PortfolioContext'
 
 import SpinnerCentered from '~components/common/SpinnerCentered'
 
 type Props = PropsWithChildren<{
+  isDev?: boolean
   portfolio?: Portfolio
 }>
 
-function PortfolioProvider({ children, portfolio }: Props) {
+function PortfolioProvider({ children, portfolio, isDev = false }: Props) {
   const [fetchedPortfolio, setFetchedPortfolio] = useState<Portfolio | null>(null)
 
   const finalPortfolio = portfolio ?? fetchedPortfolio
@@ -35,6 +36,14 @@ function PortfolioProvider({ children, portfolio }: Props) {
     fetchRemotePortfolio,
   ])
 
+  const portfolioContextValue = useMemo<PortfolioContextType>(() => ({
+    portfolio: finalPortfolio!,
+    isDev,
+  }), [
+    finalPortfolio,
+    isDev,
+  ])
+
   if (!finalPortfolio) {
     return (
       <SpinnerCentered />
@@ -42,10 +51,7 @@ function PortfolioProvider({ children, portfolio }: Props) {
   }
 
   return (
-    <PortfolioContext.Provider value={finalPortfolio}>
-      <pre>
-        {JSON.stringify(finalPortfolio, null, 2)}
-      </pre>
+    <PortfolioContext.Provider value={portfolioContextValue}>
       {children}
     </PortfolioContext.Provider>
   )

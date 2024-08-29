@@ -1,7 +1,7 @@
 {
   "name": "dev-folio-react",
   "description": "Portfolios for developers done right",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "type": "module",
   "main": "./dist/dev-folio-react.umd.cjs",
   "module": "./dist/dev-folio-react.js",
@@ -35,7 +35,7 @@
     "build": "tsc && vite build",
     "lint": "tsc && eslint src --ext ts",
     "prepublishOnly": "npm run build",
-    "dev": "nodemon --watch src --exec npm run build"
+    "dev": "nodemon --watch src --ext ts,tsx --exec npm run build"
   },
   "devDependencies": {
     "@types/react": "^18.3.4",
