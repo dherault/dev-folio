@@ -1,4 +1,49 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-  
+
+@layer utilities {
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  input[type='number']::-webkit-outer-spin-button,
+  input[type='number']::-webkit-inner-spin-button,
+  input[type='number'] {
+    -webkit-appearance: none;
+    margin: 0;
+    -moz-appearance: textfield !important;
+  }
+
+  /* Border color */
+  *,
+  ::before,
+  ::after {
+    @apply border-neutral-200 dark:border-neutral-700;
+  }
+
+  /* Elevation */
+  .elevation-0 {
+    @apply shadow-none;
+  }
+
+  .elevation-1 {
+    @apply shadow-[rgba(17,17,26,0.1)_0px_0px_4px] dark:shadow-[rgba(51,65,85,0.333)_0px_0px_4px];
+  }
+
+  .elevation-2 {
+    @apply shadow-[rgba(17,17,26,0.1)_0px_0px_8px] dark:shadow-[rgba(51,65,85,0.333)_0px_0px_8px];
+  }
+
+  .elevation-3 {
+    @apply shadow-[rgba(17,17,26,0.1)_0px_0px_12px] dark:shadow-[rgba(51,65,85,0.333)_0px_0px_12px];
+  }
+
+  .elevation-4 {
+    @apply shadow-[rgba(17,17,26,0.1)_0px_0px_16px] dark:shadow-[rgba(51,65,85,0.333)_0px_0px_16px];
+  }
+
+}

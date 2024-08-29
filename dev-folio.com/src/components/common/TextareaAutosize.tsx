@@ -13,7 +13,6 @@ function TextareaAutosize({ className, error = false, ...props }: TextareaAutosi
         `flex
         min-h-10
         w-full
-        rounded-md
         border
         bg-white
         px-3

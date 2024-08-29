@@ -12,7 +12,7 @@ function EditButton() {
       <Button
         variant="ghost"
         className="!pl-3 h-auto"
-        onClick={() => setEdited(x => !x)}
+        onClick={() => setEdited(!edited)}
       >
         {edited ? (
           <>

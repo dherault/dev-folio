@@ -10,7 +10,7 @@ function PortfolioContainer({ children }: PropsWithChildren) {
   const { edited } = usePortfolio()
 
   return (
-    <div className="relative grow overflow-hidden">
+    <div className="relative grow overflow-hidden bg-neutral-background">
       <motion.div
         initial="close"
         animate={edited ? 'open' : 'close'}
@@ -28,7 +28,7 @@ function PortfolioContainer({ children }: PropsWithChildren) {
             },
           },
         }}
-        className="absolute top-8 bottom-8"
+        className="absolute top-8 bottom-8 z-20"
       >
         <PortfolioEditor />
       </motion.div>
@@ -51,10 +51,10 @@ function PortfolioContainer({ children }: PropsWithChildren) {
             },
           },
         }}
-        className="absolute top-0"
+        className="absolute top-0 z-10"
       >
         <div
-          className={_('border transition-colors max-w-[1400px]', {
+          className={_('max-w-[1400px] bg-white border transition-colors', {
             'border-transparent': !edited,
           })}
         >
