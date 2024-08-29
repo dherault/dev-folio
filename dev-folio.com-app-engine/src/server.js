@@ -8,7 +8,7 @@ app.get(['/', '/*'], async (req, res) => {
   try {
     const [subdomain] = req.subdomains
     const storageClient = new storage.Storage()
-    const bucketId = `${subdomain}.dev-folio.com`
+    const bucketId = `${subdomain}-dev-folio-com`
     const bucket = storageClient.bucket(bucketId)
     const [buckedExists] = await bucket.exists()
 

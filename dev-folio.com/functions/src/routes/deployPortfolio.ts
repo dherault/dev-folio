@@ -1,55 +1,61 @@
 import fs from 'node:fs'
 import path from 'node:path'
 
+import { logger } from 'firebase-functions/v2'
 import { HttpsError, onCall } from 'firebase-functions/v2/https'
 import { type Bucket, Storage } from '@google-cloud/storage'
 import type { Portfolio } from 'dev-folio-types'
 
 import { getUserFromCallableRequest } from '../authentication/getUser'
 
-const storage = new Storage()
 const dataLocation = path.resolve(__dirname, '../../../../data/build')
 
-const deployPortfolio = onCall(async request => {
-  const { user, userDocument } = await getUserFromCallableRequest(request)
+const deployPortfolio = onCall(
+  { enforceAppCheck: true },
+  async request => {
+    const { user, userDocument } = await getUserFromCallableRequest(request)
 
-  if (!user) throw new HttpsError('permission-denied', 'You are not authenticated')
-  if (!user.portfolio.subdomain) throw new HttpsError('failed-precondition', 'You do not have a portfolio')
+    if (!user) throw new HttpsError('permission-denied', 'You are not authenticated')
+    if (!user.portfolio.subdomain) throw new HttpsError('failed-precondition', 'You do not have a portfolio')
 
-  const { subdomain } = user.portfolio
-  const bucketId = `${subdomain}.dev-folio.com`
-  let bucket = storage.bucket(bucketId)
+    const { subdomain } = user.portfolio
+    const bucketId = `${subdomain}-dev-folio-com`
+    const storage = new Storage()
+    let bucket = storage.bucket(bucketId)
 
-  const [existingBucket] = await bucket.exists()
+    logger.log(`Deploying portfolio for ${bucketId}`)
 
-  if (!existingBucket) {
-    [bucket] = await storage.createBucket(bucketId)
+    const [existingBucket] = await bucket.exists()
 
-    await bucket.makePublic()
-    await bucket.setCorsConfiguration([
-      {
-        maxAgeSeconds: 3600,
-        method: ['GET'],
-        origin: ['https://*.dev-folio.com'],
-        responseHeader: ['Content-Type'],
-      },
-    ])
+    if (!existingBucket) {
+      [bucket] = await storage.createBucket(bucketId)
+
+      await bucket.makePublic()
+      await bucket.setCorsConfiguration([
+        {
+          maxAgeSeconds: 3600,
+          method: ['GET'],
+          origin: ['https://*.dev-folio.com'],
+          responseHeader: ['Content-Type'],
+        },
+      ])
+    }
+
+    writePortfolioData(user.portfolio)
+
+    await deployBuildFiles(bucket, dataLocation)
+
+    cleanPortfolioData()
+
+    await userDocument.update({
+      'portfolio.deployedAt': new Date().toISOString(),
+    })
+
+    return {
+      message: 'ok',
+    }
   }
-
-  writePortfolioData(user.portfolio)
-
-  await deployBuildFiles(bucket, dataLocation)
-
-  cleanPortfolioData()
-
-  await userDocument.update({
-    'portfolio.deployedAt': new Date().toISOString(),
-  })
-
-  return {
-    message: 'ok',
-  }
-})
+)
 
 function writePortfolioData(portfolio: Portfolio) {
   fs.writeFileSync(path.join(dataLocation, 'portfolio.json'), JSON.stringify(portfolio, null, 2))
