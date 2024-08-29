@@ -18,7 +18,7 @@ function GoToPortfolioButton() {
     >
       <Button
         variant="ghost"
-        className="pl-2.5 h-auto"
+        className="!pl-3 h-auto"
       >
         <SquareArrowOutUpRight className="mr-2 h-4" />
         Go to portfolio

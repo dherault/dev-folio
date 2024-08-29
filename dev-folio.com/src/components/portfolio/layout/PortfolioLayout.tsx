@@ -3,8 +3,9 @@ import { Link } from 'react-router-dom'
 
 import Logo from '~components/common/logos/Logo'
 import GithubButton from '~components/common/GithubButton'
-import GoToPortfolioButton from '~components/portfolio/GoToPortfolioButton'
-import DeployButton from '~components/portfolio/DeployButton'
+import EditButton from '~components/portfolio/layout/EditButton'
+import DeployButton from '~components/portfolio/layout/DeployButton'
+import GoToPortfolioButton from '~components/portfolio/layout/GoToPortfolioButton'
 import UserAvatarMenu from '~components/common/UserAvatarMenu'
 
 function PortfolioLayout({ children }: PropsWithChildren) {
@@ -20,6 +21,7 @@ function PortfolioLayout({ children }: PropsWithChildren) {
           </div>
         </div>
         <div className="flex z-50">
+          <EditButton />
           <DeployButton />
           <GoToPortfolioButton />
           <div className="pl-4 flex items-center border-l">

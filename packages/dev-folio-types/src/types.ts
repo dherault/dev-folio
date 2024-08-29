@@ -41,9 +41,9 @@ export type Portfolio = {
   subdomain: string
   deployedAt: string
   sections: PortfolioSectionId[]
-  firstName: string
-  lastName: string
-  jobTitle: string
+  name: string
+  heroDescription: string
+  heroEmoji: string
   heroImageStoragePath: string
   socialMediaUrls: Partial<Record<PortfolioSocialMedia, string>>
 }

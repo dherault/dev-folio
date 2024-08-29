@@ -5,17 +5,24 @@ import {
   PortfolioProvider,
 } from 'dev-folio-react'
 
-import useUser from '~hooks/user/useUser'
+import usePortfolio from '~hooks/portfolio/usePortfolio'
+
+import PortfolioContainer from '~components/portfolio/PortfolioContainer'
 
 function Portfolio() {
-  const { user } = useUser()
+  const { portfolio } = usePortfolio()
 
   return (
-    <PortfolioLayout>
-      <PortfolioProvider portfolio={user?.portfolio}>
-        <PortfolioHero />
-      </PortfolioProvider>
-    </PortfolioLayout>
+    <PortfolioContainer>
+      <PortfolioLayout>
+        <PortfolioProvider
+          isDev
+          portfolio={portfolio}
+        >
+          <PortfolioHero />
+        </PortfolioProvider>
+      </PortfolioLayout>
+    </PortfolioContainer>
   )
 }
 

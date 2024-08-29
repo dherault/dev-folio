@@ -14,7 +14,7 @@ export default defineConfig({
   plugins: [
     tsconfigPaths(),
     react(),
-    dts(),
+    dts({ rollupTypes: true }),
   ],
   build: {
     lib: {

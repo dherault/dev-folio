@@ -29,7 +29,7 @@ function DeployButton() {
     <div className="border-l flex">
       <Button
         variant="ghost"
-        className="pl-2.5 h-auto"
+        className="!pl-3 h-auto"
         onClick={handleClick}
         loading={loading}
       >

@@ -2,15 +2,18 @@ import type { PropsWithChildren } from 'react'
 
 import AuthenticationBouncer from '~components/authentication/AuthenticationBouncer'
 import OnboardingBouncer from '~components/onboarding/OnboardingBouncer'
-import PortfolioLayout from '~components/portfolio/PortfolioLayout'
+import PortfolioProvider from '~components/portfolio/PortfolioProvider'
+import PortfolioLayout from '~components/portfolio/layout/PortfolioLayout'
 
 function Layout({ children }: PropsWithChildren) {
   return (
     <AuthenticationBouncer>
       <OnboardingBouncer>
-        <PortfolioLayout>
-          {children}
-        </PortfolioLayout>
+        <PortfolioProvider>
+          <PortfolioLayout>
+            {children}
+          </PortfolioLayout>
+        </PortfolioProvider>
       </OnboardingBouncer>
     </AuthenticationBouncer>
   )

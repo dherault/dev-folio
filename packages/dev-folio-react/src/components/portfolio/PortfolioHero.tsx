@@ -11,9 +11,7 @@ function PortfolioHero() {
         <h1 className="text-4xl font-semibold">
           Hi, I'm
           {' '}
-          {portfolio.firstName || <TextPlaceholder label="first name" />}
-          {' '}
-          {portfolio.lastName || <TextPlaceholder label="last name" />}
+          {portfolio.name || <TextPlaceholder label="Name" />}
         </h1>
         <div className="mt-4 text-4xl font-semibold">
           I'm a full stack developer based in San Fransico, CA. I specialize in MVP development and rapid prototyping.
