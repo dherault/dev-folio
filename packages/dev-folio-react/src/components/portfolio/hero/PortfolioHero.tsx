@@ -14,8 +14,6 @@ import TiktokIcon from '~components/icons/TiktokIcon'
 function PortfolioHero() {
   const { portfolio } = usePortfolio()
 
-  console.log('portfolio', portfolio)
-
   return (
     <section className="dfr-container dfr-min-h-screen dfr-flex dfr-items-center dfr-justify-center dfr-gap-16">
       <div className="-dfr-mt-8 dfr-w-[40%] dfr-tracking-tighte">
