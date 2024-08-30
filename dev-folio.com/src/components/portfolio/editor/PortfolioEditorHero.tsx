@@ -1,4 +1,8 @@
+import { useCallback } from 'react'
+
 import usePortfolio from '~hooks/portfolio/usePortfolio'
+
+import uploadFile from '~utils/storage/uploadFile'
 
 import { Input } from '~components/ui/Input'
 import { Label } from '~components/ui/Label'
@@ -6,9 +10,23 @@ import { Checkbox } from '~components/ui/Checkbox'
 import TextareaAutosize from '~components/common/TextareaAutosize'
 import EmojiPicker from '~components/common/EmojiPicker'
 import PortfolioEditorHeroDescriptionInspiration from '~components/portfolio/editor/PortfolioEditorHeroDescriptionInspiration'
+import ImageDropzone from '~components/common/ImageDropzone'
 
 function PortfolioEditorHero() {
   const { portfolio, setPortfolio } = usePortfolio()
+
+  const handleImageUpload = useCallback(async (file: File) => {
+    try {
+      const heroImageUrl = await uploadFile(file, 'heroImages')
+
+      setPortfolio(x => ({ ...x, heroImageUrl }))
+    }
+    catch {
+      //
+    }
+  }, [
+    setPortfolio,
+  ])
 
   return (
     <div className="px-4 space-y-4">
@@ -57,6 +75,19 @@ function PortfolioEditorHero() {
             </div>
           </PortfolioEditorHeroDescriptionInspiration>
         </div>
+      </article>
+      <article>
+        <Label>
+          Image
+        </Label>
+        {!portfolio.heroImageUrl && (
+          <>
+            <div className="mt-2 mb-1 text-xs text-neutral-500">
+              We recommend using a 9/16 aspect ratio image.
+            </div>
+            <ImageDropzone onSelect={handleImageUpload} />
+          </>
+        )}
       </article>
     </div>
   )

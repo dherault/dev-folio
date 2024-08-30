@@ -42,8 +42,8 @@ function PortfolioEditorHeroDescriptionInspiration({ children }: PropsWithChildr
           <DialogTitle>Here's some inspiration</DialogTitle>
         </DialogHeader>
         <div className="space-y-4 text-sm text-neutral-500">
-          {inspirations.map(text => (
-            <div>
+          {inspirations.map((text, i) => (
+            <div key={i}>
               {text}
               <div>
                 <span

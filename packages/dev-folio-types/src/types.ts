@@ -44,7 +44,7 @@ export type Portfolio = {
   name: string
   heroDescription: string
   heroEmoji: string
-  heroImageStoragePath: string
+  heroImageUrl: string
   socialMediaUrls: Partial<Record<PortfolioSocialMedia, string>>
 }
 

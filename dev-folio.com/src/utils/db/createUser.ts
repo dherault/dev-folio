@@ -24,7 +24,7 @@ function createUser(user: CreateUserArg): User {
       name: '',
       heroEmoji: '👋',
       heroDescription: '',
-      heroImageStoragePath: '',
+      heroImageUrl: '',
       socialMediaUrls: {},
     },
     createdAt: now,
