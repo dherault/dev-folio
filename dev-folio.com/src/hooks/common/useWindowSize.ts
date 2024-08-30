@@ -9,8 +9,8 @@ interface WindowSize {
 
 function useWindowSize(): WindowSize {
   const [windowSize, setWindowSize] = useState<WindowSize>({
-    width: 0,
-    height: 0,
+    width: window.innerWidth,
+    height: window.innerHeight,
   })
 
   const handleSize = useCallback(() => {

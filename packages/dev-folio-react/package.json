@@ -1,7 +1,7 @@
 {
   "name": "dev-folio-react",
   "description": "Portfolios for developers done right",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "type": "module",
   "main": "./dist/dev-folio-react.umd.cjs",
   "module": "./dist/dev-folio-react.js",
@@ -43,7 +43,7 @@
     "@radix-ui/react-switch": "^1.1.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
-    "dev-folio-types": "^0.0.3",
+    "dev-folio-types": "^0.0.4",
     "react-hook-form": "^7.53.0",
     "tailwind-merge": "^2.5.2",
     "tailwindcss-animate": "^1.0.7"

@@ -83,7 +83,7 @@ function PortfolioEditorHero() {
         {!portfolio.heroImageUrl && (
           <>
             <div className="mt-2 mb-1 text-xs text-neutral-500">
-              We recommend using a 9/16 aspect ratio image.
+              We recommend using a 3/4 aspect ratio image.
             </div>
             <ImageDropzone onSelect={handleImageUpload} />
           </>

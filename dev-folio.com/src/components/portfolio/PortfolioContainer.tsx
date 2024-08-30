@@ -1,4 +1,4 @@
-import { type PropsWithChildren } from 'react'
+import { type PropsWithChildren, useRef } from 'react'
 import { motion } from 'framer-motion'
 import _ from 'clsx'
 
@@ -11,10 +11,13 @@ const PORTFOLIO_WIDTH = 1400
 
 function PortfolioContainer({ children }: PropsWithChildren) {
   const { edited } = usePortfolio()
+  const initialEdited = useRef(edited).current
 
   const { width: windowWidth } = useWindowSize()
 
-  const scale = (windowWidth - 512 - 3 * 32) / PORTFOLIO_WIDTH
+  const left = 512 + 2 * 32
+  const right = 32
+  const scale = (windowWidth - left - right) / PORTFOLIO_WIDTH
 
   return (
     <div
@@ -24,10 +27,20 @@ function PortfolioContainer({ children }: PropsWithChildren) {
       })}
     >
       <motion.div
-        animate={{
-          left: edited ? 32 : '-100%',
-          transition: {
-            ease: 'easeInOut',
+        initial={initialEdited ? 'open' : 'close'}
+        animate={edited ? 'open' : 'close'}
+        variants={{
+          open: {
+            left: 32,
+            transition: {
+              ease: 'easeInOut',
+            },
+          },
+          close: {
+            left: '-100%',
+            transition: {
+              ease: 'easeInOut',
+            },
           },
         }}
         className="absolute top-8 bottom-8 -left-full z-20"
@@ -35,35 +48,70 @@ function PortfolioContainer({ children }: PropsWithChildren) {
         <PortfolioEditor />
       </motion.div>
       <motion.div
-        animate={{
-          right: edited ? 32 : 0,
-          left: edited ? undefined : 0,
-          transition: {
-            ease: 'easeInOut',
-          },
-        }}
-        className="absolute top-0 z-10"
-      >
-        <motion.div
-          animate={{
-            scale: edited ? scale : 1,
+        initial={initialEdited ? 'open' : 'close'}
+        animate={edited ? 'open' : 'close'}
+        variants={{
+          open: {
+            left,
             transition: {
               ease: 'easeInOut',
             },
+          },
+          close: {
+            left: 0,
+            transition: {
+              ease: 'easeInOut',
+            },
+          },
+        }}
+        className="absolute top-0 right-0 z-10"
+      >
+        <motion.div
+          initial={initialEdited ? 'open' : 'close'}
+          animate={edited ? 'open' : 'close'}
+          variants={{
+            open: {
+              scale,
+              width: PORTFOLIO_WIDTH,
+              margin: 0,
+              transition: {
+                ease: 'easeInOut',
+              },
+            },
+            close: {
+              scale: 1,
+              width: Math.min(windowWidth, PORTFOLIO_WIDTH),
+              margin: '0 auto',
+              transition: {
+                ease: 'easeInOut',
+              },
+            },
           }}
-          className="origin-right"
+          className="origin-left"
         >
-          <div
-            className={_('mx-auto xl:w-[1400px] bg-white border transition-colors', {
-              'border-transparent': !edited,
-            })}
-            style={{
-              // width: edited ? PORTFOLIO_WIDTH : undefined,
-              // maxWidth: PORTFOLIO_WIDTH,
+          <motion.div
+            initial={initialEdited ? 'open' : 'close'}
+            animate={edited ? 'open' : 'close'}
+            variants={{
+              open: {
+                width: PORTFOLIO_WIDTH,
+                borderColor: '#e5e5e5',
+                transition: {
+                  ease: 'easeInOut',
+                },
+              },
+              close: {
+                width: Math.min(windowWidth, PORTFOLIO_WIDTH),
+                borderColor: 'transparent',
+                transition: {
+                  ease: 'easeInOut',
+                },
+              },
             }}
+            className="bg-white border"
           >
             {children}
-          </div>
+          </motion.div>
         </motion.div>
       </motion.div>
     </div>

@@ -1,13 +1,14 @@
 import usePortfolio from '~hooks/portfolio/usePortfolio'
 
-import TextPlaceholder from '~components/portfolio/TextPlaceholder'
+import TextPlaceholder from '~components/portfolio/hero/TextPlaceholder'
+import ImagePlaceholder from '~components/portfolio/hero/ImagePlaceholder'
 
 function PortfolioHero() {
   const { portfolio } = usePortfolio()
 
   return (
-    <section className="tw-container tw-min-h-screen tw-flex tw-items-center tw-justify-center">
-      <div className="-tw-mt-8 tw-ml-16 tw-w-1/2 tw-tracking-tighte">
+    <section className="tw-container tw-min-h-screen tw-flex tw-items-center tw-justify-center tw-gap-16">
+      <div className="-tw-mt-8 tw-w-[40%] tw-tracking-tighte">
         <h1 className="tw-text-4xl tw-font-semibold">
           {portfolio.heroEmoji ? <span className="tw-mr-3">{portfolio.heroEmoji}</span> : ''}
           Hi, I'm
@@ -18,11 +19,16 @@ function PortfolioHero() {
           {portfolio.heroDescription || <TextPlaceholder label="Description" />}
         </div>
       </div>
-      <div className="tw-w-[calc(50%-64px)] tw-flex tw-items-center tw-justify-center">
-        <img
-          src="https://images.pexels.com/photos/27514901/pexels-photo-27514901/free-photo-of-woman-in-hat-sitting-with-hand-on-cheek.jpeg"
-          className="tw-w-[80%] tw-aspect-[3/4] tw-object-cover"
-        />
+      <div className="tw-w-[40%]">
+        {!!portfolio.heroImageUrl && (
+          <img
+            src={portfolio.heroImageUrl}
+            className="tw-aspect-[3/4] tw-object-cover"
+          />
+        )}
+        {!portfolio.heroImageUrl && (
+          <ImagePlaceholder />
+        )}
       </div>
     </section>
   )
