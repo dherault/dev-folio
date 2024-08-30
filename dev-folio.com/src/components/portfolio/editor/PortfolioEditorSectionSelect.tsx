@@ -21,7 +21,7 @@ function PortfolioEditorSectionSelect() {
       </SelectTrigger>
       <SelectContent>
         <SelectItem value="hero">
-          About
+          Hero
         </SelectItem>
         <SelectItem value="skills">
           Skills

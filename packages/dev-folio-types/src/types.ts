@@ -25,11 +25,10 @@ export type User = DatabaseResource<{
 --- */
 
 export type PortfolioSocialMedia = 'github'
-  | 'linkedin'
   | 'x'
-  | 'pinterest'
-  | 'tiktok'
+  | 'linkedin'
   | 'youtube'
+  | 'tiktok'
   | 'website'
 
 export type PortfolioSectionId = 'hero'
