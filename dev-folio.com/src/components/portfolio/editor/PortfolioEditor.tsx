@@ -7,11 +7,11 @@ function PortfolioEditor() {
   const { editedSection } = usePortfolio()
 
   return (
-    <div className="h-full w-[512px] border bg-white">
-      <div className="p-4">
-        <PortfolioEditorSectionSelect />
+    <div className="p-4 h-full w-[512px] border bg-white flex flex-col">
+      <PortfolioEditorSectionSelect />
+      <div className="pt-4 grow overflow-y-auto">
+        {editedSection === 'hero' && <PortfolioEditorHero />}
       </div>
-      {editedSection === 'hero' && <PortfolioEditorHero />}
     </div>
   )
 }

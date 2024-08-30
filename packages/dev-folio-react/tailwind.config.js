@@ -10,7 +10,7 @@ module.exports = {
     './app/**/*.{ts,tsx}',
     './src/**/*.{ts,tsx}',
   ],
-  prefix: 'tw-',
+  prefix: 'dfr-',
   theme: {
     container: {
       center: true,

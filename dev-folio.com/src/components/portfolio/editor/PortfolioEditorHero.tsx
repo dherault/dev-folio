@@ -41,7 +41,7 @@ function PortfolioEditorHero() {
   ])
 
   return (
-    <div className="px-4 space-y-4">
+    <div className="space-y-4">
       <article>
         <div className="mb-2 flex items-center gap-2">
           <Checkbox

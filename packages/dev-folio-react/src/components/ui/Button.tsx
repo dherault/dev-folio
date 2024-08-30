@@ -7,21 +7,21 @@ import { cn } from '~utils/ui'
 import Spinner from '~components/common/Spinner'
 
 const buttonVariants = cva(
-  'tw-flex tw-items-center tw-justify-center tw-whitespace-nowrap tw-rounded-md tw-text-sm tw-font-medium tw-transition-colors focus-visible:tw-outline-none disabled:tw-pointer-events-none disabled:tw-opacity-50',
+  'dfr-flex dfr-items-center dfr-justify-center dfr-whitespace-nowrap dfr-rounded-md dfr-text-sm dfr-font-medium dfr-transition-colors focus-visible:dfr-outline-none disabled:dfr-pointer-events-none disabled:dfr-opacity-50',
   {
     variants: {
       variant: {
-        default: 'tw-bg-blue-500 tw-text-white hover:tw-bg-blue-500/90 dark:tw-bg-neutral-50 dark:tw-text-neutral-900 dark:tw-hover:bg-neutral-50/90',
-        destructive: 'tw-bg-red-500 tw-text-neutral-50 hover:tw-bg-red-500/90 dark:tw-bg-red-900 dark:tw-text-neutral-50 dark:tw-hover:bg-red-900/90',
-        outline: 'tw-border tw-border-neutral-200 tw-bg-white hover:tw-bg-neutral-50 hover:tw-text-neutral-900 dark:tw-border-neutral-800 dark:tw-bg-neutral-950 dark:hover:tw-bg-neutral-800 dark:hover:tw-text-neutral-50',
-        secondary: 'tw-bg-neutral-100 tw-text-neutral-900 hover:tw-bg-neutral-100/80 dark:tw-bg-neutral-800 dark:tw-text-neutral-50 dark:hover:tw-bg-neutral-800/80',
-        ghost: 'hover:tw-bg-neutral-100 hover:tw-text-neutral-900 dark:hover:tw-bg-neutral-800 dark:hover:tw-text-neutral-50',
+        default: 'dfr-bg-blue-500 dfr-text-white hover:dfr-bg-blue-500/90 dark:dfr-bg-neutral-50 dark:dfr-text-neutral-900 dark:dfr-hover:bg-neutral-50/90',
+        destructive: 'dfr-bg-red-500 dfr-text-neutral-50 hover:dfr-bg-red-500/90 dark:dfr-bg-red-900 dark:dfr-text-neutral-50 dark:dfr-hover:bg-red-900/90',
+        outline: 'dfr-border dfr-border-neutral-200 dfr-bg-white hover:dfr-bg-neutral-50 hover:dfr-text-neutral-900 dark:dfr-border-neutral-800 dark:dfr-bg-neutral-950 dark:hover:dfr-bg-neutral-800 dark:hover:dfr-text-neutral-50',
+        secondary: 'dfr-bg-neutral-100 dfr-text-neutral-900 hover:dfr-bg-neutral-100/80 dark:dfr-bg-neutral-800 dark:dfr-text-neutral-50 dark:hover:dfr-bg-neutral-800/80',
+        ghost: 'hover:dfr-bg-neutral-100 hover:dfr-text-neutral-900 dark:hover:dfr-bg-neutral-800 dark:hover:dfr-text-neutral-50',
       },
       size: {
-        default: 'tw-h-10 tw-ptw-4 tw-py-2',
-        lg: 'tw-h-11 tw-rounded-md tw-ptw-8',
-        xl: 'tw-h-14 tw-rounded-md tw-ptw-12 tw-text-xl',
-        icon: 'tw-h-10 tw-w-10',
+        default: 'dfr-h-10 dfr-pdfr-4 dfr-py-2',
+        lg: 'dfr-h-11 dfr-rounded-md dfr-pdfr-8',
+        xl: 'dfr-h-14 dfr-rounded-md dfr-pdfr-12 dfr-text-xl',
+        icon: 'dfr-h-10 dfr-w-10',
       },
     },
     defaultVariants: {
@@ -49,7 +49,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       >
         {loading && (
           <>
-            <Spinner className="tw-inline tw-w-4 tw-mr-3" />
+            <Spinner className="dfr-inline dfr-w-4 dfr-mr-3" />
             Loading...
           </>
         )}

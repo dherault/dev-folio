@@ -4,9 +4,9 @@ function SpinnerCentered() {
   return (
     <div
       role="status"
-      className="tw-grow tw-h-full tw-flex tw-items-center tw-justify-center"
+      className="dfr-grow dfr-h-full dfr-flex dfr-items-center dfr-justify-center"
     >
-      <Spinner className="tw-w-8 tw-h-8" />
+      <Spinner className="dfr-w-8 dfr-h-8" />
     </div>
   )
 }

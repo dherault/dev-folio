@@ -44,6 +44,7 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "dev-folio-types": "^0.0.4",
+    "lucide-react": "^0.436.0",
     "react-hook-form": "^7.53.0",
     "tailwind-merge": "^2.5.2",
     "tailwindcss-animate": "^1.0.7"

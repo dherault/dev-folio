@@ -1,6 +1,6 @@
 function ImagePlaceholder() {
   return (
-    <div className="tw-p-4 tw-aspect-[3/4] tw-bg-neutral-50 tw-text-neutral-300 tw-flex tw-items-center tw-justify-center tw-text-4xl tw-font-semibold">
+    <div className="dfr-p-4 dfr-aspect-[3/4] dfr-bg-neutral-50 dfr-text-neutral-300 dfr-flex dfr-items-center dfr-justify-center dfr-text-4xl dfr-font-semibold">
       Image
     </div>
   )

@@ -9,7 +9,7 @@ const Switch = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <SwitchPrimitives.Root
     className={cn(
-      'tw-peer tw-inline-flex tw-h-6 tw-w-11 tw-shrink-0 tw-cursor-pointer tw-items-center tw-rounded-full tw-border-2 tw-border-transparent tw-transition-colors focus-visible:tw-outline-none focus-visible:tw-ring-2 focus-visible:tw-ring-neutral-950 focus-visible:tw-ring-offset-2 focus-visible:tw-ring-offset-white disabled:tw-cursor-not-allowed disabled:tw-opacity-50 data-[state=checked]:tw-bg-neutral-900 data-[state=unchecked]:tw-bg-neutral-200 dark:focus-visible:tw-ring-neutral-300 dark:tw-focus-visible:tw-ring-offset-neutral-950 dark:data-[state=checked]:tw-bg-neutral-50 dark:data-[state=unchecked]:tw-bg-neutral-800',
+      'dfr-peer dfr-inline-flex dfr-h-6 dfr-w-11 dfr-shrink-0 dfr-cursor-pointer dfr-items-center dfr-rounded-full dfr-border-2 dfr-border-transparent dfr-transition-colors focus-visible:dfr-outline-none focus-visible:dfr-ring-2 focus-visible:dfr-ring-neutral-950 focus-visible:dfr-ring-offset-2 focus-visible:dfr-ring-offset-white disabled:dfr-cursor-not-allowed disabled:dfr-opacity-50 data-[state=checked]:dfr-bg-neutral-900 data-[state=unchecked]:dfr-bg-neutral-200 dark:focus-visible:dfr-ring-neutral-300 dark:dfr-focus-visible:dfr-ring-offset-neutral-950 dark:data-[state=checked]:dfr-bg-neutral-50 dark:data-[state=unchecked]:dfr-bg-neutral-800',
       className
     )}
     {...props}
@@ -17,7 +17,7 @@ const Switch = React.forwardRef<
   >
     <SwitchPrimitives.Thumb
       className={cn(
-        'tw-pointer-events-none tw-block tw-h-5 tw-w-5 tw-rounded-full tw-bg-white tw-shadow-lg tw-ring-0 tw-transition-transform data-[state=checked]:tw-translate-tw-5 data-[state=unchecked]:tw-translate-tw-0 dark:tw-bg-neutral-950'
+        'dfr-pointer-events-none dfr-block dfr-h-5 dfr-w-5 dfr-rounded-full dfr-bg-white dfr-shadow-lg dfr-ring-0 dfr-transition-transform data-[state=checked]:dfr-translate-dfr-5 data-[state=unchecked]:dfr-translate-dfr-0 dark:dfr-bg-neutral-950'
       )}
     />
   </SwitchPrimitives.Root>
