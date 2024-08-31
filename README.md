@@ -1,4 +1,4 @@
-# dev-folio
+# Dev Folio
 
 Portfolios for developers done right
 
