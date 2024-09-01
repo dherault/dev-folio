@@ -8,7 +8,7 @@ import {
   PortfolioProvider,
   PortfolioSkills,
 } from 'dev-folio-react'
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import type { PortfolioSectionId } from 'dev-folio-types'
 
 import usePortfolio from '~hooks/portfolio/usePortfolio'
@@ -27,16 +27,23 @@ const sectionIds: PortfolioSectionId[] = [
 ]
 
 function Portfolio() {
+  const contentRef = useRef<HTMLDivElement>(null)
+
   const { portfolio, edited, editedSection, setEditedSection } = usePortfolio()
 
-  const debouncedEdited = useDebounce(edited, 250) || edited
+  const debouncedEdited = useDebounce(edited, 300) || edited
   const previousEdited = usePrevious(debouncedEdited)
 
   // Scroll to edited section
   useEffect(() => {
+    if (!contentRef.current) return
     if (debouncedEdited || !previousEdited) return
 
-    document.getElementById(editedSection)?.scrollIntoView(true)
+    const element = document.getElementById(editedSection)
+
+    if (!element) return
+
+    contentRef.current.scrollTop = element.offsetTop
   }, [
     debouncedEdited,
     previousEdited,
@@ -70,36 +77,41 @@ function Portfolio() {
   ])
 
   return (
-    <PortfolioContainer>
-      <PortfolioLayout>
-        <PortfolioProvider
-          isDev
-          portfolio={portfolio}
-        >
-          {(!debouncedEdited || editedSection === 'hero') && (
-            <div id="hero">
-              <PortfolioHero />
-            </div>
-          )}
-          {(!debouncedEdited || editedSection === 'skills') && (
-            <div id="skills">
-              <PortfolioSkills />
-            </div>
-          )}
-          {(!debouncedEdited || editedSection === 'projects') && (
-            <div id="projects">
-              <PortfolioProjects />
-            </div>
-          )}
-          {(!debouncedEdited || editedSection === 'contact') && (
-            <div id="contact">
-              <PortfolioContact />
-            </div>
-          )}
-          {!debouncedEdited && <PortfolioFooter />}
-        </PortfolioProvider>
-      </PortfolioLayout>
-    </PortfolioContainer>
+    <div
+      ref={contentRef}
+      className="h-[calc(100vh-58px)] overflow-y-auto grow flex flex-col"
+    >
+      <PortfolioContainer>
+        <PortfolioLayout>
+          <PortfolioProvider
+            isDev
+            portfolio={portfolio}
+          >
+            {(!debouncedEdited || editedSection === 'hero') && (
+              <div id="hero">
+                <PortfolioHero />
+              </div>
+            )}
+            {(!debouncedEdited || editedSection === 'skills') && (
+              <div id="skills">
+                <PortfolioSkills />
+              </div>
+            )}
+            {(!debouncedEdited || editedSection === 'projects') && (
+              <div id="projects">
+                <PortfolioProjects />
+              </div>
+            )}
+            {(!debouncedEdited || editedSection === 'contact') && (
+              <div id="contact">
+                <PortfolioContact />
+              </div>
+            )}
+            {!debouncedEdited && <PortfolioFooter />}
+          </PortfolioProvider>
+        </PortfolioLayout>
+      </PortfolioContainer>
+    </div>
   )
 }
 

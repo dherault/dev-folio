@@ -21,7 +21,7 @@ function PortfolioContainer({ children }: PropsWithChildren) {
 
   return (
     <div
-      className={_('relative grow overflow-x-hidden overflow-y-auto transition-colors duration-300', {
+      className={_('relative grow transition-colors duration-300', {
         'bg-neutral-background': edited,
         'bg-white': !edited,
       })}
