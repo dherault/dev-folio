@@ -46,27 +46,27 @@ Error generating stack: `+o.message+`
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */var Qu;function Ad(){if(Qu)return kt;Qu=1;var e=Pc,n=Symbol.for("react.element"),t=Symbol.for("react.fragment"),r=Object.prototype.hasOwnProperty,l=e.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED.ReactCurrentOwner,o={key:!0,ref:!0,__self:!0,__source:!0};function i(u,s,c){var m,h={},p=null,g=null;c!==void 0&&(p=""+c),s.key!==void 0&&(p=""+s.key),s.ref!==void 0&&(g=s.ref);for(m in s)r.call(s,m)&&!o.hasOwnProperty(m)&&(h[m]=s[m]);if(u&&u.defaultProps)for(m in s=u.defaultProps,s)h[m]===void 0&&(h[m]=s[m]);return{$$typeof:n,type:u,key:p,ref:g,props:h,_owner:l.current}}return kt.Fragment=t,kt.jsx=i,kt.jsxs=i,kt}ic.exports=Ad();var N=ic.exports;function Vd({children:e}){return N.jsx("div",{className:"dfr-min-h-screen dfr-flex dfr-flex-col",children:e})}const uc=ce.createContext({portfolio:{},isDev:!1});function sc(e){var n,t,r="";if(typeof e=="string"||typeof e=="number")r+=e;else if(typeof e=="object")if(Array.isArray(e)){var l=e.length;for(n=0;n<l;n++)e[n]&&(t=sc(e[n]))&&(r&&(r+=" "),r+=t)}else for(t in e)e[t]&&(r&&(r+=" "),r+=t);return r}function Bd(){for(var e,n,t=0,r="",l=arguments.length;t<l;t++)(e=arguments[t])&&(n=sc(e))&&(r&&(r+=" "),r+=n);return r}function Hd({className:e,...n}){return N.jsxs("svg",{"aria-hidden":"true",role:"status",className:Bd("dfr-text-blue dfr-animate-spin",e),viewBox:"0 0 100 101",xmlns:"http://www.w3.org/2000/svg",...n,children:[N.jsx("path",{d:"M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z",fill:"#E5E7EB"}),N.jsx("path",{d:"M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z",fill:"currentColor"}),N.jsx("span",{className:"dfr-sr-only",children:"Loading..."})]})}function Wd(){return N.jsx("div",{role:"status",className:"dfr-grow dfr-h-full dfr-flex dfr-items-center dfr-justify-center",children:N.jsx(Hd,{className:"dfr-w-8 dfr-h-8"})})}function Qd({children:e,portfolio:n,isDev:t=!1}){const[r,l]=ce.useState(null),o=n??r,i=ce.useCallback(async()=>{try{const s=await(await fetch("/portfolio.json")).json();l(s)}catch(s){console.error("Failed to fetch portfolio",s)}},[]);ce.useEffect(()=>{n||i()},[n,i]);const u=ce.useMemo(()=>({portfolio:o,isDev:t}),[o,t]);return o?N.jsx(uc.Provider,{value:u,children:e}):N.jsx(Wd,{})}/**
- * @license lucide-react v0.436.0 - ISC
+ * @license lucide-react v0.438.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */const Kd=e=>e.replace(/([a-z0-9])([A-Z])/g,"$1-$2").toLowerCase(),ac=(...e)=>e.filter((n,t,r)=>!!n&&r.indexOf(n)===t).join(" ");/**
- * @license lucide-react v0.436.0 - ISC
+ * @license lucide-react v0.438.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */var Yd={xmlns:"http://www.w3.org/2000/svg",width:24,height:24,viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:2,strokeLinecap:"round",strokeLinejoin:"round"};/**
- * @license lucide-react v0.436.0 - ISC
+ * @license lucide-react v0.438.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */const Xd=ce.forwardRef(({color:e="currentColor",size:n=24,strokeWidth:t=2,absoluteStrokeWidth:r,className:l="",children:o,iconNode:i,...u},s)=>ce.createElement("svg",{ref:s,...Yd,width:n,height:n,stroke:e,strokeWidth:r?Number(t)*24/Number(n):t,className:ac("lucide",l),...u},[...i.map(([c,m])=>ce.createElement(c,m)),...Array.isArray(o)?o:[o]]));/**
- * @license lucide-react v0.436.0 - ISC
+ * @license lucide-react v0.438.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */const Gd=(e,n)=>{const t=ce.forwardRef(({className:r,...l},o)=>ce.createElement(Xd,{ref:o,iconNode:n,className:ac(`lucide-${Kd(e)}`,r),...l}));return t.displayName=`${e}`,t};/**
- * @license lucide-react v0.436.0 - ISC
+ * @license lucide-react v0.438.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
