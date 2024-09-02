@@ -2,496 +2,415 @@
   {
     "id": "html5",
     "name": "HTML5",
-    "category": "language",
-    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/dev-folio-com.appspot.com/o/skills%2Fhtml5?alt=media&token=b0c3b49f-bc3a-4903-8c65-532ef3193861"
+    "category": "language"
   },
   {
     "id": "css",
     "name": "CSS",
-    "category": "language",
-    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/dev-folio-com.appspot.com/o/skills%2Fcss?alt=media&token=91cca22b-1863-4630-9d6e-ec9e3c701864"
+    "category": "language"
   },
   {
     "id": "javascript",
     "name": "JavaScript",
     "category": "language",
-    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/dev-folio-com.appspot.com/o/skills%2Fjavascript?alt=media&token=4ecaea30-e480-447e-9300-72028b9bc84b",
     "imagePadding": false
   },
   {
     "id": "typescript",
     "name": "TypeScript",
     "category": "language",
-    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/dev-folio-com.appspot.com/o/skills%2Ftypescript?alt=media&token=ad09f9bf-6b3e-4e97-a68c-1b767507f24d",
     "imagePadding": false
   },
   {
     "id": "python",
     "name": "Python",
-    "category": "language",
-    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/dev-folio-com.appspot.com/o/skills%2Fpython?alt=media&token=be560433-882a-4cea-b949-f53056bb8f32"
+    "category": "language"
   },
   {
     "id": "java",
     "name": "Java",
-    "category": "language",
-    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/dev-folio-com.appspot.com/o/skills%2Fjava?alt=media&token=ca75b801-63e3-417d-a823-69de93a1a61f"
+    "category": "language"
   },
   {
     "id": "csharp",
     "name": "C#",
-    "category": "language",
-    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/dev-folio-com.appspot.com/o/skills%2Fcsharp?alt=media&token=2c9d6565-2115-4053-a403-fd07b24c1fce"
+    "category": "language"
   },
   {
     "id": "cpp",
     "name": "C++",
-    "category": "language",
-    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/dev-folio-com.appspot.com/o/skills%2Fcpp?alt=media&token=d5a982d8-56eb-4b00-8328-278469e23b64"
+    "category": "language"
   },
   {
     "id": "c",
     "name": "C",
-    "category": "language",
-    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/dev-folio-com.appspot.com/o/skills%2Fc?alt=media&token=b5b4b1c2-54b0-47b0-97bb-7c6aa37d6d38"
+    "category": "language"
   },
   {
     "id": "go",
     "name": "Go",
-    "category": "language",
-    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/dev-folio-com.appspot.com/o/skills%2Fgo?alt=media&token=65430a8a-ea9b-4957-afa9-66d6f1629f7e"
+    "category": "language"
   },
   {
     "id": "rust",
     "name": "Rust",
-    "category": "language",
-    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/dev-folio-com.appspot.com/o/skills%2Frust?alt=media&token=86c01d2d-d467-4343-ad37-174c0cfaa430"
+    "category": "language"
   },
   {
     "id": "swift",
     "name": "Swift",
-    "category": "language",
-    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/dev-folio-com.appspot.com/o/skills%2Fswift?alt=media&token=f2b82c0b-478e-428b-a01a-230ee50a5fe1"
+    "category": "language"
   },
   {
     "id": "kotlin",
     "name": "Kotlin",
-    "category": "language",
-    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/dev-folio-com.appspot.com/o/skills%2Fkotlin?alt=media&token=27262bbb-0b1a-4a6d-b971-52b75fcc9df4"
+    "category": "language"
   },
   {
     "id": "ruby",
     "name": "Ruby",
-    "category": "language",
-    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/dev-folio-com.appspot.com/o/skills%2Fruby?alt=media&token=4cc68ff5-5218-4711-89ee-d18865bcccae"
+    "category": "language"
   },
   {
     "id": "php",
     "name": "PHP",
-    "category": "language",
-    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/dev-folio-com.appspot.com/o/skills%2Fphp?alt=media&token=69d5953e-15ab-410c-8200-36afd64ec7b1"
+    "category": "language"
   },
   {
     "id": "r",
     "name": "R",
-    "category": "language",
-    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/dev-folio-com.appspot.com/o/skills%2Fr?alt=media&token=7f777f08-4b73-41d3-b953-8e8b6ee95b9f"
+    "category": "language"
   },
   {
     "id": "sql",
     "name": "SQL",
-    "category": "language",
-    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/dev-folio-com.appspot.com/o/skills%2Fsql?alt=media&token=eb7e29db-f5d0-4db6-a36d-831b2279efb2"
+    "category": "language"
   },
   {
     "id": "dart",
     "name": "Dart",
-    "category": "language",
-    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/dev-folio-com.appspot.com/o/skills%2Fdart?alt=media&token=4da28e1c-3ad9-49f6-8a44-14218417236b"
+    "category": "language"
   },
   {
     "id": "nodejs",
     "name": "Node.js",
-    "category": "backend",
-    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/dev-folio-com.appspot.com/o/skills%2Fnodejs?alt=media&token=212f6efb-8774-48f5-bfcb-c9976b67dae7"
+    "category": "backend"
   },
   {
     "id": "vercel",
     "name": "Vercel",
-    "category": "devops",
-    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/dev-folio-com.appspot.com/o/skills%2Fvercel?alt=media&token=76a504a0-03fa-4ea6-a2ce-e215e7d2a68f"
+    "category": "devops"
   },
   {
     "id": "oauth",
     "name": "OAuth",
     "category": "backend",
-    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/dev-folio-com.appspot.com/o/skills%2Foauth?alt=media&token=94d997bf-790f-46f1-bd9a-2283f7aacf27",
     "imagePadding": false
   },
   {
     "id": "karma",
     "name": "Karma",
     "category": "testing",
-    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/dev-folio-com.appspot.com/o/skills%2Fkarma?alt=media&token=a0085d10-f5e0-4841-9325-6accd1ed445c",
     "imagePadding": false
   },
   {
     "id": "phoenix",
     "name": "Phoenix",
-    "category": "backend",
-    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/dev-folio-com.appspot.com/o/skills%2Fphoenix?alt=media&token=d127b862-1975-4239-9bcc-9db75b3c30e7"
+    "category": "backend"
   },
   {
     "id": "cassandra",
     "name": "Cassandra",
-    "category": "database",
-    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/dev-folio-com.appspot.com/o/skills%2Fcassandra?alt=media&token=98fd8ab7-89de-4ff2-b9c2-3c59322cbe21"
+    "category": "database"
   },
   {
     "id": "mysql",
     "name": "MySQL",
-    "category": "database",
-    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/dev-folio-com.appspot.com/o/skills%2Fmysql?alt=media&token=45b2bea1-37eb-4be8-876b-ac6212b66e81"
+    "category": "database"
   },
   {
     "id": "angular",
     "name": "Angular",
     "category": "frontend",
-    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/dev-folio-com.appspot.com/o/skills%2Fangular?alt=media&token=52163a60-6c84-43aa-a5fa-8c7993997d0e",
     "imagePadding": false
   },
   {
     "id": "kubernetes",
     "name": "Kubernetes",
-    "category": "devops",
-    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/dev-folio-com.appspot.com/o/skills%2Fkubernetes?alt=media&token=491e4309-fe0b-45bf-bd3c-ca5256853d82"
+    "category": "devops"
   },
   {
     "id": "yarn",
     "name": "Yarn",
-    "category": "frontend",
-    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/dev-folio-com.appspot.com/o/skills%2Fyarn?alt=media&token=cdee4500-4840-4210-9a49-a1f6edecba91"
+    "category": "frontend"
   },
   {
     "id": "apollo",
     "name": "Apollo",
-    "category": "backend",
-    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/dev-folio-com.appspot.com/o/skills%2Fapollo?alt=media&token=1ff3b5af-d4f4-4c79-8f50-b62073612f02"
+    "category": "backend"
   },
   {
     "id": "auth0",
     "name": "Auth0",
-    "category": "backend",
-    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/dev-folio-com.appspot.com/o/skills%2Fauth0?alt=media&token=6fc652cd-5087-4ebe-9fb2-af18101e8c01"
+    "category": "backend"
   },
   {
     "id": "foundation",
     "name": "Foundation",
-    "category": "frontend",
-    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/dev-folio-com.appspot.com/o/skills%2Ffoundation?alt=media&token=13348b50-3646-4b33-ad3b-1c4fda0e6489"
+    "category": "frontend"
   },
   {
     "id": "koa",
     "name": "Koa.js",
-    "category": "backend",
-    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/dev-folio-com.appspot.com/o/skills%2Fkoa?alt=media&token=d36268b4-fdd0-4082-9885-920103132fdb"
+    "category": "backend"
   },
   {
     "id": "elasticsearch",
     "name": "Elasticsearch",
-    "category": "database",
-    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/dev-folio-com.appspot.com/o/skills%2Felasticsearch?alt=media&token=0f0c0430-21eb-43bd-95f1-521b02f5cc17"
+    "category": "database"
   },
   {
     "id": "git",
     "name": "Git",
-    "category": "basic",
-    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/dev-folio-com.appspot.com/o/skills%2Fgit?alt=media&token=66b75ba4-2ae8-4212-990c-dd01ace7ade3"
+    "category": "basic"
   },
   {
     "id": "googlecloudplatform",
     "name": "Google Cloud Platform",
-    "category": "devops",
-    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/dev-folio-com.appspot.com/o/skills%2Fgooglecloudplatform?alt=media&token=719e3e88-1f1c-4785-a52e-a3cea1f46832"
+    "category": "devops"
   },
   {
     "id": "svelte",
     "name": "Svelte",
-    "category": "frontend",
-    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/dev-folio-com.appspot.com/o/skills%2Fsvelte?alt=media&token=80159551-be6c-4d0d-bed4-2be8e9f3768c"
+    "category": "frontend"
   },
   {
     "id": "rollup",
     "name": "Rollup",
-    "category": "frontend",
-    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/dev-folio-com.appspot.com/o/skills%2Frollup?alt=media&token=10664267-bffd-4729-ab24-de3d7bf2d1bf"
+    "category": "frontend"
   },
   {
     "id": "oracledatabase",
     "name": "Oracle Database",
     "category": "database",
-    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/dev-folio-com.appspot.com/o/skills%2Foracledatabase?alt=media&token=7a45acee-ed33-495c-b0d9-810d4fd44d42",
     "imagePadding": false
   },
   {
     "id": "nginx",
     "name": "Nginx",
     "category": "devops",
-    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/dev-folio-com.appspot.com/o/skills%2Fnginx?alt=media&token=b20aed6c-7f96-48e9-ba03-5de513c8fcb4",
     "imagePadding": false
   },
   {
     "id": "nativescript",
     "name": "NativeScript",
-    "category": "mobile",
-    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/dev-folio-com.appspot.com/o/skills%2Fnativescript?alt=media&token=dc7a4cfd-f664-49be-8fe3-3a1688caf0e1"
+    "category": "mobile"
   },
   {
     "id": "mongodb",
     "name": "MongoDB",
-    "category": "database",
-    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/dev-folio-com.appspot.com/o/skills%2Fmongodb?alt=media&token=c3b405aa-847e-46cf-82d6-97874fbaa56b"
+    "category": "database"
   },
   {
     "id": "sailsjs",
     "name": "Sails.js",
-    "category": "backend",
-    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/dev-folio-com.appspot.com/o/skills%2Fsailsjs?alt=media&token=804b8a87-d19c-4147-8c36-d88a24357911"
+    "category": "backend"
   },
   {
     "id": "gitlabcicd",
     "name": "GitLab CI/CD",
     "category": "devops",
-    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/dev-folio-com.appspot.com/o/skills%2Fgitlabcicd?alt=media&token=a2544b3a-3c39-4854-b6a0-a636e1ee5dd8",
     "imagePadding": false
   },
   {
     "id": "bulma",
     "name": "Bulma",
-    "category": "frontend",
-    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/dev-folio-com.appspot.com/o/skills%2Fbulma?alt=media&token=97f258e6-723a-4ea8-b095-d69f97128317"
+    "category": "frontend"
   },
   {
     "id": "ionic",
     "name": "Ionic",
-    "category": "frontend",
-    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/dev-folio-com.appspot.com/o/skills%2Fionic?alt=media&token=3bd4b84c-3a52-4b36-b382-f4997eb819ad"
+    "category": "frontend"
   },
   {
     "id": "githubactions",
     "name": "GitHub Actions",
-    "category": "devops",
-    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/dev-folio-com.appspot.com/o/skills%2Fgithubactions?alt=media&token=fb46cf3e-02ea-41ff-832c-a93156dd4df5"
+    "category": "devops"
   },
   {
     "id": "react",
     "name": "React",
-    "category": "frontend",
-    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/dev-folio-com.appspot.com/o/skills%2Freact?alt=media&token=adf4fe57-ab1c-4ac3-bd3d-be058b957b5d"
+    "category": "frontend"
   },
   {
     "id": "figma",
     "name": "Figma",
-    "category": "other",
-    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/dev-folio-com.appspot.com/o/skills%2Ffigma?alt=media&token=d34403ea-4c15-471d-9096-73324c16f6d6"
+    "category": "other"
   },
   {
     "id": "sqlite",
     "name": "SQLite",
-    "category": "database",
-    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/dev-folio-com.appspot.com/o/skills%2Fsqlite?alt=media&token=00ff7b2f-305d-4ea0-901e-40e76bacd48e"
+    "category": "database"
   },
   {
     "id": "digitalocean",
     "name": "DigitalOcean",
-    "category": "devops",
-    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/dev-folio-com.appspot.com/o/skills%2Fdigitalocean?alt=media&token=7fa0fb02-4b43-43dd-87ae-d0a88163785a"
+    "category": "devops"
   },
   {
     "id": "reactnative",
     "name": "React Native",
-    "category": "mobile",
-    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/dev-folio-com.appspot.com/o/skills%2Freactnative?alt=media&token=7310ec8e-69bb-4d11-82ff-ab8d468714a1"
+    "category": "mobile"
   },
   {
     "id": "microsoftsqlserver",
     "name": "Microsoft SQL Server",
-    "category": "database",
-    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/dev-folio-com.appspot.com/o/skills%2Fmicrosoftsqlserver?alt=media&token=f5ba6053-1154-4df5-9c1a-9f658c2249e2"
+    "category": "database"
   },
   {
     "id": "pnpm",
     "name": "pnpm",
-    "category": "frontend",
-    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/dev-folio-com.appspot.com/o/skills%2Fpnpm?alt=media&token=f8b4dd70-4258-49da-a28e-2ba2c03c76b3"
+    "category": "frontend"
   },
   {
     "id": "grunt",
     "name": "Grunt",
-    "category": "frontend",
-    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/dev-folio-com.appspot.com/o/skills%2Fgrunt?alt=media&token=45c44f92-7681-4176-832b-59eae17bd4f9"
+    "category": "frontend"
   },
   {
     "id": "heroku",
     "name": "Heroku",
-    "category": "devops",
-    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/dev-folio-com.appspot.com/o/skills%2Fheroku?alt=media&token=f6556900-0445-4ef2-8f69-017d9a28f572"
+    "category": "devops"
   },
   {
     "id": "redis",
     "name": "Redis",
-    "category": "database",
-    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/dev-folio-com.appspot.com/o/skills%2Fredis?alt=media&token=50141c39-a521-40cc-afdb-d34df47d679c"
+    "category": "database"
   },
   {
     "id": "microsoftazure",
     "name": "Microsoft Azure",
-    "category": "devops",
-    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/dev-folio-com.appspot.com/o/skills%2Fmicrosoftazure?alt=media&token=478655e4-f47f-484a-9359-a03173062f97"
+    "category": "devops"
   },
   {
     "id": "chai",
     "name": "Chai",
-    "category": "testing",
-    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/dev-folio-com.appspot.com/o/skills%2Fchai?alt=media&token=cec99fb5-7630-410d-8afa-0705483fee60"
+    "category": "testing"
   },
   {
     "id": "parcel",
     "name": "Parcel",
-    "category": "frontend",
-    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/dev-folio-com.appspot.com/o/skills%2Fparcel?alt=media&token=d80dd653-0031-4321-ab07-674d876b053d"
+    "category": "frontend"
   },
   {
     "id": "travisci",
     "name": "Travis CI",
-    "category": "devops",
-    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/dev-folio-com.appspot.com/o/skills%2Ftravisci?alt=media&token=7e45cf62-c2c3-4007-9937-f3066b0dce94"
+    "category": "devops"
   },
   {
     "id": "fastapi",
     "name": "FastAPI",
-    "category": "backend",
-    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/dev-folio-com.appspot.com/o/skills%2Ffastapi?alt=media&token=53ead9a4-184e-4375-9b75-f6f9edc77d2a"
+    "category": "backend"
   },
   {
     "id": "flutter",
     "name": "Flutter",
-    "category": "mobile",
-    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/dev-folio-com.appspot.com/o/skills%2Fflutter?alt=media&token=bfe1e3ec-5646-4cd2-a4de-d313b2f89d4a"
+    "category": "mobile"
   },
   {
     "id": "terraform",
     "name": "Terraform",
-    "category": "devops",
-    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/dev-folio-com.appspot.com/o/skills%2Fterraform?alt=media&token=b0a2d4f0-0475-47f3-aedf-a93b80370850"
+    "category": "devops"
   },
   {
     "id": "rubyonrails",
     "name": "Ruby on Rails",
-    "category": "backend",
-    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/dev-folio-com.appspot.com/o/skills%2Frubyonrails?alt=media&token=574e0cae-0791-4d17-8047-474daabd22d2"
+    "category": "backend"
   },
   {
     "id": "flask",
     "name": "Flask",
-    "category": "backend",
-    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/dev-folio-com.appspot.com/o/skills%2Fflask?alt=media&token=b874d38f-a125-447f-874c-46ab8517b8b8"
+    "category": "backend"
   },
   {
     "id": "materialize",
     "name": "Materialize",
-    "category": "frontend",
-    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/dev-folio-com.appspot.com/o/skills%2Fmaterialize?alt=media&token=0ea4d4b8-2509-440f-9f96-5560a7e73f39"
+    "category": "frontend"
   },
   {
     "id": "dynamodb",
     "name": "DynamoDB",
-    "category": "database",
-    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/dev-folio-com.appspot.com/o/skills%2Fdynamodb?alt=media&token=eecac7fc-5923-43e5-89f8-c1f64697d6c2"
+    "category": "database"
   },
   {
     "id": "gulp",
     "name": "Gulp",
-    "category": "tooling",
-    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/dev-folio-com.appspot.com/o/skills%2Fgulp?alt=media&token=f2e229b4-274e-465b-b09d-e7c1c73336bc"
+    "category": "tooling"
   },
   {
     "id": "tauri",
     "name": "Tauri",
-    "category": "tooling",
-    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/dev-folio-com.appspot.com/o/skills%2Ftauri?alt=media&token=3a201bfe-34fc-48c8-b45f-04d92363419d"
+    "category": "tooling"
   },
   {
     "id": "jquery",
     "name": "jQuery",
-    "category": "frontend",
-    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/dev-folio-com.appspot.com/o/skills%2Fjquery?alt=media&token=7dff405c-373e-44b1-bc94-def662c26a93"
+    "category": "frontend"
   },
   {
     "id": "netlify",
     "name": "Netlify",
-    "category": "devops",
-    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/dev-folio-com.appspot.com/o/skills%2Fnetlify?alt=media&token=b6fad97a-ce2a-44f7-8138-27c3a8282c27"
+    "category": "devops"
   },
   {
     "id": "amazonwebservices",
     "name": "Amazon Web Services",
-    "category": "devops",
-    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/dev-folio-com.appspot.com/o/skills%2Famazonwebservices?alt=media&token=c044c872-f21a-44dc-807a-1d2ad634795f"
+    "category": "devops"
   },
   {
     "id": "docker",
     "name": "Docker",
-    "category": "devops",
-    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/dev-folio-com.appspot.com/o/skills%2Fdocker?alt=media&token=99258cd5-8a6f-4ff8-9d35-d33f72acc83e"
+    "category": "devops"
   },
   {
     "id": "express",
     "name": "Express",
     "category": "backend",
-    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/dev-folio-com.appspot.com/o/skills%2Fexpress?alt=media&token=41c30c43-189d-4859-814e-b9febcc15c78",
     "imagePadding": false
   },
   {
     "id": "bootstrap",
     "name": "Bootstrap",
-    "category": "frontend",
-    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/dev-folio-com.appspot.com/o/skills%2Fbootstrap?alt=media&token=2049a3d3-74f6-46c0-93ef-88e4913ebe72"
+    "category": "frontend"
   },
   {
     "id": "puppeteer",
     "name": "Puppeteer",
-    "category": "testing",
-    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/dev-folio-com.appspot.com/o/skills%2Fpuppeteer?alt=media&token=8d83d0ed-bfb6-4127-871e-ba53e24d046f"
+    "category": "testing"
   },
   {
     "id": "couchdb",
     "name": "CouchDB",
-    "category": "database",
-    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/dev-folio-com.appspot.com/o/skills%2Fcouchdb?alt=media&token=e649c222-1877-418c-adbe-d16b224cdac0"
+    "category": "database"
   },
   {
     "id": "nextjs",
     "name": "Next.js",
-    "category": "frontend",
-    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/dev-folio-com.appspot.com/o/skills%2Fnextjs?alt=media&token=a2708e81-b26d-448d-8b00-44ab22071d82"
+    "category": "frontend"
   },
   {
     "id": "sketch",
     "name": "Sketch",
-    "category": "other",
-    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/dev-folio-com.appspot.com/o/skills%2Fsketch?alt=media&token=f01cdc09-ba30-494e-9838-b64ae1190eeb"
+    "category": "other"
   },
   {
     "id": "jwt",
     "name": "JWT",
-    "category": "backend",
-    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/dev-folio-com.appspot.com/o/skills%2Fjwt?alt=media&token=c63377d1-294f-4ee7-b446-f6567719367e"
+    "category": "backend"
   },
   {
     "id": "jest",
     "name": "Jest",
-    "category": "testing",
-    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/dev-folio-com.appspot.com/o/skills%2Fjest?alt=media&token=9a4b0ad2-90b5-4823-ac22-f65c2a6a9815"
+    "category": "testing"
   }
 ]

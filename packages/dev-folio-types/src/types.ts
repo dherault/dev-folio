@@ -48,7 +48,6 @@ export type Skill = {
   id: string
   name: string
   category: SkillCategory
-  imageUrl: string
   imagePadding?: boolean
 }
 
