@@ -41,6 +41,7 @@ export type Portfolio = {
   socialMediaUrls: Partial<Record<PortfolioSocialMedia, string>>
   skillIds: string[]
   skillsGrouped: boolean
+  projects: Project[]
 }
 
 export type SkillCategory = typeof skillCategories[number]
@@ -52,6 +53,13 @@ export type Skill = {
   imagePadding?: boolean
 }
 
+export type Project = {
+  id: string
+  name: string
+  description: string
+  url: string
+  imageUrl: string
+}
 /* ---
   Authentication
 --- */
