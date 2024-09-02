@@ -1,7 +1,7 @@
 {
   "name": "dev-folio-react",
   "description": "Portfolios for developers done right",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "type": "module",
   "main": "./dist/dev-folio-react.umd.cjs",
   "module": "./dist/dev-folio-react.js",
@@ -43,14 +43,14 @@
     "@radix-ui/react-switch": "^1.1.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
-    "dev-folio-types": "^0.0.4",
-    "lucide-react": "^0.436.0",
+    "dev-folio-types": "^0.0.5",
+    "lucide-react": "^0.438.0",
     "react-hook-form": "^7.53.0",
     "tailwind-merge": "^2.5.2",
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
-    "@types/react": "^18.3.4",
+    "@types/react": "^18.3.5",
     "@vitejs/plugin-react": "^4.3.1",
     "autoprefixer": "^10.4.20",
     "nodemon": "^3.1.4",
