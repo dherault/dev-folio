@@ -2,6 +2,8 @@
   Database resources
 --- */
 
+import type { portfolioSections, skillCategories, socialMedias } from './constants'
+
 export type DatabaseResource<T = unknown> = T & {
   id: string
   userId: string
@@ -24,17 +26,9 @@ export type User = DatabaseResource<{
   Portfolio
 --- */
 
-export type PortfolioSocialMedia = 'github'
-  | 'x'
-  | 'linkedin'
-  | 'youtube'
-  | 'tiktok'
-  | 'website'
+export type PortfolioSocialMedia = typeof socialMedias[number]
 
-export type PortfolioSectionId = 'hero'
-  | 'skills'
-  | 'projects'
-  | 'contact'
+export type PortfolioSectionId = typeof portfolioSections[number]
 
 export type Portfolio = {
   subdomain: string
@@ -45,6 +39,16 @@ export type Portfolio = {
   heroEmoji: string
   heroImageUrl: string
   socialMediaUrls: Partial<Record<PortfolioSocialMedia, string>>
+}
+
+export type SkillCategory = typeof skillCategories[number]
+
+export type Skill = {
+  id: string
+  name: string
+  category: SkillCategory
+  imageUrl: string
+  imagePadding?: boolean
 }
 
 /* ---

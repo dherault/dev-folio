@@ -4,7 +4,7 @@ function AdministratorRedirect() {
   return (
     <Navigate
       replace
-      to="dev"
+      to="/administrator/skills"
     />
   )
 }
