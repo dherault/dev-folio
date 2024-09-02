@@ -26,6 +26,7 @@ function createUser(user: CreateUserArg): User {
       heroDescription: '',
       heroImageUrl: '',
       socialMediaUrls: {},
+      skillIds: [],
     },
     createdAt: now,
     updatedAt: now,
