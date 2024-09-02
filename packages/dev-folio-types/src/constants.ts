@@ -30,7 +30,7 @@ export const skillCategories = [
 
 export const skillCategoryLabels: Record<typeof skillCategories[number], string> = {
   basic: 'Basic',
-  language: 'Language',
+  language: 'Languages',
   frontend: 'Frontend',
   backend: 'Backend',
   mobile: 'Mobile',

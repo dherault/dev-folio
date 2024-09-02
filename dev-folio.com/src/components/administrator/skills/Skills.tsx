@@ -8,7 +8,7 @@ import { Button } from '~components/ui/Button'
 
 function Skills() {
   const [loading, setLoading] = useState(false)
-  const [success, setSuccess] = useState(false)
+  const [skillsJson, setSkillsJson] = useState('')
 
   const handleAddImageUrl = useCallback(async () => {
     if (loading) return
@@ -41,23 +41,30 @@ function Skills() {
     window.navigator.clipboard.writeText(JSON.stringify(nextSkills, null, 2))
 
     setLoading(false)
-    setSuccess(true)
+    setSkillsJson(JSON.stringify(nextSkills, null, 2))
   }, [
     loading,
   ])
 
   return (
-    <div className="flex items-center gap-2">
-      <Button
-        loading={loading}
-        onClick={handleAddImageUrl}
-      >
-        Upload skill images
-      </Button>
-      {success && (
-        <div className="text-green-500">
-          Success!
-        </div>
+    <div>
+      <div className="flex gap-2">
+        <Button
+          loading={loading}
+          onClick={handleAddImageUrl}
+        >
+          Upload skill images
+        </Button>
+        {!!skillsJson && (
+          <Button onClick={() => window.navigator.clipboard.writeText(skillsJson)}>
+            Copy skills JSON
+          </Button>
+        )}
+      </div>
+      {!!skillsJson && (
+        <pre className="mt-4">
+          {skillsJson}
+        </pre>
       )}
     </div>
   )

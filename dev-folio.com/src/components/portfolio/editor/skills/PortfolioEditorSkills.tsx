@@ -10,6 +10,9 @@ function PortfolioEditorSkills() {
 
   return (
     <div className="space-y-4">
+      <div className="text-sm">
+        Pick the skills you want to show on your portfolio.
+      </div>
       {skillCategories.map(category => (
         <article key={category}>
           <Label>

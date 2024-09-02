@@ -2,6 +2,10 @@
 
 Portfolios for developers done right
 
+## Development
+
+`npm install:all && npm link:all`
+
 ```bash
 certbot certonly --manual --key-type rsa
 cd /etc/letsencrypt/live/dev-folio.com
