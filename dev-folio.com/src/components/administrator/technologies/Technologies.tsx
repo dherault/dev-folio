@@ -1,16 +1,16 @@
 import { useCallback, useState } from 'react'
 import { ref, uploadBytes } from 'firebase/storage'
-import { skills } from 'dev-folio-types'
+import { technologies } from 'dev-folio-types'
 
 import { storage } from '~firebase'
 
 import { Button } from '~components/ui/Button'
 
-function Skills() {
+function Technologies() {
   const [loading, setLoading] = useState(false)
   const [success, setSuccess] = useState(false)
 
-  const handleAddImageUrl = useCallback(async () => {
+  const handleUploadImages = useCallback(async () => {
     if (loading) return
 
     setLoading(true)
@@ -18,19 +18,19 @@ function Skills() {
 
     const misses: string[] = []
 
-    for (const skill of skills) {
+    for (const technology of technologies) {
       try {
-        const response = await fetch(`/images/skills/${skill.id}.png`)
+        const response = await fetch(`/images/technologies/${technology.id}.png`)
         const blob = await response.blob()
 
         if (blob.type !== 'image/png') throw new Error('Invalid image type')
 
-        const storageRef = ref(storage, `skills/${skill.id}`)
+        const storageRef = ref(storage, `technologies/${technology.id}`)
 
         await uploadBytes(storageRef, blob)
       }
       catch (error) {
-        misses.push(skill.id)
+        misses.push(technology.id)
       }
     }
 
@@ -38,7 +38,7 @@ function Skills() {
     setSuccess(true)
 
     if (misses.length) {
-      window.alert(`Failed to upload image for the following skills: ${misses.join(', ')}`)
+      window.alert(`Failed to upload image for the following technolgies: ${misses.join(', ')}`)
     }
   }, [
     loading,
@@ -49,9 +49,9 @@ function Skills() {
       <div className="flex items-center gap-2">
         <Button
           loading={loading}
-          onClick={handleAddImageUrl}
+          onClick={handleUploadImages}
         >
-          Upload skill images
+          Upload technologies images
         </Button>
         {success && (
           <div className="text-green-500">
@@ -63,4 +63,4 @@ function Skills() {
   )
 }
 
-export default Skills
+export default Technologies

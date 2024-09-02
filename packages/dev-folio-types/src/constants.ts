@@ -14,7 +14,7 @@ export const socialMedias = [
   'website',
 ] as const
 
-export const skillCategories = [
+export const technologyCategories = [
   'language',
   'basic',
   'frontend',
@@ -28,7 +28,7 @@ export const skillCategories = [
   'other',
 ] as const
 
-export const skillCategoryLabels: Record<typeof skillCategories[number], string> = {
+export const technologyCategoryLabels: Record<typeof technologyCategories[number], string> = {
   basic: 'Basic',
   language: 'Languages',
   frontend: 'Frontend',

@@ -2,4 +2,4 @@ export * from './types'
 
 export * from './constants'
 
-export { default as skills } from './skills.json'
+export { default as technologies } from './technologies.json'

@@ -82,14 +82,14 @@ function Account() {
   if (!user) return null
 
   return (
-    <div className="container">
+    <div className="mt-2 container">
       <Link to="/~">
         <Button
           variant="ghost"
           className="-ml-4"
         >
           <ArrowLeft className="mr-2 w-4 h-4" />
-          Back to profile
+          Back to portfolio
         </Button>
       </Link>
       <h1 className="mt-1 text-3xl font-semibold">

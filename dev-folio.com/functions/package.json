@@ -18,7 +18,7 @@
   "dependencies": {
     "@google-cloud/storage": "^7.12.1",
     "@react-email/components": "^0.0.24",
-    "dev-folio-types": "^0.0.9",
+    "dev-folio-types": "^0.0.10",
     "firebase-admin": "^12.4.0",
     "firebase-functions": "^5.1.1",
     "google-auth-library": "^9.14.0",

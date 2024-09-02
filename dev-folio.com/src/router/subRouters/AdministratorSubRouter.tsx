@@ -3,7 +3,7 @@ import { Outlet, Route, Routes } from 'react-router-dom'
 
 import AdministratorLayout from '~app/administrator.../layout'
 import Administrator from '~app/administrator.../page'
-import Skills from '~app/administrator.../skills/page'
+import Technologies from '~app/administrator.../technologies/page'
 
 import NotFound from '~components/common/NotFound'
 
@@ -19,12 +19,12 @@ function AdministratorSubRouter() {
           element={<Administrator />}
         />
         <Route
-          path="skills"
+          path="technologies"
           element={<Outlet />}
         >
           <Route
             index
-            element={<Skills />}
+            element={<Technologies />}
           />
           <Route
             path="*"

@@ -6,10 +6,10 @@ function AdministratorLayout({ children }: PropsWithChildren) {
     <>
       <div className="mb-4 container flex items-center gap-2">
         <Link
-          to="/administrator/skills"
+          to="/administrator/technologies"
           className="text-blue hover:underline"
         >
-          Skills
+          Technologies
         </Link>
         {/* {' - '}
         <Link

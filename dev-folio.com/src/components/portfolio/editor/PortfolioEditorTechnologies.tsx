@@ -1,4 +1,4 @@
-import { skillCategories, skillCategoryLabels, skills } from 'dev-folio-types'
+import { technologies, technologyCategories, technologyCategoryLabels } from 'dev-folio-types'
 
 import usePortfolio from '~hooks/portfolio/usePortfolio'
 
@@ -26,35 +26,35 @@ function PortfolioEditorTechnologies() {
           Group technologies
         </Label>
         <Switch
-          checked={portfolio.skillsGrouped}
-          onCheckedChange={checked => setPortfolio(x => ({ ...x, skillsGrouped: checked }))}
+          checked={portfolio.technologiesGrouped}
+          onCheckedChange={checked => setPortfolio(x => ({ ...x, technologiesGrouped: checked }))}
         />
       </article>
-      {skillCategories.map(category => (
+      {technologyCategories.map(category => (
         <article key={category}>
           <Label>
-            {skillCategoryLabels[category]}
+            {technologyCategoryLabels[category]}
           </Label>
           <div className="mt-2 text-sm">
-            {skills.filter(skill => skill.category === category)
+            {technologies.filter(technology => technology.category === category)
             .sort((a, b) => a.name.localeCompare(b.name))
-            .map(skill => (
+            .map(technology => (
               <div
-                key={skill.id}
+                key={technology.id}
                 className="flex items-center gap-2"
               >
                 <Checkbox
-                  checked={portfolio.skillIds.includes(skill.id)}
-                  onCheckedChange={checked => setPortfolio(x => ({ ...x, skillIds: checked ? [...x.skillIds, skill.id] : x.skillIds.filter(id => id !== skill.id) }))}
+                  checked={portfolio.technologyIds.includes(technology.id)}
+                  onCheckedChange={checked => setPortfolio(x => ({ ...x, technologyIds: checked ? [...x.technologyIds, technology.id] : x.technologyIds.filter(id => id !== technology.id) }))}
                 />
-                {skill.name}
+                {technology.name}
               </div>
             ))}
           </div>
         </article>
       ))}
       {import.meta.env.DEV && (
-        <Button onClick={() => setPortfolio(x => ({ ...x, skillIds: skills.map(skill => skill.id) }))}>
+        <Button onClick={() => setPortfolio(x => ({ ...x, technologyIds: technologies.map(technology => technology.id) }))}>
           Select all
         </Button>
       )}

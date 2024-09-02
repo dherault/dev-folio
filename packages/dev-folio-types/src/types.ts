@@ -2,7 +2,7 @@
   Database resources
 --- */
 
-import type { portfolioSections, skillCategories, socialMedias } from './constants'
+import type { portfolioSections, socialMedias, technologyCategories } from './constants'
 
 export type DatabaseResource<T = unknown> = T & {
   id: string
@@ -39,17 +39,17 @@ export type Portfolio = {
   heroEmoji: string
   heroImageUrl: string
   socialMediaUrls: Partial<Record<PortfolioSocialMedia, string>>
-  skillIds: string[]
-  skillsGrouped: boolean
+  technologyIds: string[]
+  technologiesGrouped: boolean
   projects: Project[]
 }
 
-export type SkillCategory = typeof skillCategories[number]
+export type TechnologyCategory = typeof technologyCategories[number]
 
-export type Skill = {
+export type Technology = {
   id: string
   name: string
-  category: SkillCategory
+  category: TechnologyCategory
   imagePadding?: boolean
 }
 

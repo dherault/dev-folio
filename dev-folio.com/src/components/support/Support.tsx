@@ -9,7 +9,7 @@ function Support() {
   const navigate = useNavigate()
 
   return (
-    <div className="pb-8 container">
+    <div className="mt-2 pb-8 container">
       <Button
         variant="ghost"
         onClick={() => navigate(-1)}
