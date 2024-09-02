@@ -20,7 +20,11 @@ function Skills() {
 
     for (const skill of nextSkills) {
       try {
-        const blob = await fetch(`/images/skills/${skill.id}`).then(res => res.blob())
+        const response = await fetch(`/images/skills/${skill.id}.png`)
+        const blob = await response.blob()
+
+        if (blob.type !== 'image/png') throw new Error('Invalid image type')
+
         const storageRef = ref(storage, `skills/${skill.id}`)
 
         await uploadBytes(storageRef, blob)
@@ -37,8 +41,6 @@ function Skills() {
     if (misses.length) {
       window.alert(`Failed to upload image for the following skills: ${misses.join(', ')}`)
     }
-
-    window.navigator.clipboard.writeText(JSON.stringify(nextSkills, null, 2))
 
     setLoading(false)
     setSkillsJson(JSON.stringify(nextSkills, null, 2))

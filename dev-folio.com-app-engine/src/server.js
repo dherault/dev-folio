@@ -20,7 +20,7 @@ app.get(['/', '/*'], async (req, res) => {
 
     const url = req.originalUrl
 
-    console.log('serving bucketId and url', storageClient, url)
+    console.log('serving bucketId and url', bucketId, url)
 
     if (url === '/') {
       const file = bucket.file('index.html')
