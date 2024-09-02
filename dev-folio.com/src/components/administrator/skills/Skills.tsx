@@ -1,11 +1,10 @@
-import { getDownloadURL, ref, uploadBytes } from 'firebase/storage'
 import { useCallback, useState } from 'react'
+import { getDownloadURL, ref, uploadBytes } from 'firebase/storage'
+import { type Skill, skills } from 'dev-folio-types'
 
 import { storage } from '~firebase'
 
 import { Button } from '~components/ui/Button'
-
-import skills from '~data/skills.json'
 
 function Skills() {
   const [loading, setLoading] = useState(false)
@@ -16,7 +15,7 @@ function Skills() {
 
     setLoading(true)
 
-    const nextSkills = [...skills]
+    const nextSkills: Skill[] = [...skills]
     const misses: string[] = []
 
     for (const skill of nextSkills) {

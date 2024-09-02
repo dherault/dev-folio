@@ -4,7 +4,7 @@ import { useSearchParams } from 'react-router-dom'
 
 import PortfolioContext, { PortfolioContextType } from '~contexts/portfolio/PortfolioContext'
 
-import useThrottledEffect from '~hooks/common/useThrottledEffect'
+import useThrottledEffectNoInitial from '~hooks/common/useThrottledEffectNoInitial'
 import useUser from '~hooks/user/useUser'
 
 const MODE_SEARCH_PARAMETER_KEY = 'mode'
@@ -42,7 +42,7 @@ function PortfolioProvider({ children }: PropsWithChildren) {
     setSearchParams,
   ])
 
-  useThrottledEffect(() => {
+  useThrottledEffectNoInitial(() => {
     updateUser({ portfolio })
   }, 300, [
     portfolio,

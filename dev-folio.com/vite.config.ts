@@ -9,6 +9,6 @@ export default defineConfig(({ mode }) => ({
     react(),
   ],
   optimizeDeps: {
-    exclude: [mode === 'development' ? 'dev-folio-react' : ''],
+    exclude: [...(mode === 'development' ? ['dev-folio-types', 'dev-folio-react'] : [])],
   },
 }))
