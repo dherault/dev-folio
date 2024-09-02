@@ -26,7 +26,7 @@ function PortfolioContainer({ children }: PropsWithChildren) {
   const bottom = 32
   const left = 512 + 2 * 32
   const right = 32
-  const scale = Math.min((windowWidth - left - right) / PORTFOLIO_WIDTH, (windowHeight - top - bottom) / (contentRef.current?.clientHeight ?? 0))
+  const scale = Math.min((windowWidth - left - right) / PORTFOLIO_WIDTH, (windowHeight - NAVBAR_HEIGHT - top - bottom) / (contentRef.current?.clientHeight ?? 0))
   const marginTop = (windowHeight - NAVBAR_HEIGHT - (contentRef.current?.clientHeight ?? 0) * scale) / 2
 
   // Scroll to edited section
