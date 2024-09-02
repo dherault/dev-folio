@@ -28,7 +28,13 @@
     "lint:dev-folio-build": "cd packages/dev-folio-build && npm run lint",
     "lint:dev-folio-react": "cd packages/dev-folio-react && npm run lint",
     "lint:dev-folio-types": "cd packages/dev-folio-types && npm run lint",
-    "test": ""
+    "test": "",
+    "link:all": "npm run link:dev-folio-types && npm run link:dev-folio-react && npm run link:dev-folio-build && npm run link:app && npm run link:functions",
+    "link:app": "cd dev-folio.com && npm link dev-folio-types dev-folio-react",
+    "link:functions": "cd dev-folio.com/functions && npm link dev-folio-types",
+    "link:dev-folio-build": "cd packages/dev-folio-build && npm link dev-folio-react",
+    "link:dev-folio-react": "cd packages/dev-folio-react && npm link dev-folio-types && npm link",
+    "link:dev-folio-types": "cd packages/dev-folio-types && npm link"
   },
   "devDependencies": {
     "eslint": "^8.57.0",

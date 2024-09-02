@@ -1,23 +1,9 @@
-import { SkillCategory, skillCategories, skills } from 'dev-folio-types'
+import { skillCategories, skillCategoryLabels, skills } from 'dev-folio-types'
 
 import usePortfolio from '~hooks/portfolio/usePortfolio'
 
 import { Checkbox } from '~components/ui/Checkbox'
 import { Label } from '~components/ui/Label'
-
-const CATEGORY_LABELS: Record<SkillCategory, string> = {
-  basic: 'Basic',
-  language: 'Language',
-  frontend: 'Frontend',
-  backend: 'Backend',
-  mobile: 'Mobile',
-  database: 'Database',
-  devops: 'DevOps',
-  testing: 'Testing',
-  tooling: 'Tooling',
-  'machine-learning': 'Machine Learning',
-  other: 'Other',
-}
 
 function PortfolioEditorSkills() {
   const { portfolio, setPortfolio } = usePortfolio()
@@ -27,7 +13,7 @@ function PortfolioEditorSkills() {
       {skillCategories.map(category => (
         <article key={category}>
           <Label>
-            {CATEGORY_LABELS[category]}
+            {skillCategoryLabels[category]}
           </Label>
           <div className="mt-2 text-sm">
             {skills.filter(skill => skill.category === category)

@@ -15,8 +15,8 @@ export const socialMedias = [
 ] as const
 
 export const skillCategories = [
-  'basic',
   'language',
+  'basic',
   'frontend',
   'backend',
   'mobile',
@@ -26,4 +26,18 @@ export const skillCategories = [
   'tooling',
   'machine-learning',
   'other',
-]
+] as const
+
+export const skillCategoryLabels: Record<typeof skillCategories[number], string> = {
+  basic: 'Basic',
+  language: 'Language',
+  frontend: 'Frontend',
+  backend: 'Backend',
+  mobile: 'Mobile',
+  database: 'Database',
+  devops: 'DevOps',
+  testing: 'Testing',
+  tooling: 'Tooling',
+  'machine-learning': 'Machine Learning',
+  other: 'Other',
+}

@@ -1,7 +1,7 @@
 {
   "name": "dev-folio-types",
   "description": "Types for dev-folio.com",
-  "version": "0.0.5",
+  "version": "0.0.7",
   "type": "module",
   "main": "./dist/dev-folio-types.umd.cjs",
   "module": "./dist/dev-folio-types.js",
@@ -35,7 +35,7 @@
     "build": "tsc && vite build",
     "lint": "tsc && eslint src --ext ts",
     "prepublishOnly": "npm install && npm run build",
-    "dev": "nodemon --watch src --ext ts,tsx --exec npm run build"
+    "dev": "nodemon --watch src --ext ts,tsx,json --exec npm run build"
   },
   "devDependencies": {
     "nodemon": "^3.1.4",
