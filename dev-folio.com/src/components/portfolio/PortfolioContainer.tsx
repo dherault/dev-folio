@@ -9,16 +9,17 @@ import usePrevious from '~hooks/common/usePrevious'
 
 import PortfolioEditor from '~components/portfolio/editor/PortfolioEditor'
 
-const PORTFOLIO_WIDTH = 1400
+const CONTENT_WIDTH = 1400
 const NAVBAR_HEIGHT = 58
 
 function PortfolioContainer({ children }: PropsWithChildren) {
   const contentRef = useRef<HTMLDivElement>(null)
 
+  const { width: windowWidth, height: windowHeight } = useWindowSize()
   const { edited, editedSection, debouncedEdited } = usePortfolio()
   const initialEdited = useRef(edited).current
   const previousEdited = usePrevious(debouncedEdited)
-  const { width: windowWidth, height: windowHeight } = useWindowSize()
+  const finalEdited = debouncedEdited || edited
 
   useRefreshWithDependencies([children], 300)
 
@@ -26,8 +27,8 @@ function PortfolioContainer({ children }: PropsWithChildren) {
   const bottom = 32
   const left = 512 + 2 * 32
   const right = 32
-  const scale = Math.min((windowWidth - left - right) / PORTFOLIO_WIDTH, (windowHeight - NAVBAR_HEIGHT - top - bottom) / (contentRef.current?.clientHeight ?? 0))
-  const marginTop = (windowHeight - NAVBAR_HEIGHT - (contentRef.current?.clientHeight ?? 0) * scale) / 2
+  const scale = Math.min((windowWidth - left - right) / CONTENT_WIDTH, (windowHeight - NAVBAR_HEIGHT - top - bottom) / (contentRef.current?.clientHeight ?? 0))
+  const marginTop = contentRef.current?.clientHeight ? (windowHeight - NAVBAR_HEIGHT - contentRef.current.clientHeight * scale) / 2 : 0
 
   // Scroll to edited section
   useEffect(() => {
@@ -78,78 +79,36 @@ function PortfolioContainer({ children }: PropsWithChildren) {
         animate={edited ? 'open' : 'close'}
         variants={{
           open: {
+            scale,
             left,
+            marginTop,
+            width: CONTENT_WIDTH,
             transition: {
               ease: 'easeInOut',
             },
           },
           close: {
+            scale: 1,
             left: 0,
+            marginTop: 0,
+            width: windowWidth,
             transition: {
               ease: 'easeInOut',
             },
           },
         }}
-        className="absolute top-0 bottom-0 right-0 z-10"
+        className="origin-top-left absolute top-0 bottom-0 right-0 z-10"
       >
-        <motion.div
-          initial={initialEdited ? 'open' : 'close'}
-          animate={edited ? 'open' : 'close'}
-          variants={{
-            open: {
-              scale,
-              marginTop,
-              width: PORTFOLIO_WIDTH,
-              transition: {
-                ease: 'easeInOut',
-              },
-            },
-            close: {
-              scale: 1,
-              marginTop: 0,
-              width: Math.min(windowWidth, PORTFOLIO_WIDTH),
-              transition: {
-                ease: 'easeInOut',
-              },
-            },
-          }}
-          className="origin-top-left"
+        <div
+          ref={contentRef}
+          className="bg-white border overflow-y-auto transition-colors duration-300"
           style={{
-            marginLeft: edited ? 0 : 'auto',
-            marginRight: edited ? 0 : 'auto',
+            height: finalEdited ? 'auto' : `calc(100vh - ${NAVBAR_HEIGHT}px)`,
+            borderColor: finalEdited ? '#e5e5e5' : 'transparent',
           }}
         >
-          <motion.div
-            initial={initialEdited ? 'open' : 'close'}
-            animate={edited ? 'open' : 'close'}
-            variants={{
-              open: {
-                width: PORTFOLIO_WIDTH,
-                transition: {
-                  ease: 'easeInOut',
-                },
-              },
-              close: {
-                width: Math.min(windowWidth, PORTFOLIO_WIDTH),
-                transition: {
-                  ease: 'easeInOut',
-                },
-              },
-            }}
-            className="bg-white border"
-            style={{
-              borderColor: edited ? '#e5e5e5' : 'transparent',
-            }}
-          >
-            <div
-              ref={contentRef}
-              style={{ height: edited ? 'auto' : `calc(100vh - ${NAVBAR_HEIGHT}px)` }}
-              className="overflow-y-auto"
-            >
-              {children}
-            </div>
-          </motion.div>
-        </motion.div>
+          {children}
+        </div>
       </motion.div>
     </div>
   )

@@ -25,7 +25,8 @@ const sectionIds: PortfolioSectionId[] = [
 ]
 
 function Portfolio() {
-  const { portfolio, editedSection, debouncedEdited, setEditedSection } = usePortfolio()
+  const { portfolio, editedSection, edited, debouncedEdited, setEditedSection } = usePortfolio()
+  const finalEdited = debouncedEdited || edited
 
   // Change edited section based on scroll
   useEffect(() => {
@@ -60,27 +61,27 @@ function Portfolio() {
           isDev
           portfolio={portfolio}
         >
-          {(!debouncedEdited || editedSection === 'hero') && (
+          {(!finalEdited || editedSection === 'hero') && (
             <div id="hero">
               <PortfolioHero />
             </div>
           )}
-          {(!debouncedEdited || editedSection === 'skills') && (
+          {(!finalEdited || editedSection === 'skills') && (
             <div id="skills">
               <PortfolioSkills />
             </div>
           )}
-          {(!debouncedEdited || editedSection === 'projects') && (
+          {(!finalEdited || editedSection === 'projects') && (
             <div id="projects">
               <PortfolioProjects />
             </div>
           )}
-          {(!debouncedEdited || editedSection === 'contact') && (
+          {(!finalEdited || editedSection === 'contact') && (
             <div id="contact">
               <PortfolioContact />
             </div>
           )}
-          {!debouncedEdited && <PortfolioFooter />}
+          {!finalEdited && <PortfolioFooter />}
         </PortfolioProvider>
       </PortfolioLayout>
     </PortfolioContainer>

@@ -1,11 +1,15 @@
-import type { PropsWithChildren } from 'react'
+import type { PropsWithChildren, ReactNode } from 'react'
 import { Link } from 'react-router-dom'
 
 import Logo from '~components/common/logos/Logo'
 import GithubButton from '~components/common/GithubButton'
 import UserAvatarMenu from '~components/common/UserAvatarMenu'
 
-function AppLayout({ children }: PropsWithChildren) {
+type Props = PropsWithChildren<{
+  actions?: ReactNode
+}>
+
+function AppLayout({ actions, children }: Props) {
   return (
     <div className="relative grow flex flex-col">
       <nav className="px-4 h-[58px] flex justify-between border-b z-50">
@@ -18,12 +22,13 @@ function AppLayout({ children }: PropsWithChildren) {
           </div>
         </div>
         <div className="flex">
+          {actions}
           <div className="pl-4 flex items-center">
             <UserAvatarMenu />
           </div>
         </div>
       </nav>
-      <div className="pt-2 grow flex flex-col bg-neutral-background">
+      <div className="grow flex flex-col bg-neutral-background">
         {children}
       </div>
     </div>
