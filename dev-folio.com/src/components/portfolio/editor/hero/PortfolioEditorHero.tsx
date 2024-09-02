@@ -11,7 +11,7 @@ import TextareaAutosize from '~components/common/TextareaAutosize'
 import EmojiPicker from '~components/common/EmojiPicker'
 import ImageDropzone from '~components/common/ImageDropzone'
 import Spinner from '~components/common/Spinner'
-import PortfolioEditorHeroDescriptionInspiration from '~components/portfolio/editor/PortfolioEditorHeroDescriptionInspiration'
+import PortfolioEditorHeroDescriptionInspiration from '~components/portfolio/editor/hero/PortfolioEditorHeroDescriptionInspiration'
 
 function PortfolioEditorHero() {
   const { portfolio, setPortfolio } = usePortfolio()

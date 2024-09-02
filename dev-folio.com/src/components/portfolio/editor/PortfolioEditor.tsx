@@ -1,7 +1,8 @@
 import usePortfolio from '~hooks/portfolio/usePortfolio'
 
-import PortfolioEditorHero from '~components/portfolio/editor/PortfolioEditorHero'
 import PortfolioEditorSectionSelect from '~components/portfolio/editor/PortfolioEditorSectionSelect'
+import PortfolioEditorHero from '~components/portfolio/editor/hero/PortfolioEditorHero'
+import PortfolioEditorSkills from '~components/portfolio/editor/skills/PortfolioEditorSkills'
 
 function PortfolioEditor() {
   const { editedSection } = usePortfolio()
@@ -11,6 +12,7 @@ function PortfolioEditor() {
       <PortfolioEditorSectionSelect />
       <div className="pt-4 grow overflow-y-auto">
         {editedSection === 'hero' && <PortfolioEditorHero />}
+        {editedSection === 'skills' && <PortfolioEditorSkills />}
       </div>
     </div>
   )
