@@ -18,7 +18,7 @@ const firebaseConfig = {
   apiKey: 'AIzaSyC4wlr5LjBuOj-scXHNZiRbCxUDl90JFuw',
   authDomain: 'dev-folio-com.firebaseapp.com',
   projectId: 'dev-folio-com',
-  storageBucket: 'firebase-dev-folio-com',
+  storageBucket: 'dev-folio-com.appspot.com',
   messagingSenderId: '264351709313',
   appId: '1:264351709313:web:5ed6e9403f61bf9987b580',
   measurementId: 'G-RCBGC5S7R8',
