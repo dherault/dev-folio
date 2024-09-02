@@ -8,12 +8,13 @@ import { Button } from '~components/ui/Button'
 
 function Skills() {
   const [loading, setLoading] = useState(false)
-  const [success, setSuccess] = useState(true)
+  const [success, setSuccess] = useState(false)
 
   const handleAddImageUrl = useCallback(async () => {
     if (loading) return
 
     setLoading(true)
+    setSuccess(false)
 
     const misses: string[] = []
 

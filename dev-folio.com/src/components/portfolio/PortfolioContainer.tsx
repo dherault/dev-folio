@@ -1,27 +1,53 @@
-import { type PropsWithChildren, useRef } from 'react'
+import { type PropsWithChildren, useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import _ from 'clsx'
 
 import usePortfolio from '~hooks/portfolio/usePortfolio'
 import useWindowSize from '~hooks/common/useWindowSize'
+import useRefreshWithDependencies from '~hooks/common/useRefreshWithDependencies'
+import usePrevious from '~hooks/common/usePrevious'
 
 import PortfolioEditor from '~components/portfolio/editor/PortfolioEditor'
 
 const PORTFOLIO_WIDTH = 1400
+const NAVBAR_HEIGHT = 58
 
 function PortfolioContainer({ children }: PropsWithChildren) {
-  const { edited } = usePortfolio()
+  const contentRef = useRef<HTMLDivElement>(null)
+
+  const { edited, editedSection, debouncedEdited } = usePortfolio()
   const initialEdited = useRef(edited).current
+  const previousEdited = usePrevious(debouncedEdited)
+  const { width: windowWidth, height: windowHeight } = useWindowSize()
 
-  const { width: windowWidth } = useWindowSize()
+  useRefreshWithDependencies([children], 300)
 
+  const top = 32
+  const bottom = 32
   const left = 512 + 2 * 32
   const right = 32
-  const scale = (windowWidth - left - right) / PORTFOLIO_WIDTH
+  const scale = Math.min((windowWidth - left - right) / PORTFOLIO_WIDTH, (windowHeight - top - bottom) / (contentRef.current?.clientHeight ?? 0))
+  const marginTop = (windowHeight - NAVBAR_HEIGHT - (contentRef.current?.clientHeight ?? 0) * scale) / 2
+
+  // Scroll to edited section
+  useEffect(() => {
+    if (!contentRef.current) return
+    if (debouncedEdited || !previousEdited) return
+
+    const element = document.getElementById(editedSection)
+
+    if (!element) return
+
+    contentRef.current.scrollTop = element.offsetTop
+  }, [
+    debouncedEdited,
+    previousEdited,
+    editedSection,
+  ])
 
   return (
     <div
-      className={_('relative grow transition-colors duration-300', {
+      className={_('relative grow transition-colors duration-300 overflow-hidden', {
         'bg-neutral-background': edited,
         'bg-white': !edited,
       })}
@@ -72,22 +98,26 @@ function PortfolioContainer({ children }: PropsWithChildren) {
           variants={{
             open: {
               scale,
+              marginTop,
               width: PORTFOLIO_WIDTH,
-              margin: 0,
               transition: {
                 ease: 'easeInOut',
               },
             },
             close: {
               scale: 1,
+              marginTop: 0,
               width: Math.min(windowWidth, PORTFOLIO_WIDTH),
-              margin: '0 auto',
               transition: {
                 ease: 'easeInOut',
               },
             },
           }}
-          className="origin-left"
+          className="origin-top-left"
+          style={{
+            marginLeft: edited ? 0 : 'auto',
+            marginRight: edited ? 0 : 'auto',
+          }}
         >
           <motion.div
             initial={initialEdited ? 'open' : 'close'}
@@ -95,22 +125,29 @@ function PortfolioContainer({ children }: PropsWithChildren) {
             variants={{
               open: {
                 width: PORTFOLIO_WIDTH,
-                borderColor: '#e5e5e5',
                 transition: {
                   ease: 'easeInOut',
                 },
               },
               close: {
                 width: Math.min(windowWidth, PORTFOLIO_WIDTH),
-                borderColor: 'transparent',
                 transition: {
                   ease: 'easeInOut',
                 },
               },
             }}
             className="bg-white border"
+            style={{
+              borderColor: edited ? '#e5e5e5' : 'transparent',
+            }}
           >
-            {children}
+            <div
+              ref={contentRef}
+              style={{ height: edited ? 'auto' : `calc(100vh - ${NAVBAR_HEIGHT}px)` }}
+              className="overflow-y-auto"
+            >
+              {children}
+            </div>
           </motion.div>
         </motion.div>
       </motion.div>

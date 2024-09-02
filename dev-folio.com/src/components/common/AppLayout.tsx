@@ -8,7 +8,7 @@ import UserAvatarMenu from '~components/common/UserAvatarMenu'
 function AppLayout({ children }: PropsWithChildren) {
   return (
     <div className="relative grow flex flex-col">
-      <nav className="px-4 h-[58px] flex justify-between border-b">
+      <nav className="px-4 h-[58px] flex justify-between border-b z-50">
         <div className="py-2 flex items-center gap-4">
           <Link to="/~">
             <Logo className="h-8 text-blue" />
@@ -17,7 +17,7 @@ function AppLayout({ children }: PropsWithChildren) {
             <GithubButton />
           </div>
         </div>
-        <div className="flex z-50">
+        <div className="flex">
           <div className="pl-4 flex items-center">
             <UserAvatarMenu />
           </div>

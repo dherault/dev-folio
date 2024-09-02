@@ -8,6 +8,7 @@ export type PortfolioContextType = {
   setEdited: (edited: boolean) => void
   editedSection: PortfolioSectionId
   setEditedSection: (section: PortfolioSectionId) => void
+  debouncedEdited: boolean
 }
 
 export default createContext<PortfolioContextType>({
@@ -17,4 +18,5 @@ export default createContext<PortfolioContextType>({
   setEdited: () => {},
   editedSection: 'hero',
   setEditedSection: () => {},
+  debouncedEdited: false,
 })

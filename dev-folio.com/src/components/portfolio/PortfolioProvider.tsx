@@ -4,6 +4,7 @@ import { useSearchParams } from 'react-router-dom'
 
 import PortfolioContext, { PortfolioContextType } from '~contexts/portfolio/PortfolioContext'
 
+import useDebounce from '~hooks/common/useDebounce'
 import useThrottledEffectNoInitial from '~hooks/common/useThrottledEffectNoInitial'
 import useUser from '~hooks/user/useUser'
 
@@ -18,6 +19,7 @@ function PortfolioProvider({ children }: PropsWithChildren) {
   const [searchParams, setSearchParams] = useSearchParams()
 
   const edited = searchParams.get(MODE_SEARCH_PARAMETER_KEY) === MODE_EDIT
+  const debouncedEdited = useDebounce(edited, 300) || edited
   const editedSection = (searchParams.get(SECTION_SEARCH_PARAMETER_KEY) as PortfolioSectionId) ?? 'hero'
 
   const [portfolio, setPortfolio] = useState(user!.portfolio)
@@ -55,12 +57,14 @@ function PortfolioProvider({ children }: PropsWithChildren) {
     setEdited,
     editedSection,
     setEditedSection,
+    debouncedEdited,
   }), [
     portfolio,
     edited,
     setEdited,
     editedSection,
     setEditedSection,
+    debouncedEdited,
   ])
 
   return (
