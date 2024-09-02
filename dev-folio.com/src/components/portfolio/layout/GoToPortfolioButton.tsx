@@ -18,9 +18,9 @@ function GoToPortfolioButton() {
     >
       <Button
         variant="ghost"
-        className="!pl-3 h-auto"
+        className="h-auto"
       >
-        <SquareArrowOutUpRight className="mr-2 h-4" />
+        <SquareArrowOutUpRight className="mr-2 h-4 w-4" />
         Go to portfolio
       </Button>
     </a>

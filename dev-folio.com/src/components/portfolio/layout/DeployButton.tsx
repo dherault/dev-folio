@@ -29,11 +29,11 @@ function DeployButton() {
     <div className="border-l flex">
       <Button
         variant="ghost"
-        className="!pl-3 h-auto"
+        className="h-auto"
         onClick={handleClick}
         loading={loading}
       >
-        <Box className="mr-2 h-4" />
+        <Box className="mr-2 h-4 w-4" />
         Deploy
       </Button>
     </div>

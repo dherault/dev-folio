@@ -11,17 +11,17 @@ function EditButton() {
     <div className="border-l flex">
       <Button
         variant="ghost"
-        className="!pl-3 h-auto"
+        className="h-auto"
         onClick={() => setEdited(!edited)}
       >
         {edited ? (
           <>
-            <Eye className="mr-2 h-4" />
+            <Eye className="mr-2 h-4 w-4" />
             Preview
           </>
         ) : (
           <>
-            <PencilRuler className="mr-2 h-4" />
+            <PencilRuler className="mr-2 h-4 w-4" />
             Edit
           </>
         )}

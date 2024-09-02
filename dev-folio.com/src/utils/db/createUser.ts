@@ -28,6 +28,7 @@ function createUser(user: CreateUserArg): User {
       socialMediaUrls: {},
       skillIds: [],
       skillsGrouped: false,
+      projects: [],
     },
     createdAt: now,
     updatedAt: now,
