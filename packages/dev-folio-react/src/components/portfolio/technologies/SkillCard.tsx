@@ -17,7 +17,7 @@ function SkillCard({ skill }: Props) {
     <Tooltip delayDuration={0}>
       <TooltipTrigger>
         <div
-          className="dfr-border"
+          className="dfr-border dfr-bg-white"
           style={{ padding: (skill.imagePadding ?? true) ? 16 : 0 }}
         >
           <img

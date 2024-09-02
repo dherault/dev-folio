@@ -11,9 +11,9 @@ import TextareaAutosize from '~components/common/TextareaAutosize'
 import EmojiPicker from '~components/common/EmojiPicker'
 import ImageDropzone from '~components/common/ImageDropzone'
 import Spinner from '~components/common/Spinner'
-import PortfolioEditorHeroDescriptionInspiration from '~components/portfolio/editor/hero/PortfolioEditorHeroDescriptionInspiration'
+import PortfolioEditorAboutDescriptionInspiration from '~components/portfolio/editor/PortfolioEditorAboutDescriptionInspiration'
 
-function PortfolioEditorHero() {
+function PortfolioEditorAbout() {
   const { portfolio, setPortfolio } = usePortfolio()
 
   const [imageLoading, setImageLoading] = useState(false)
@@ -81,11 +81,11 @@ function PortfolioEditorHero() {
           placeholder="I'm a full-stack developer..."
         />
         <div className="mt-1.5 -mb-2 flex justify-end">
-          <PortfolioEditorHeroDescriptionInspiration>
+          <PortfolioEditorAboutDescriptionInspiration>
             <div className="text-xs text-blue hover:underline cursor-pointer">
               Find some inspiration
             </div>
-          </PortfolioEditorHeroDescriptionInspiration>
+          </PortfolioEditorAboutDescriptionInspiration>
         </div>
       </article>
       <article>
@@ -208,4 +208,4 @@ function PortfolioEditorHero() {
   )
 }
 
-export default PortfolioEditorHero
+export default PortfolioEditorAbout

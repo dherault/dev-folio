@@ -4,15 +4,32 @@ import usePortfolio from '~hooks/portfolio/usePortfolio'
 
 import { Checkbox } from '~components/ui/Checkbox'
 import { Label } from '~components/ui/Label'
+import { Switch } from '~components/ui/Switch'
+import { Button } from '~components/ui/Button'
 
-function PortfolioEditorSkills() {
+function PortfolioEditorTechnologies() {
   const { portfolio, setPortfolio } = usePortfolio()
 
   return (
     <div className="space-y-4">
-      <div className="text-sm">
-        Pick the skills you want to show on your portfolio.
-      </div>
+      <article className="flex items-center gap-2">
+        <Label>
+          Include technologies
+        </Label>
+        <Switch
+          checked={portfolio.sections.includes('technologies')}
+          onCheckedChange={checked => setPortfolio(x => ({ ...x, sections: checked ? [...x.sections, 'technologies'] : x.sections.filter(section => section !== 'technologies') }))}
+        />
+      </article>
+      <article className="flex items-center gap-2">
+        <Label>
+          Group technologies
+        </Label>
+        <Switch
+          checked={portfolio.skillsGrouped}
+          onCheckedChange={checked => setPortfolio(x => ({ ...x, skillsGrouped: checked }))}
+        />
+      </article>
       {skillCategories.map(category => (
         <article key={category}>
           <Label>
@@ -36,8 +53,13 @@ function PortfolioEditorSkills() {
           </div>
         </article>
       ))}
+      {import.meta.env.DEV && (
+        <Button onClick={() => setPortfolio(x => ({ ...x, skillIds: skills.map(skill => skill.id) }))}>
+          Select all
+        </Button>
+      )}
     </div>
   )
 }
 
-export default PortfolioEditorSkills
+export default PortfolioEditorTechnologies

@@ -19,8 +19,8 @@ function PortfolioProvider({ children }: PropsWithChildren) {
   const [searchParams, setSearchParams] = useSearchParams()
 
   const edited = searchParams.get(MODE_SEARCH_PARAMETER_KEY) === MODE_EDIT
-  const debouncedEdited = useDebounce(edited, 300)
-  const editedSection = (searchParams.get(SECTION_SEARCH_PARAMETER_KEY) as PortfolioSectionId) ?? 'hero'
+  const debouncedEdited = useDebounce(edited, 300) || edited
+  const editedSection = (searchParams.get(SECTION_SEARCH_PARAMETER_KEY) as PortfolioSectionId) ?? 'about'
 
   const [portfolio, setPortfolio] = useState(user!.portfolio)
 

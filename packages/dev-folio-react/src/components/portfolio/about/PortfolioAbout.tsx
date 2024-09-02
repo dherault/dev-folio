@@ -2,17 +2,19 @@ import { Link } from 'lucide-react'
 
 import usePortfolio from '~hooks/portfolio/usePortfolio'
 
-import TextPlaceholder from '~components/portfolio/hero/TextPlaceholder'
-import ImagePlaceholder from '~components/portfolio/hero/ImagePlaceholder'
-import SocialButton from '~components/portfolio/hero/SocialButton'
 import GithubIcon from '~components/icons/GithubIcon'
 import LinkedinIcon from '~components/icons/LinkedinIcon'
 import XIcon from '~components/icons/XIcon'
 import YoutubeIcon from '~components/icons/YoutubeIcon'
 import TiktokIcon from '~components/icons/TiktokIcon'
+import TextPlaceholder from '~components/portfolio/about/TextPlaceholder'
+import ImagePlaceholder from '~components/portfolio/about/ImagePlaceholder'
+import SocialButton from '~components/portfolio/about/SocialButton'
 
-function PortfolioHero() {
+function PortfolioAbout() {
   const { portfolio, isDev } = usePortfolio()
+
+  if (!portfolio.sections.includes('about')) return null
 
   return (
     <section className="dfr-container dfr-min-h-screen dfr-flex dfr-items-center dfr-justify-center dfr-gap-16">
@@ -74,4 +76,4 @@ function PortfolioHero() {
   )
 }
 
-export default PortfolioHero
+export default PortfolioAbout

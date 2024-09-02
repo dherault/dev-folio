@@ -1,4 +1,8 @@
+import { portfolioSections } from 'dev-folio-types'
+
 import usePortfolio from '~hooks/portfolio/usePortfolio'
+
+import capitalize from '~utils/string/capitalize'
 
 import {
   Select,
@@ -20,18 +24,14 @@ function PortfolioEditorSectionSelect() {
         <SelectValue placeholder="Theme" />
       </SelectTrigger>
       <SelectContent>
-        <SelectItem value="hero">
-          Hero
-        </SelectItem>
-        <SelectItem value="skills">
-          Skills
-        </SelectItem>
-        <SelectItem value="projects">
-          Projects
-        </SelectItem>
-        <SelectItem value="contact">
-          Contact
-        </SelectItem>
+        {portfolioSections.map(section => (
+          <SelectItem
+            key={section}
+            value={section}
+          >
+            {capitalize(section)}
+          </SelectItem>
+        ))}
       </SelectContent>
     </Select>
   )

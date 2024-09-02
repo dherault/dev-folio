@@ -19,7 +19,6 @@ function PortfolioContainer({ children }: PropsWithChildren) {
   const { edited, editedSection, debouncedEdited } = usePortfolio()
   const initialEdited = useRef(edited).current
   const previousEdited = usePrevious(debouncedEdited)
-  const finalEdited = debouncedEdited || edited
 
   useRefreshWithDependencies([children], 300)
 
@@ -103,8 +102,8 @@ function PortfolioContainer({ children }: PropsWithChildren) {
           ref={contentRef}
           className="bg-white border overflow-y-auto transition-colors duration-300"
           style={{
-            height: finalEdited ? 'auto' : `calc(100vh - ${NAVBAR_HEIGHT}px)`,
-            borderColor: finalEdited ? '#e5e5e5' : 'transparent',
+            height: debouncedEdited ? 'auto' : `calc(100vh - ${NAVBAR_HEIGHT}px)`,
+            borderColor: debouncedEdited ? '#e5e5e5' : 'transparent',
           }}
         >
           {children}

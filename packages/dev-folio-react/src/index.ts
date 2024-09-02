@@ -8,9 +8,9 @@ export { default as PortfolioLayout } from '~components/portfolio/PortfolioLayou
 
 export { default as PortfolioProvider } from '~components/portfolio/PortfolioProvider'
 
-export { default as PortfolioHero } from '~components/portfolio/hero/PortfolioHero'
+export { default as PortfolioAbout } from '~components/portfolio/about/PortfolioAbout'
 
-export { default as PortfolioSkills } from '~components/portfolio/skills/PortfolioSkills'
+export { default as PortfolioTechnologies } from '~components/portfolio/technologies/PortfolioTechnologies'
 
 export { default as PortfolioProjects } from '~components/portfolio/projects/PortfolioProjects'
 

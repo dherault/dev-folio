@@ -16,7 +16,7 @@ export default createContext<PortfolioContextType>({
   setPortfolio: () => {},
   edited: false,
   setEdited: () => {},
-  editedSection: 'hero',
+  editedSection: 'about',
   setEditedSection: () => {},
   debouncedEdited: false,
 })

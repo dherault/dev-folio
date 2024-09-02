@@ -14,7 +14,7 @@ import {
 
 import inspirations from '~data/heroDescriptionInspirations'
 
-function PortfolioEditorHeroDescriptionInspiration({ children }: PropsWithChildren) {
+function PortfolioEditorAboutDescriptionInspiration({ children }: PropsWithChildren) {
   const { setPortfolio } = usePortfolio()
 
   const [open, setOpen] = useState(false)
@@ -69,4 +69,4 @@ function PortfolioEditorHeroDescriptionInspiration({ children }: PropsWithChildr
   )
 }
 
-export default PortfolioEditorHeroDescriptionInspiration
+export default PortfolioEditorAboutDescriptionInspiration

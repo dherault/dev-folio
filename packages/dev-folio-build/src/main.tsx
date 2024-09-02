@@ -3,20 +3,20 @@ import './index.css'
 
 import { createRoot } from 'react-dom/client'
 import {
+  PortfolioAbout,
   PortfolioContact,
   PortfolioFooter,
-  PortfolioHero,
   PortfolioLayout,
   PortfolioProjects,
   PortfolioProvider,
-  PortfolioSkills,
+  PortfolioTechnologies,
 } from 'dev-folio-react'
 
 createRoot(document.getElementById('root')!).render(
   <PortfolioLayout>
     <PortfolioProvider>
-      <PortfolioHero />
-      <PortfolioSkills />
+      <PortfolioAbout />
+      <PortfolioTechnologies />
       <PortfolioProjects />
       <PortfolioContact />
       <PortfolioFooter />

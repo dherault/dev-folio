@@ -40,6 +40,7 @@ export type Portfolio = {
   heroImageUrl: string
   socialMediaUrls: Partial<Record<PortfolioSocialMedia, string>>
   skillIds: string[]
+  skillsGrouped: boolean
 }
 
 export type SkillCategory = typeof skillCategories[number]

@@ -1,6 +1,6 @@
 export const portfolioSections = [
-  'hero',
-  'skills',
+  'about',
+  'technologies',
   'projects',
   'contact',
 ] as const

@@ -1,37 +1,35 @@
 import { useEffect } from 'react'
 import {
+  PortfolioAbout,
   PortfolioContact,
   PortfolioFooter,
-  PortfolioHero,
   PortfolioLayout,
   PortfolioProjects,
   PortfolioProvider,
-  PortfolioSkills,
+  PortfolioTechnologies,
 } from 'dev-folio-react'
 import 'dev-folio-react/dist/style.css'
-import type { PortfolioSectionId } from 'dev-folio-types'
+import { portfolioSections } from 'dev-folio-types'
 
 import usePortfolio from '~hooks/portfolio/usePortfolio'
 
 import calculateElementVisibilityPercentage from '~utils/ui/calculateElementVisibility'
 
 import PortfolioContainer from '~components/portfolio/PortfolioContainer'
-
-const sectionIds: PortfolioSectionId[] = [
-  'hero',
-  'skills',
-  'projects',
-  'contact',
-]
+import PortfolioEmpty from '~components/portfolio/PortfolioEmpty'
 
 function Portfolio() {
-  const { portfolio, editedSection, edited, debouncedEdited, setEditedSection } = usePortfolio()
-  const finalEdited = debouncedEdited || edited
+  const {
+    portfolio,
+    editedSection,
+    debouncedEdited,
+    setEditedSection,
+  } = usePortfolio()
 
   // Change edited section based on scroll
   useEffect(() => {
     function handleWheel() {
-      const [{ sectionId }] = sectionIds
+      const [{ sectionId }] = portfolioSections
       .map(sectionId => {
         const element = document.getElementById(sectionId)
 
@@ -61,27 +59,47 @@ function Portfolio() {
           isDev
           portfolio={portfolio}
         >
-          {(!finalEdited || editedSection === 'hero') && (
-            <div id="hero">
-              <PortfolioHero />
+          {(!debouncedEdited || editedSection === 'about') && (
+            <div id="about">
+              <PortfolioAbout />
             </div>
           )}
-          {(!finalEdited || editedSection === 'skills') && (
-            <div id="skills">
-              <PortfolioSkills />
+          {debouncedEdited && editedSection === 'about' && !portfolio.sections.includes('about') && (
+            <div id="about">
+              <PortfolioEmpty />
             </div>
           )}
-          {(!finalEdited || editedSection === 'projects') && (
+          {(!debouncedEdited || editedSection === 'technologies') && portfolio.sections.includes('technologies') && (
+            <div id="technologies">
+              <PortfolioTechnologies />
+            </div>
+          )}
+          {debouncedEdited && editedSection === 'technologies' && !portfolio.sections.includes('technologies') && (
+            <div id="technologies">
+              <PortfolioEmpty />
+            </div>
+          )}
+          {(!debouncedEdited || editedSection === 'projects') && portfolio.sections.includes('projects') && (
             <div id="projects">
               <PortfolioProjects />
             </div>
           )}
-          {(!finalEdited || editedSection === 'contact') && (
+          {debouncedEdited && editedSection === 'projects' && !portfolio.sections.includes('projects') && (
+            <div id="technologies">
+              <PortfolioEmpty />
+            </div>
+          )}
+          {(!debouncedEdited || editedSection === 'contact') && portfolio.sections.includes('contact') && (
             <div id="contact">
               <PortfolioContact />
             </div>
           )}
-          {!finalEdited && <PortfolioFooter />}
+          {debouncedEdited && editedSection === 'contact' && !portfolio.sections.includes('contact') && (
+            <div id="technologies">
+              <PortfolioEmpty />
+            </div>
+          )}
+          {!debouncedEdited && <PortfolioFooter />}
         </PortfolioProvider>
       </PortfolioLayout>
     </PortfolioContainer>
