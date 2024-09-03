@@ -74,7 +74,7 @@ function PortfolioTechnologies() {
   if (!portfolio.sections.includes('technologies')) return null
 
   return (
-    <section className="dfr-py-8 dfr-container">
+    <section className="dfr-py-16 dfr-container">
       <h2 className="dfr-text-4xl dfr-font-bold">
         Technologies
       </h2>

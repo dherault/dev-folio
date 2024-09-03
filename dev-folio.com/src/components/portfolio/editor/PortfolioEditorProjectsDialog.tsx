@@ -1,4 +1,4 @@
-import { type PropsWithChildren, useCallback, useState } from 'react'
+import { useCallback, useState } from 'react'
 import * as z from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
@@ -17,7 +17,6 @@ import {
   Dialog,
   DialogContent,
   DialogHeader,
-  DialogTrigger,
 } from '~components/ui/Dialog'
 import {
   Form,
@@ -34,6 +33,12 @@ import { Button } from '~components/ui/Button'
 import { Label } from '~components/ui/Label'
 import Spinner from '~components/common/Spinner'
 
+type Props = {
+  open: boolean
+  setOpen: (open: boolean) => void
+  project: Project | null
+}
+
 const formSchema = z.object({
   name: z
     .string()
@@ -43,17 +48,16 @@ const formSchema = z.object({
   description: z
     .string()
     .trim()
-    .max(256, { message: 'The description must be 256 characters or less' }),
+    .max(1024, { message: 'The description must be 256 characters or less' }),
   url: z.union([
     z.literal(''),
     z.string().trim().url({ message: 'You must input a valid URL' }),
   ]),
 })
 
-function PortfolioEditorProjectsCreateDialog({ children }: PropsWithChildren) {
+function PortfolioEditorProjectsDialog({ project, open, setOpen }: Props) {
   const { setPortfolio } = usePortfolio()
 
-  const [open, setOpen] = useState(false)
   const [loading, setLoading] = useState(false)
   const [imageLoading, setImageLoading] = useState(false)
   const [openGraphImageUrl, setOpenGraphImageUrl] = useState('')
@@ -62,10 +66,10 @@ function PortfolioEditorProjectsCreateDialog({ children }: PropsWithChildren) {
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
-    defaultValues: {
-      name: '',
-      description: '',
-      url: '',
+    values: {
+      name: project?.name ?? '',
+      description: project?.description ?? '',
+      url: project?.url ?? '',
     },
   })
 
@@ -74,9 +78,13 @@ function PortfolioEditorProjectsCreateDialog({ children }: PropsWithChildren) {
 
     setTimeout(() => {
       form.reset()
+      setOpenGraphImageUrl('')
+      setImageFile(null)
+      setIsOpenGraphImage(false)
     }, 300)
   }, [
     form,
+    setOpen,
   ])
 
   const handleUrlChange = useCallback(async (url: string) => {
@@ -102,7 +110,7 @@ function PortfolioEditorProjectsCreateDialog({ children }: PropsWithChildren) {
 
     setLoading(true)
 
-    const id = nanoid()
+    const id = project?.id ?? nanoid()
     let imageUrl = isOpenGraphImage ? (openGraphImageUrl ?? '') : ''
 
     if (!isOpenGraphImage && imageFile) {
@@ -111,8 +119,8 @@ function PortfolioEditorProjectsCreateDialog({ children }: PropsWithChildren) {
       imageUrl = await getDownloadURL(snapshot.ref)
     }
 
-    const project: Project = {
-      id: nanoid(),
+    const nextProject: Project = {
+      id,
       name: values.name,
       description: values.description,
       url: values.url,
@@ -121,15 +129,15 @@ function PortfolioEditorProjectsCreateDialog({ children }: PropsWithChildren) {
 
     setPortfolio(x => ({
       ...x,
-      projects: [
-        ...x.projects,
-        project,
-      ],
+      projects: project
+        ? x.projects.map(p => p.id === id ? nextProject : p)
+        : [...x.projects, nextProject],
     }))
 
     setLoading(false)
     handleClose()
   }, [
+    project,
     loading,
     isOpenGraphImage,
     openGraphImageUrl,
@@ -153,12 +161,9 @@ function PortfolioEditorProjectsCreateDialog({ children }: PropsWithChildren) {
         if (!open) handleClose()
       }}
     >
-      <DialogTrigger asChild>
-        {children}
-      </DialogTrigger>
-      <DialogContent>
+      <DialogContent onOpenAutoFocus={event => project && event.preventDefault()}>
         <DialogHeader>
-          Add a new project
+          {project ? 'Edit project' : 'Add a new project'}
         </DialogHeader>
         <div>
           <Form {...form}>
@@ -298,4 +303,4 @@ function PortfolioEditorProjectsCreateDialog({ children }: PropsWithChildren) {
   )
 }
 
-export default PortfolioEditorProjectsCreateDialog
+export default PortfolioEditorProjectsDialog

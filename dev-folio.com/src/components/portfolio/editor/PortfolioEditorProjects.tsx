@@ -1,9 +1,10 @@
-import { ArrowDown, ArrowUp, Plus, Trash } from 'lucide-react'
+import { ArrowDown, ArrowUp, Edit, Plus, Trash } from 'lucide-react'
 import { useCallback, useState } from 'react'
+import { Project } from 'dev-folio-types'
 
 import usePortfolio from '~hooks/portfolio/usePortfolio'
 
-import PortfolioEditorProjectsCreateDialog from '~components/portfolio/editor/PortfolioEditorProjectsCreateDialog'
+import PortfolioEditorProjectsDialog from '~components/portfolio/editor/PortfolioEditorProjectsDialog'
 import { Button } from '~components/ui/Button'
 import { Label } from '~components/ui/Label'
 import { Switch } from '~components/ui/Switch'
@@ -12,6 +13,8 @@ import PortfolioEditorProjectsDeleteDialog from '~components/portfolio/editor/Po
 function PortfolioEditorProjects() {
   const { portfolio, setPortfolio } = usePortfolio()
 
+  const [editedOpen, setEditedOpen] = useState(false)
+  const [editedProject, setEditedProject] = useState<Project | null>(null)
   const [deletedProjectId, setDeletedProjectId] = useState('')
 
   const handleMoveProject = useCallback((projectId: string, direction: number) => {
@@ -44,7 +47,7 @@ function PortfolioEditorProjects() {
             key={project.id}
             className="flex items-center gap-2"
           >
-            <Label>
+            <Label className="truncate">
               {project.name}
             </Label>
             <div className="-ml-2 grow" />
@@ -69,6 +72,16 @@ function PortfolioEditorProjects() {
             <Button
               variant="ghost"
               size="icon-sm"
+              onClick={() => {
+                setEditedProject(project)
+                setEditedOpen(true)
+              }}
+            >
+              <Edit className="h-4 w-4" />
+            </Button>
+            <Button
+              variant="ghost"
+              size="icon-sm"
               onClick={() => setDeletedProjectId(project.id)}
             >
               <Trash className="h-4 w-4 text-red-500" />
@@ -77,13 +90,22 @@ function PortfolioEditorProjects() {
         ))}
       </article>
       <article className="mt-4">
-        <PortfolioEditorProjectsCreateDialog>
-          <Button>
-            <Plus className="mr-2 h-4 w-4" />
-            Add project
-          </Button>
-        </PortfolioEditorProjectsCreateDialog>
+        <Button onClick={() => setEditedOpen(true)}>
+          <Plus className="mr-2 h-4 w-4" />
+          Add project
+        </Button>
       </article>
+      <PortfolioEditorProjectsDialog
+        open={editedOpen}
+        setOpen={open => {
+          setEditedOpen(open)
+
+          if (open) return
+
+          setEditedProject(null)
+        }}
+        project={editedProject}
+      />
       <PortfolioEditorProjectsDeleteDialog
         projectId={deletedProjectId}
         setProjectId={setDeletedProjectId}

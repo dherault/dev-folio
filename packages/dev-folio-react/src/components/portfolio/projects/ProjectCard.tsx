@@ -23,8 +23,8 @@ function ProjectCard({ project }: Props) {
           </div>
         )}
       </div>
-      <div className="dfr-flex dfr-justify-between dfr-gap-4">
-        <h3 className="dfr-py-2 dfr-px-4 dfr-shrink dfr-truncate dfr-text-lg dfr-font-semibold">
+      <div className="dfr-flex dfr-justify-between dfr-gap-2">
+        <h3 className="dfr-py-2 dfr-pl-4 dfr-shrink dfr-truncate dfr-text-lg dfr-font-semibold">
           {project.name}
         </h3>
         {!!project.url && (
