@@ -5,6 +5,7 @@ name: Lint and test
 on: pull_request
 jobs:
   lint_and_test:
+    name: Lint and test
     if: ${{ github.event.pull_request.head.repo.full_name == github.repository }}
     runs-on: ubuntu-latest
     steps:
