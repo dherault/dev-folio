@@ -7,8 +7,8 @@ import LinkedinIcon from '~components/icons/LinkedinIcon'
 import XIcon from '~components/icons/XIcon'
 import YoutubeIcon from '~components/icons/YoutubeIcon'
 import TiktokIcon from '~components/icons/TiktokIcon'
-import TextPlaceholder from '~components/portfolio/TextPlaceholder'
-import ImagePlaceholder from '~components/portfolio/about/ImagePlaceholder'
+import TextPlaceholder from '~components/portfolio/placeholders/TextPlaceholder'
+import ImagePlaceholder from '~components/portfolio/placeholders/ImagePlaceholder'
 import SocialButton from '~components/portfolio/about/SocialButton'
 
 function PortfolioAbout() {
@@ -23,10 +23,20 @@ function PortfolioAbout() {
           {portfolio.heroEmoji ? <span className="dfr-mr-3">{portfolio.heroEmoji}</span> : ''}
           Hi, I'm
           {' '}
-          {portfolio.name || (isDev && <TextPlaceholder label="Name" />)}
+          {portfolio.name || (isDev && (
+            <TextPlaceholder
+              editSection="about"
+              label="Name"
+            />
+          ))}
         </h1>
         <div className="dfr-mt-4 dfr-text-4xl dfr-font-semibold">
-          {portfolio.heroDescription || (isDev && <TextPlaceholder label="Description" />)}
+          {portfolio.heroDescription || (isDev && (
+            <TextPlaceholder
+              editSection="about"
+              label="Description"
+            />
+          ))}
         </div>
         <div className="dfr-mt-4 dfr-flex dfr-gap-4">
           {!!portfolio.socialMediaUrls.github && (

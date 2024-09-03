@@ -1,6 +1,6 @@
 import usePortfolio from '~hooks/portfolio/usePortfolio'
 
-import TextPlaceholder from '~components/portfolio/TextPlaceholder'
+import TextPlaceholder from '~components/portfolio/placeholders/TextPlaceholder'
 
 function PortfolioContact() {
   const { portfolio, isDev } = usePortfolio()
@@ -16,7 +16,12 @@ function PortfolioContact() {
       <div className="dfr-mt-8 dfr-text-lg">
         You can contact me at
         {' '}
-        {portfolio.email || isDev && <TextPlaceholder label="Email" />}
+        {portfolio.email || isDev && (
+          <TextPlaceholder
+            editSection="contact"
+            label="Email"
+          />
+        )}
       </div>
     </section>
   )

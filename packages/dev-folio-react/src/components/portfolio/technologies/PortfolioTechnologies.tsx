@@ -4,7 +4,7 @@ import { type Technology, type TechnologyCategory, technologies, technologyCateg
 import usePortfolio from '~hooks/portfolio/usePortfolio'
 
 import TechnologyCard from '~components/portfolio/technologies/TechnologyCard'
-import TechnologyPlaceholder from '~components/portfolio/technologies/TechnologyPlaceholder'
+import TechnologyPlaceholder from '~components/portfolio/placeholders/TechnologyPlaceholder'
 
 function PortfolioTechnologies() {
   const { portfolio, isDev } = usePortfolio()

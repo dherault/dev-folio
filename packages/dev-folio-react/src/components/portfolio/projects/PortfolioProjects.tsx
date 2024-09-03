@@ -1,7 +1,7 @@
 import usePortfolio from '~hooks/portfolio/usePortfolio'
 
 import ProjectCard from '~components/portfolio/projects/ProjectCard'
-import ProjectPlaceholder from '~components/portfolio/projects/ProjectPlaceholder'
+import ProjectPlaceholder from '~components/portfolio/placeholders/ProjectPlaceholder'
 
 function PortfolioProjects() {
   const { portfolio, isDev } = usePortfolio()

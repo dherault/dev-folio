@@ -1,3 +1,5 @@
+import { useEffect } from 'react'
+
 import usePortfolio from '~hooks/portfolio/usePortfolio'
 
 import PortfolioEditorSectionSelect from '~components/portfolio/editor/PortfolioEditorSectionSelect'
@@ -7,7 +9,23 @@ import PortfolioEditorProjects from '~components/portfolio/editor/PortfolioEdito
 import PortfolioEditorContact from '~components/portfolio/editor/PortfolioEditorContact'
 
 function PortfolioEditor() {
-  const { editedSection } = usePortfolio()
+  const { editedSection, setEditedSection, setEdited } = usePortfolio()
+
+  useEffect(() => {
+    function handler(event: CustomEvent) {
+      setEditedSection(event.detail)
+      setEdited(true)
+    }
+
+    window.addEventListener('edit', handler as EventListener)
+
+    return () => {
+      window.removeEventListener('edit', handler as EventListener)
+    }
+  }, [
+    setEditedSection,
+    setEdited,
+  ])
 
   return (
     <div className="p-4 h-full w-[512px] border bg-white flex flex-col">
