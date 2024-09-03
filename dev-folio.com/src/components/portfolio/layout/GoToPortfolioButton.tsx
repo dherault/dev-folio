@@ -11,7 +11,7 @@ function GoToPortfolioButton() {
 
   return (
     <a
-      href={`https://${user.portfolio.subdomain}.dev-folio.com`}
+      href={`https://${user.portfolio.subdomain}.dev-folio.com?nonce=${Math.random()}`}
       target="_blank"
       rel="noreferrer"
       className="border-l flex"
