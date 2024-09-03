@@ -18,7 +18,7 @@ app.get(['/', '/*'], async (req, res) => {
       return
     }
 
-    const url = req.originalUrl
+    const url = req.originalUrl.split('?')[0]
 
     console.log('serving bucketId and url', bucketId, url)
 
