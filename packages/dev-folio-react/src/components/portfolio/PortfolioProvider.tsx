@@ -1,4 +1,5 @@
 import { type PropsWithChildren, useCallback, useEffect, useMemo, useState } from 'react'
+import { Helmet } from 'react-helmet'
 import type { Portfolio } from 'dev-folio-types'
 
 import PortfolioContext, { type PortfolioContextType } from '~contexts/portfolio/PortfolioContext'
@@ -52,6 +53,14 @@ function PortfolioProvider({ children, portfolio, isDev = false }: Props) {
 
   return (
     <PortfolioContext.Provider value={portfolioContextValue}>
+      {!isDev && portfolio?.name && (
+        <Helmet>
+          <title>
+            {portfolio.name}
+            's portfolio
+          </title>
+        </Helmet>
+      )}
       {children}
     </PortfolioContext.Provider>
   )

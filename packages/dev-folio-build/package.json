@@ -10,7 +10,7 @@
     "copy-build": "rimraf ../../dev-folio.com/functions/data/build/**/* && cp -r dist/** ../../dev-folio.com/functions/data/build"
   },
   "dependencies": {
-    "dev-folio-react": "^0.0.11",
+    "dev-folio-react": "^0.0.12",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
