@@ -6,8 +6,8 @@ import { HttpsError, onCall } from 'firebase-functions/v2/https'
 import { type Bucket, Storage } from '@google-cloud/storage'
 import type { Portfolio } from 'dev-folio-types'
 
-import getBucketId from '../utils/getBucketId'
 import { getUserFromCallableRequest } from '../authentication/getUser'
+import getBucketId from '../utils/getBucketId'
 
 const dataLocation = path.resolve(__dirname, '../../../../data/build')
 

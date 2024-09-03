@@ -1,8 +1,9 @@
 import { HttpsError, onCall } from 'firebase-functions/v2/https'
 import { Storage } from '@google-cloud/storage'
 
-import getBucketId from '../utils/getBucketId'
+import { firestore } from '../firebase'
 import { getUserFromCallableRequest } from '../authentication/getUser'
+import getBucketId from '../utils/getBucketId'
 
 const checkSubdomain = onCall(
   { enforceAppCheck: true, cors: ['https://dev-folio.com'] },
@@ -14,6 +15,10 @@ const checkSubdomain = onCall(
     const { subdomain } = request.data
 
     if (!subdomain) throw new HttpsError('invalid-argument', 'You must provide a subdomain')
+
+    const existingUser = await firestore.collection('users').where('portfolio.subdomain', '==', subdomain).get()
+
+    if (!existingUser.empty) return { exists: true }
 
     const bucketId = getBucketId(subdomain)
     const storage = new Storage()
