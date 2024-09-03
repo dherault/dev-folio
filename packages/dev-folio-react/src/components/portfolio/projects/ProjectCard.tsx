@@ -1,4 +1,5 @@
 import type { Project } from 'dev-folio-types'
+import _ from 'clsx'
 
 import { Button } from '~components/ui/Button'
 
@@ -8,17 +9,21 @@ type Props = {
 
 function ProjectCard({ project }: Props) {
   return (
-    <div className="dfr-group dfr-border">
-      <div className="dfr-relative">
+    <div className="dfr-group dfr-border dfr-flex dfr-flex-col">
+      <div className="dfr-relative dfr-grow">
         {!!project.imageUrl && (
           <img
             src={project.imageUrl}
             alt={project.name}
-            className="dfr-w-full"
+            className="dfr-w-full dfr-aspect-[120/63] dfr-object-cover"
           />
         )}
         {!!project.description && (
-          <div className="dfr-p-4 dfr-absolute dfr-inset-0 dfr-opacity-0 group-hover:dfr-opacity-100 dfr-bg-white dfr-transition-opacity">
+          <div
+            className={_('dfr-p-4 dfr-absolute dfr-inset-0 dfr-bg-white dfr-transition-opacity dfr-overflow-hidden', {
+              'dfr-opacity-0 group-hover:dfr-opacity-100': !!project.imageUrl,
+            })}
+          >
             {project.description}
           </div>
         )}

@@ -47,7 +47,7 @@ function PortfolioEditorProjects() {
             key={project.id}
             className="flex items-center gap-2"
           >
-            <Label className="truncate">
+            <Label className="shrink truncate">
               {project.name}
             </Label>
             <div className="-ml-2 grow" />
@@ -56,6 +56,7 @@ function PortfolioEditorProjects() {
                 variant="ghost"
                 size="icon-sm"
                 onClick={() => handleMoveProject(project.id, -1)}
+                className="shrink-0"
               >
                 <ArrowUp className="h-4 w-4" />
               </Button>
@@ -65,6 +66,7 @@ function PortfolioEditorProjects() {
                 variant="ghost"
                 size="icon-sm"
                 onClick={() => handleMoveProject(project.id, 1)}
+                className="shrink-0"
               >
                 <ArrowDown className="h-4 w-4" />
               </Button>
@@ -76,6 +78,7 @@ function PortfolioEditorProjects() {
                 setEditedProject(project)
                 setEditedOpen(true)
               }}
+              className="shrink-0"
             >
               <Edit className="h-4 w-4" />
             </Button>
@@ -83,6 +86,7 @@ function PortfolioEditorProjects() {
               variant="ghost"
               size="icon-sm"
               onClick={() => setDeletedProjectId(project.id)}
+              className="shrink-0"
             >
               <Trash className="h-4 w-4 text-red-500" />
             </Button>
