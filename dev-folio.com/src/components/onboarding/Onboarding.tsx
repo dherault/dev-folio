@@ -21,6 +21,13 @@ import { Button } from '~components/ui/Button'
 import { Input } from '~components/ui/Input'
 import Spinner from '~components/common/Spinner'
 
+enum SubdomainValidity {
+  Unset = 'unset',
+  Valid = 'valid',
+  Invalid = 'invalid',
+  Loading = 'loading',
+}
+
 const formSchema = z.object({
   subdomain: z
     .string()
@@ -41,26 +48,24 @@ function Onboarding() {
     },
   })
 
-  const [isSubdomainValid, setIsSubdomainValid] = useState(false)
-  const [loadingIsSubdomainValid, setLoadingIsSubdomainValid] = useState(false)
+  const [subdomainValidity, setSubdomainValidity] = useState(SubdomainValidity.Unset)
   const [loading, setLoading] = useState(false)
   const subdomain = form.watch('subdomain')
 
   const handleCheckSubdomain = useCallback(async () => {
     if (!subdomain) return
 
-    setLoadingIsSubdomainValid(true)
+    setSubdomainValidity(SubdomainValidity.Loading)
 
     try {
       const { data: { exists } } = await checkSubdomain({ subdomain })
 
-      setIsSubdomainValid(!exists)
+      setSubdomainValidity(exists ? SubdomainValidity.Invalid : SubdomainValidity.Valid)
     }
     catch {
+      setSubdomainValidity(SubdomainValidity.Unset)
       //
     }
-
-    setLoadingIsSubdomainValid(false)
   }, [
     subdomain,
   ])
@@ -86,7 +91,7 @@ function Onboarding() {
   ])
 
   useEffect(() => {
-    setLoadingIsSubdomainValid(true)
+    setSubdomainValidity(subdomain ? SubdomainValidity.Loading : SubdomainValidity.Unset)
   }, [
     subdomain,
   ])
@@ -119,13 +124,13 @@ function Onboarding() {
                     <div className="ml-1 text-neutral-500 text-nowrap">
                       .dev-folio.com
                     </div>
-                    {!!subdomain && isSubdomainValid && !loadingIsSubdomainValid && (
+                    {!!subdomain && subdomainValidity === SubdomainValidity.Valid && (
                       <Check className="h-4 w-4 text-green-500 shrink-0" />
                     )}
-                    {!!subdomain && isSubdomainValid && loadingIsSubdomainValid && (
+                    {!!subdomain && subdomainValidity === SubdomainValidity.Loading && (
                       <Spinner className="h-4 w-4 shrink-0" />
                     )}
-                    {(!subdomain || !isSubdomainValid) && (
+                    {(!subdomain || subdomainValidity === SubdomainValidity.Unset || subdomainValidity === SubdomainValidity.Invalid) && (
                       <div className="w-4 shrink-0" />
                     )}
                   </div>
@@ -134,8 +139,8 @@ function Onboarding() {
               </FormItem>
             )}
           />
-          {!!subdomain && !isSubdomainValid && !loadingIsSubdomainValid && (
-            <div className="mt-4 flex items-center gap-2">
+          {!!subdomain && subdomainValidity === SubdomainValidity.Invalid && (
+            <div className="mt-3 flex items-center gap-2">
               <X className="h-4 w-4 text-red-500 shrink-0" />
               <div className="text-red-500 text-sm">
                 This subdomain is already taken
@@ -146,7 +151,7 @@ function Onboarding() {
             type="submit"
             className="mt-4"
             loading={loading}
-            disabled={!(subdomain && isSubdomainValid)}
+            disabled={!(subdomain && subdomainValidity === SubdomainValidity.Valid)}
           >
             Continue
           </Button>
