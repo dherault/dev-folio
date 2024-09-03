@@ -104,6 +104,7 @@ function PortfolioContainer({ children }: PropsWithChildren) {
           style={{
             height: debouncedEdited ? 'auto' : `calc(100vh - ${NAVBAR_HEIGHT}px)`,
             borderColor: debouncedEdited ? '#e5e5e5' : 'transparent',
+            borderWidth: debouncedEdited ? 1 : 0,
           }}
         >
           {children}

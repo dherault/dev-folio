@@ -30,7 +30,7 @@ function PortfolioAbout() {
             />
           ))}
         </h1>
-        <div className="dfr-mt-4 dfr-text-4xl dfr-font-semibold">
+        <div className="dfr-mt-4 dfr-text-4xl dfr-font-semibold dfr-whitespace-pre-line">
           {portfolio.heroDescription || (isDev && (
             <TextPlaceholder
               editSection="about"
