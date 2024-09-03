@@ -20,12 +20,6 @@ module.exports = {
       },
     },
     extend: {
-      screens: {
-        'portfolio-max': '1400px',
-        'portfolio-min': {
-          max: '1400px',
-        },
-      },
       colors: {
         blue: {
           DEFAULT: '#328bff',

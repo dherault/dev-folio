@@ -37,23 +37,26 @@ import Spinner from '~components/common/Spinner'
 const formSchema = z.object({
   name: z
     .string()
+    .trim()
     .min(1, { message: 'You must input a name' })
     .max(128, { message: 'The name must be 128 characters or less' }),
   description: z
     .string()
+    .trim()
     .max(256, { message: 'The description must be 256 characters or less' }),
-  url: z
-    .string()
-    .url({ message: 'You must input a valid URL' }),
+  url: z.union([
+    z.literal(''),
+    z.string().trim().url({ message: 'You must input a valid URL' }),
+  ]),
 })
 
-function PortfolioEditorProjectsDialog({ children }: PropsWithChildren) {
+function PortfolioEditorProjectsCreateDialog({ children }: PropsWithChildren) {
   const { setPortfolio } = usePortfolio()
 
   const [open, setOpen] = useState(false)
   const [loading, setLoading] = useState(false)
   const [imageLoading, setImageLoading] = useState(false)
-  const [openGraphImageUrl, setOpenGraphImageUrl] = useState<string | null>(null)
+  const [openGraphImageUrl, setOpenGraphImageUrl] = useState('')
   const [imageFile, setImageFile] = useState<File | null>(null)
   const [isOpenGraphImage, setIsOpenGraphImage] = useState(false)
 
@@ -84,7 +87,7 @@ function PortfolioEditorProjectsDialog({ children }: PropsWithChildren) {
     try {
       const { data } = await getOpenGraphImage({ url })
 
-      setOpenGraphImageUrl(data.url || null)
+      setOpenGraphImageUrl(data.url)
       setIsOpenGraphImage(true)
     }
     catch {
@@ -295,4 +298,4 @@ function PortfolioEditorProjectsDialog({ children }: PropsWithChildren) {
   )
 }
 
-export default PortfolioEditorProjectsDialog
+export default PortfolioEditorProjectsCreateDialog

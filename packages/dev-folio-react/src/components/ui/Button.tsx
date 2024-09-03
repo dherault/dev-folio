@@ -7,7 +7,7 @@ import { cn } from '~utils/ui'
 import Spinner from '~components/common/Spinner'
 
 const buttonVariants = cva(
-  'dfr-flex dfr-items-center dfr-justify-center dfr-whitespace-nowrap dfr-rounded-md dfr-text-sm dfr-font-medium dfr-transition-colors focus-visible:dfr-outline-none disabled:dfr-pointer-events-none disabled:dfr-opacity-50',
+  'dfr-flex dfr-items-center dfr-justify-center dfr-whitespace-nowrap dfr-text-sm dfr-font-medium dfr-transition-colors focus-visible:dfr-outline-none disabled:dfr-pointer-events-none disabled:dfr-opacity-50',
   {
     variants: {
       variant: {
@@ -18,9 +18,10 @@ const buttonVariants = cva(
         ghost: 'hover:dfr-bg-neutral-100 hover:dfr-text-neutral-900 dark:hover:dfr-bg-neutral-800 dark:hover:dfr-text-neutral-50',
       },
       size: {
-        default: 'dfr-h-10 dfr-pdfr-4 dfr-py-2',
-        lg: 'dfr-h-11 dfr-rounded-md dfr-pdfr-8',
-        xl: 'dfr-h-14 dfr-rounded-md dfr-pdfr-12 dfr-text-xl',
+        sm: 'dfr-h-8 dfr-px-3 dfr-py-1',
+        default: 'dfr-h-10 dfr-px-4 dfr-py-2',
+        lg: 'dfr-h-11 dfr-px-8',
+        xl: 'dfr-h-14 dfr-px-12 dfr-text-xl',
         icon: 'dfr-h-10 dfr-w-10',
       },
     },
