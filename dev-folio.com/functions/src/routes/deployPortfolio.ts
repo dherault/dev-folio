@@ -3,7 +3,7 @@ import path from 'node:path'
 
 import { logger } from 'firebase-functions/v2'
 import { HttpsError, onCall } from 'firebase-functions/v2/https'
-import { type Bucket, Storage } from '@google-cloud/storage'
+import { type Bucket, Storage, type UploadOptions } from '@google-cloud/storage'
 import type { Portfolio } from 'dev-folio-types'
 
 import { getUserFromCallableRequest } from '../authentication/getUser'
@@ -76,10 +76,18 @@ async function deployBuildFiles(bucket: Bucket, directoryLocation: string, initi
       continue
     }
 
-    await bucket.upload(fileLocation, {
+    const options: UploadOptions = {
       destination: path.relative(initialDirectoryLocation, fileLocation),
       public: true,
-    })
+    }
+
+    if (file === 'portfolio.json') {
+      options.metadata = {
+        cacheControl: 'no-cache',
+      }
+    }
+
+    await bucket.upload(fileLocation, options)
   }
 }
 
