@@ -18,6 +18,9 @@ function ProjectCard({ project }: Props) {
             className="dfr-w-full dfr-aspect-[120/63] dfr-object-cover"
           />
         )}
+        {!project.imageUrl && (
+          <div className="dfr-w-full dfr-aspect-[120/63]" />
+        )}
         {!!project.description && (
           <div
             className={_('dfr-p-4 dfr-absolute dfr-inset-0 dfr-bg-white dfr-transition-opacity dfr-overflow-hidden', {

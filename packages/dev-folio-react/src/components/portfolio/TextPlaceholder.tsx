@@ -4,7 +4,7 @@ type Props = {
 
 function TextPlaceholder({ label }: Props) {
   return (
-    <span className="dfr-py-1 dfr-pdfr-2 dfr-bg-neutral-50 dfr-text-neutral-300">
+    <span className="dfr-py-1 dfr-px-2 dfr-bg-neutral-50 dfr-text-neutral-300">
       {label}
     </span>
   )

@@ -1,6 +1,6 @@
 function PortfolioFooter() {
   return (
-    <footer className="dfr-py-16 dfr-container dfr-text-center">
+    <footer className="dfr-pt-48 dfr-pb-8 dfr-container dfr-text-center">
       Get your own developer portfolio with
       {' '}
       <a

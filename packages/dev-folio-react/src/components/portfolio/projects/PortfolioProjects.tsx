@@ -1,13 +1,12 @@
 import usePortfolio from '~hooks/portfolio/usePortfolio'
 
 import ProjectCard from '~components/portfolio/projects/ProjectCard'
+import ProjectPlaceholder from '~components/portfolio/projects/ProjectPlaceholder'
 
 function PortfolioProjects() {
-  const { portfolio } = usePortfolio()
+  const { portfolio, isDev } = usePortfolio()
 
   if (!portfolio.sections.includes('projects')) return null
-
-  console.log('portfolio', portfolio)
 
   return (
     <section className="dfr-py-16 dfr-container">
@@ -21,6 +20,12 @@ function PortfolioProjects() {
             project={project}
           />
         ))}
+        {!portfolio.projects.length && isDev && (
+          <>
+            <ProjectPlaceholder />
+            <ProjectPlaceholder />
+          </>
+        )}
       </div>
     </section>
   )

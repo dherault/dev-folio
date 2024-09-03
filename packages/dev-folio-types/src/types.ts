@@ -34,6 +34,7 @@ export type Portfolio = {
   subdomain: string
   deployedAt: string
   sections: PortfolioSectionId[]
+  email: string
   name: string
   heroDescription: string
   heroEmoji: string

@@ -1,13 +1,23 @@
 import usePortfolio from '~hooks/portfolio/usePortfolio'
 
-function PortfolioContact() {
-  const { portfolio } = usePortfolio()
+import TextPlaceholder from '~components/portfolio/TextPlaceholder'
 
-  if (!portfolio.sections.includes('projects')) return null
+function PortfolioContact() {
+  const { portfolio, isDev } = usePortfolio()
+
+  if (!portfolio.sections.includes('contact')) return null
+  if (!isDev && !portfolio.email) return null
 
   return (
-    <section className="dfr-container dfr-min-h-screen dfr-flex dfr-items-center dfr-justify-center">
-      Contact
+    <section className="dfr-py-16 dfr-container">
+      <h2 className="dfr-text-4xl dfr-font-bold">
+        Contact
+      </h2>
+      <div className="dfr-mt-8 dfr-text-lg">
+        You can contact me at
+        {' '}
+        {portfolio.email || isDev && <TextPlaceholder label="Email" />}
+      </div>
     </section>
   )
 }

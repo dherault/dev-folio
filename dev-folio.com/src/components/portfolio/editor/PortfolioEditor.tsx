@@ -4,6 +4,7 @@ import PortfolioEditorSectionSelect from '~components/portfolio/editor/Portfolio
 import PortfolioEditorAbout from '~components/portfolio/editor/PortfolioEditorAbout'
 import PortfolioEditorTechnologies from '~components/portfolio/editor/PortfolioEditorTechnologies'
 import PortfolioEditorProjects from '~components/portfolio/editor/PortfolioEditorProjects'
+import PortfolioEditorContact from '~components/portfolio/editor/PortfolioEditorContact'
 
 function PortfolioEditor() {
   const { editedSection } = usePortfolio()
@@ -15,6 +16,7 @@ function PortfolioEditor() {
         {editedSection === 'about' && <PortfolioEditorAbout />}
         {editedSection === 'technologies' && <PortfolioEditorTechnologies />}
         {editedSection === 'projects' && <PortfolioEditorProjects />}
+        {editedSection === 'contact' && <PortfolioEditorContact />}
       </div>
     </div>
   )

@@ -85,7 +85,7 @@ function Portfolio() {
             </div>
           )}
           {debouncedEdited && editedSection === 'projects' && !portfolio.sections.includes('projects') && (
-            <div id="technologies">
+            <div id="projects">
               <PortfolioEmpty />
             </div>
           )}
@@ -95,7 +95,7 @@ function Portfolio() {
             </div>
           )}
           {debouncedEdited && editedSection === 'contact' && !portfolio.sections.includes('contact') && (
-            <div id="technologies">
+            <div id="contact">
               <PortfolioEmpty />
             </div>
           )}

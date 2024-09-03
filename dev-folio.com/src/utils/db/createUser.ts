@@ -21,6 +21,7 @@ function createUser(user: CreateUserArg): User {
       subdomain: '',
       deployedAt: '',
       sections: ['about', 'technologies', 'projects', 'contact'],
+      email: user.email,
       name: '',
       heroEmoji: '👋',
       heroDescription: '',

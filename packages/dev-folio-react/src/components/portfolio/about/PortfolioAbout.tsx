@@ -7,7 +7,7 @@ import LinkedinIcon from '~components/icons/LinkedinIcon'
 import XIcon from '~components/icons/XIcon'
 import YoutubeIcon from '~components/icons/YoutubeIcon'
 import TiktokIcon from '~components/icons/TiktokIcon'
-import TextPlaceholder from '~components/portfolio/about/TextPlaceholder'
+import TextPlaceholder from '~components/portfolio/TextPlaceholder'
 import ImagePlaceholder from '~components/portfolio/about/ImagePlaceholder'
 import SocialButton from '~components/portfolio/about/SocialButton'
 

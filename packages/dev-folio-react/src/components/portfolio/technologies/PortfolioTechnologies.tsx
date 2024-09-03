@@ -4,9 +4,10 @@ import { type Technology, type TechnologyCategory, technologies, technologyCateg
 import usePortfolio from '~hooks/portfolio/usePortfolio'
 
 import TechnologyCard from '~components/portfolio/technologies/TechnologyCard'
+import TechnologyPlaceholder from '~components/portfolio/technologies/TechnologyPlaceholder'
 
 function PortfolioTechnologies() {
-  const { portfolio } = usePortfolio()
+  const { portfolio, isDev } = usePortfolio()
 
   const technologiessByCategory = useMemo(() => (
     portfolio.technologyIds.reduce((acc, technologyId) => {
@@ -80,6 +81,13 @@ function PortfolioTechnologies() {
       </h2>
       <div className="dfr-mt-8 dfr-space-y-8">
         {portfolio.technologiesGrouped ? renderGrouped() : renderUngrouped()}
+        {!portfolio.technologyIds.length && isDev && (
+          <div className="dfr-grid dfr-grid-cols-10 dfr-gap-4">
+            <TechnologyPlaceholder />
+            <TechnologyPlaceholder />
+            <TechnologyPlaceholder />
+          </div>
+        )}
       </div>
     </section>
   )
