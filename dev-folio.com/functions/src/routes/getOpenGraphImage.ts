@@ -17,7 +17,7 @@ const getOpenGraphImage = onCall(
     const openGraphData = await openGraphScraper({ url, onlyGetOpenGraphInfo: true })
 
     return {
-      url: openGraphData.result.ogImage?.[0].url ?? '',
+      imageUrl: openGraphData.result.ogImage?.[0].url ?? '',
     }
   }
 )

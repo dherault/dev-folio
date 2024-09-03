@@ -38,7 +38,9 @@ export const functions = getFunctions(app)
 
 export const deployPortfolio = httpsCallable<void, { message: string }>(functions, 'deployPortfolio')
 
-export const getOpenGraphImage = httpsCallable<{ url: string }, { url: string }>(functions, 'getOpenGraphImage')
+export const getOpenGraphImage = httpsCallable<{ url: string }, { imageUrl: string }>(functions, 'getOpenGraphImage')
+
+export const checkSubdomain = httpsCallable<{ subdomain: string }, { exists: boolean }>(functions, 'checkSubdomain')
 
 try {
   getPerformance(app)

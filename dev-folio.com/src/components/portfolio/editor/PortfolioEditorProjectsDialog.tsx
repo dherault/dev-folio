@@ -93,9 +93,9 @@ function PortfolioEditorProjectsDialog({ project, open, setOpen }: Props) {
     setImageLoading(true)
 
     try {
-      const { data } = await getOpenGraphImage({ url })
+      const { data: { imageUrl } } = await getOpenGraphImage({ url })
 
-      setOpenGraphImageUrl(data.url)
+      setOpenGraphImageUrl(imageUrl)
       setIsOpenGraphImage(true)
     }
     catch {

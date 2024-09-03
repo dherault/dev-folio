@@ -6,6 +6,7 @@ import { HttpsError, onCall } from 'firebase-functions/v2/https'
 import { type Bucket, Storage } from '@google-cloud/storage'
 import type { Portfolio } from 'dev-folio-types'
 
+import getBucketId from '../utils/getBucketId'
 import { getUserFromCallableRequest } from '../authentication/getUser'
 
 const dataLocation = path.resolve(__dirname, '../../../../data/build')
@@ -19,7 +20,7 @@ const deployPortfolio = onCall(
     if (!user.portfolio.subdomain) throw new HttpsError('failed-precondition', 'You do not have a portfolio')
 
     const { subdomain } = user.portfolio
-    const bucketId = `${subdomain}-dev-folio-com`
+    const bucketId = getBucketId(subdomain)
     const storage = new Storage()
     let bucket = storage.bucket(bucketId)
 
