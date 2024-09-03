@@ -1,5 +1,6 @@
 import { Plus } from 'lucide-react'
 
+import PortfolioEditorProjectsDialog from '~components/portfolio/editor/PortfolioEditorProjectsDialog'
 import { Button } from '~components/ui/Button'
 
 function PortfolioEditorProjects() {
@@ -12,10 +13,12 @@ function PortfolioEditorProjects() {
   return (
     <>
       PortfolioEditorProjects
-      <Button>
-        <Plus className="mr-2 h-4 w-4" />
-        Add
-      </Button>
+      <PortfolioEditorProjectsDialog>
+        <Button>
+          <Plus className="mr-2 h-4 w-4" />
+          Add
+        </Button>
+      </PortfolioEditorProjectsDialog>
     </>
   )
 }

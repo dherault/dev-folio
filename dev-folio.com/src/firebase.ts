@@ -38,6 +38,8 @@ export const functions = getFunctions(app)
 
 export const deployPortfolio = httpsCallable<void, { message: string }>(functions, 'deployPortfolio')
 
+export const getOpenGraphImage = httpsCallable<{ url: string }, { url: string }>(functions, 'getOpenGraphImage')
+
 try {
   getPerformance(app)
 }
