@@ -12,7 +12,7 @@ import { getUserFromCallableRequest } from '../authentication/getUser'
 const dataLocation = path.resolve(__dirname, '../../../../data/build')
 
 const deployPortfolio = onCall(
-  { enforceAppCheck: true },
+  { enforceAppCheck: true, cors: ['https://dev-folio.com'] },
   async request => {
     const { user, userDocument } = await getUserFromCallableRequest(request)
 

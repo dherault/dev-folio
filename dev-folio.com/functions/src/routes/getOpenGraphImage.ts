@@ -4,7 +4,7 @@ import openGraphScraper from 'open-graph-scraper'
 import { getUserFromCallableRequest } from '../authentication/getUser'
 
 const getOpenGraphImage = onCall(
-  { enforceAppCheck: true },
+  { enforceAppCheck: true, cors: ['https://dev-folio.com'] },
   async request => {
     const { user } = await getUserFromCallableRequest(request)
 

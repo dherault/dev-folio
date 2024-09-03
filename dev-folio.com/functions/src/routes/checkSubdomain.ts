@@ -5,7 +5,7 @@ import getBucketId from '../utils/getBucketId'
 import { getUserFromCallableRequest } from '../authentication/getUser'
 
 const checkSubdomain = onCall(
-  { enforceAppCheck: true },
+  { enforceAppCheck: true, cors: ['https://dev-folio.com'] },
   async request => {
     const { user } = await getUserFromCallableRequest(request)
 
