@@ -28,13 +28,17 @@ function PortfolioEditor() {
   ])
 
   return (
-    <div className="p-4 h-full w-[512px] border bg-white flex flex-col">
-      <PortfolioEditorSectionSelect />
+    <div className="h-full w-[512px] border bg-white flex flex-col">
+      <div className="pt-4 px-4">
+        <PortfolioEditorSectionSelect />
+      </div>
       <div className="pt-4 grow overflow-y-auto">
-        {editedSection === 'about' && <PortfolioEditorAbout />}
-        {editedSection === 'technologies' && <PortfolioEditorTechnologies />}
-        {editedSection === 'projects' && <PortfolioEditorProjects />}
-        {editedSection === 'contact' && <PortfolioEditorContact />}
+        <div className="p-4">
+          {editedSection === 'about' && <PortfolioEditorAbout />}
+          {editedSection === 'technologies' && <PortfolioEditorTechnologies />}
+          {editedSection === 'projects' && <PortfolioEditorProjects />}
+          {editedSection === 'contact' && <PortfolioEditorContact />}
+        </div>
       </div>
     </div>
   )
