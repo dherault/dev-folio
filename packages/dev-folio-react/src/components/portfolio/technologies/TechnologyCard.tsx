@@ -21,7 +21,7 @@ function TechnologyCard({ technology }: Props) {
           style={{ padding: (technology.imagePadding ?? true) ? 16 : 0 }}
         >
           <img
-            src={`https://storage.googleapis.com/dev-folio-com.appspot.com/skills/${technology.id}`}
+            src={`https://storage.googleapis.com/dev-folio-com.appspot.com/technologies/${technology.id}`}
             alt={technology.name}
             className="dfr-w-full"
           />

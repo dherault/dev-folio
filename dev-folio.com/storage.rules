@@ -10,7 +10,7 @@ service firebase.storage {
       allow read, create: if request.auth != null;
       allow update, delete: if false;
     }
-    match /skills/{fileId} {
+    match /technologies/{fileId} {
       allow read: if true;
       allow create, update, delete: if request.auth != null && firestore.get(/databases/(default)/documents/users/$(request.auth.uid)).data.isAdministrator;
     }
