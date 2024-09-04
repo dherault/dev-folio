@@ -412,5 +412,70 @@
     "id": "jest",
     "name": "Jest",
     "category": "testing"
+  },
+  {
+    "id": "scala",
+    "name": "Scala",
+    "category": "language"
+  },
+  {
+    "id": "julia",
+    "name": "Julia",
+    "category": "language"
+  },
+  {
+    "id": "haskell",
+    "name": "Haskell",
+    "category": "language"
+  },
+  {
+    "id": "tensorflow",
+    "name": "TensorFlow",
+    "category": "machine-learning"
+  },
+  {
+    "id": "pytorch",
+    "name": "PyTorch",
+    "category": "machine-learning"
+  },
+  {
+    "id": "keras",
+    "name": "Keras",
+    "category": "machine-learning"
+  },
+  {
+    "id": "scikitlearn",
+    "name": "Scikit-learn",
+    "category": "machine-learning"
+  },
+  {
+    "id": "xgboost",
+    "name": "XGBoost",
+    "category": "machine-learning"
+  },
+  {
+    "id": "lightgbm",
+    "name": "LightGBM",
+    "category": "machine-learning"
+  },
+  {
+    "id": "catboost",
+    "name": "CatBoost",
+    "category": "machine-learning"
+  },
+  {
+    "id": "theano",
+    "name": "Theano",
+    "category": "machine-learning"
+  },
+  {
+    "id": "mxnet",
+    "name": "MXNet",
+    "category": "machine-learning"
+  },
+  {
+    "id": "caffe",
+    "name": "Caffe",
+    "category": "machine-learning"
   }
 ]
