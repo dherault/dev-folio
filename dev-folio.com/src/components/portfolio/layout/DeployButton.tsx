@@ -4,6 +4,7 @@ import { useCallback, useState } from 'react'
 import { deployPortfolio } from '~firebase'
 
 import { Button } from '~components/ui/Button'
+import DeployTutorial from '~components/portfolio/tutorial/DeployTutorial'
 
 function DeployButton() {
   const [loading, setLoading] = useState(false)
@@ -26,17 +27,19 @@ function DeployButton() {
   ])
 
   return (
-    <div className="border-l flex">
-      <Button
-        variant="ghost"
-        className="h-auto"
-        onClick={handleClick}
-        loading={loading}
-      >
-        <Box className="mr-2 h-4 w-4" />
-        Deploy
-      </Button>
-    </div>
+    <DeployTutorial>
+      <div className="border-l flex">
+        <Button
+          variant="ghost"
+          className="h-auto"
+          onClick={handleClick}
+          loading={loading}
+        >
+          <Box className="mr-2 h-4 w-4" />
+          Deploy
+        </Button>
+      </div>
+    </DeployTutorial>
   )
 }
 

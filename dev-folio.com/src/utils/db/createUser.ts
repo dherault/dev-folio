@@ -3,6 +3,7 @@ import { User } from 'dev-folio-types'
 type CreateUserArg = Omit<
   User,
   'hasSentSignupMessages'
+  | 'hasCompletedTutorial'
   | 'isAdministrator'
   | 'portfolio'
   | 'createdAt'
@@ -16,6 +17,7 @@ function createUser(user: CreateUserArg): User {
   return {
     ...user,
     hasSentSignupMessages: false,
+    hasCompletedTutorial: false,
     isAdministrator: false,
     portfolio: {
       subdomain: '',

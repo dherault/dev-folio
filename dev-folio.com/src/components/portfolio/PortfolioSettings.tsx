@@ -52,6 +52,7 @@ function PortfolioSettings({ children }: PropsWithChildren) {
   const [open, setOpen] = useState(false)
   const [subdomainLoading, setSubdomainLoading] = useState(false)
   const [subdomainError, setSubdomainError] = useState(false)
+  const [subdomainSuccess, setSubdomainSuccess] = useState(false)
   const subdomain = form.watch('subdomain')
   const subdomainValidity = useSubdomainValidity(subdomain, portfolio.subdomain)
 
@@ -61,6 +62,7 @@ function PortfolioSettings({ children }: PropsWithChildren) {
 
     setSubdomainLoading(true)
     setSubdomainError(false)
+    setSubdomainSuccess(false)
 
     try {
       await deleteSubdomain({ subdomain: portfolio.subdomain })
@@ -70,6 +72,8 @@ function PortfolioSettings({ children }: PropsWithChildren) {
         subdomain: values.subdomain,
         deployedAt: '',
       }))
+
+      setSubdomainSuccess(true)
     }
     catch {
       setSubdomainError(true)
@@ -146,6 +150,11 @@ function PortfolioSettings({ children }: PropsWithChildren) {
                 {subdomainError && (
                   <div className="mt-3 text-red-500 text-sm">
                     An error occurred. Please contact support.
+                  </div>
+                )}
+                {subdomainSuccess && (
+                  <div className="mt-3 text-green-500 text-sm">
+                    Subdomain changed successfully
                   </div>
                 )}
                 <Button

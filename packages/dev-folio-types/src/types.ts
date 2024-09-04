@@ -18,6 +18,7 @@ export type User = DatabaseResource<{
   imageUrl: string
   signInProviders: SignInProvider[]
   hasSentSignupMessages: boolean
+  hasCompletedTutorial: boolean
   isAdministrator: boolean
   portfolio: Portfolio
 }>
