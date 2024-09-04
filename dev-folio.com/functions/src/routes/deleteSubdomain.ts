@@ -18,8 +18,14 @@ const deleteSubdomain = onCall(
 
     const bucketId = getBucketId(subdomain)
     const storage = new Storage()
+    const bucket = storage.bucket(bucketId)
+    const [files] = await bucket.getFiles()
 
-    await storage.bucket(bucketId).delete()
+    for (const file of files) {
+      await file.delete()
+    }
+
+    await bucket.delete()
 
     return { message: 'ok' }
   }
