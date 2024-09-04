@@ -42,6 +42,8 @@ export const getOpenGraphImage = httpsCallable<{ url: string }, { imageUrl: stri
 
 export const checkSubdomain = httpsCallable<{ subdomain: string }, { exists: boolean }>(functions, 'checkSubdomain')
 
+export const deleteSubdomain = httpsCallable<{ subdomain: string }, { message: boolean }>(functions, 'deleteSubdomain')
+
 try {
   getPerformance(app)
 }

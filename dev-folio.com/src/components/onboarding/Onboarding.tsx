@@ -1,14 +1,14 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Check, X } from 'lucide-react'
 import * as z from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 
-import { checkSubdomain } from '~firebase'
+import { SubdomainValidity } from '~types'
 
 import useUser from '~hooks/user/useUser'
-import useThrottledEffect from '~hooks/common/useThrottledEffect'
+import useSubdomainValidity from '~hooks/portfolio/useSubdomainValidity'
 
 import {
   Form,
@@ -20,13 +20,6 @@ import {
 import { Button } from '~components/ui/Button'
 import { Input } from '~components/ui/Input'
 import Spinner from '~components/common/Spinner'
-
-enum SubdomainValidity {
-  Unset = 'unset',
-  Valid = 'valid',
-  Invalid = 'invalid',
-  Loading = 'loading',
-}
 
 const formSchema = z.object({
   subdomain: z
@@ -48,30 +41,16 @@ function Onboarding() {
     },
   })
 
-  const [subdomainValidity, setSubdomainValidity] = useState(SubdomainValidity.Unset)
   const [loading, setLoading] = useState(false)
   const subdomain = form.watch('subdomain')
-
-  const handleCheckSubdomain = useCallback(async () => {
-    if (!subdomain) return
-
-    setSubdomainValidity(SubdomainValidity.Loading)
-
-    try {
-      const { data: { exists } } = await checkSubdomain({ subdomain })
-
-      setSubdomainValidity(exists ? SubdomainValidity.Invalid : SubdomainValidity.Valid)
-    }
-    catch {
-      setSubdomainValidity(SubdomainValidity.Unset)
-      //
-    }
-  }, [
-    subdomain,
-  ])
+  const subdomainValidity = useSubdomainValidity(subdomain)
 
   const handleSubmit = useCallback(async (values: z.infer<typeof formSchema>) => {
+    if (loading) return
+
     setLoading(true)
+
+    if (subdomainValidity !== SubdomainValidity.Valid) return
 
     await updateUser({
       'portfolio.subdomain': values.subdomain,
@@ -80,20 +59,10 @@ function Onboarding() {
     setLoading(false)
     navigate('/~')
   }, [
+    loading,
+    subdomainValidity,
     updateUser,
     navigate,
-  ])
-
-  useThrottledEffect(() => {
-    handleCheckSubdomain()
-  }, 300, [
-    handleCheckSubdomain,
-  ])
-
-  useEffect(() => {
-    setSubdomainValidity(subdomain ? SubdomainValidity.Loading : SubdomainValidity.Unset)
-  }, [
-    subdomain,
   ])
 
   return (
