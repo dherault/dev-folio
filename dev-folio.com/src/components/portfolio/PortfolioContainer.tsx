@@ -69,7 +69,7 @@ function PortfolioContainer({ children }: PropsWithChildren) {
             },
           },
         }}
-        className="absolute top-8 bottom-8 z-20"
+        className="absolute top-8 bottom-8 hidden md:block z-20"
       >
         <PortfolioEditor />
       </motion.div>
