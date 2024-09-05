@@ -1,7 +1,7 @@
 {
   "name": "dev-folio-react",
   "description": "Portfolios for developers done right",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "type": "module",
   "main": "./dist/dev-folio-react.umd.cjs",
   "module": "./dist/dev-folio-react.js",
