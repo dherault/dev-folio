@@ -1,6 +1,6 @@
 function PortfolioFooter() {
   return (
-    <footer className="dfr-pt-48 dfr-pb-8 dfr-container dfr-text-center">
+    <footer className="dfr-pt-48 dfr-pb-8 dfr-text-center dfr-text-sm md:dfr-text-base">
       Get your own developer portfolio with
       {' '}
       <a

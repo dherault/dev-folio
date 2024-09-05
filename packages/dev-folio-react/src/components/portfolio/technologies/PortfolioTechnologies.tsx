@@ -39,7 +39,7 @@ function PortfolioTechnologies() {
         <h3 className="dfr-text-2xl dfr-font-bold">
           {technologyCategoryLabels[category]}
         </h3>
-        <div className="dfr-mt-2 dfr-grid dfr-grid-cols-10 dfr-gap-4">
+        <div className="dfr-mt-2 dfr-grid dfr-grid-cols-3 sm:dfr-grid-cols-5 md:dfr-grid-cols-8 lg:dfr-grid-cols-10 dfr-gap-4">
           {technologiessByCategory[category]
           .sort((a, b) => a.name.localeCompare(b.name))
           .map(skill => (
@@ -57,7 +57,7 @@ function PortfolioTechnologies() {
   ])
 
   const renderGrouped = useCallback(() => (
-    <div className="dfr-grid dfr-grid-cols-10 dfr-gap-4">
+    <div className="dfr-grid dfr-grid-cols-3 sm:dfr-grid-cols-5 md:dfr-grid-cols-8 lg:dfr-grid-cols-10 dfr-gap-4">
       {Object.values(technologiessByCategory)
       .reduce((acc, skills) => [...acc, ...skills], [])
       .sort((a, b) => a.name.localeCompare(b.name))

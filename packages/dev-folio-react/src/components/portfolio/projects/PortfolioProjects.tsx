@@ -13,7 +13,7 @@ function PortfolioProjects() {
       <h2 className="dfr-text-4xl dfr-font-bold">
         Projects
       </h2>
-      <div className="dfr-mt-8 dfr-grid dfr-grid-cols-2 dfr-auto-rows-fr dfr-gap-8">
+      <div className="dfr-mt-8 dfr-grid dfr-grid-cols-1 md:dfr-grid-cols-2 dfr-auto-rows-fr dfr-gap-4 md:dfr-gap-8">
         {portfolio.projects.map(project => (
           <ProjectCard
             key={project.id}

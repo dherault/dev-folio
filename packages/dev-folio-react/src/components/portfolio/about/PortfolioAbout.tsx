@@ -17,9 +17,9 @@ function PortfolioAbout() {
   if (!portfolio.sections.includes('about')) return null
 
   return (
-    <section className="dfr-container dfr-min-h-screen dfr-flex dfr-items-center dfr-justify-center dfr-gap-16">
-      <div className="-dfr-mt-8 dfr-w-1/2 dfr-tracking-tighte">
-        <h1 className="dfr-text-4xl dfr-font-semibold">
+    <section className="dfr-container dfr-min-h-screen dfr-flex dfr-flex-col md:dfr-flex-row md:dfr-items-center md:dfr-justify-center dfr-gap-8 md:dfr-gap-16">
+      <div className="dfr-mt-8 md:dfr-mt-0 md:dfr-w-1/2 dfr-text-2xl md:dfr-text-3xl lg:dfr-text-4xl dfr-font-semibold md:dfr-tracking-tight">
+        <h1>
           {portfolio.heroEmoji ? <span className="dfr-mr-3">{portfolio.heroEmoji}</span> : ''}
           Hi, I'm
           {' '}
@@ -30,7 +30,7 @@ function PortfolioAbout() {
             />
           ))}
         </h1>
-        <div className="dfr-mt-4 dfr-text-4xl dfr-font-semibold dfr-whitespace-pre-line">
+        <div className="dfr-mt-4 dfr-whitespace-pre-line">
           {portfolio.heroDescription || (isDev && (
             <TextPlaceholder
               editSection="about"
@@ -71,7 +71,7 @@ function PortfolioAbout() {
           )}
         </div>
       </div>
-      <div className="dfr-w-1/2">
+      <div className="dfr-mx-auto lg:dfr-mx-0 dfr-w-2/3 md:dfr-w-1/2">
         {!!portfolio.heroImageUrl && (
           <img
             src={portfolio.heroImageUrl}
