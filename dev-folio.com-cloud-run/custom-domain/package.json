@@ -1,0 +1,24 @@
+{
+  "private": true,
+  "name": "dev-folio.com-cloud-run",
+  "version": "0.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "build": "docker build --platform linux/amd64 -t eu.gcr.io/dev-folio-com/custom-domain:0.0.1 .",
+    "auth": "gcloud auth configure-docker",
+    "push": "docker push eu.gcr.io/dev-folio-com/custom-domain:0.0.1",
+    "list": "gcloud container images list-tags eu.gcr.io/dev-folio-com/custom-domain",
+    "deploy": "gcloud run deploy --image eu.gcr.io/dev-folio-com/custom-domain:0.0.1"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21"
+  }
+}
