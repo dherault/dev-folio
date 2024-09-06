@@ -5,6 +5,14 @@ import { firestore } from '../firebase'
 import { getUserFromCallableRequest } from '../authentication/getUser'
 import getBucketId from '../utils/getBucketId'
 
+const forbiddenSubdomains = [
+  'www',
+  'mail',
+  'dev',
+  'staging',
+  'custom-domain',
+]
+
 const checkSubdomain = onCall(
   { enforceAppCheck: true, cors: ['https://dev-folio.com'] },
   async request => {
@@ -13,6 +21,10 @@ const checkSubdomain = onCall(
     if (!user) throw new HttpsError('permission-denied', 'You are not authenticated')
 
     const { subdomain } = request.data
+
+    if (forbiddenSubdomains.includes(subdomain)) {
+      return { exists: true }
+    }
 
     if (!subdomain) throw new HttpsError('invalid-argument', 'You must provide a subdomain')
 

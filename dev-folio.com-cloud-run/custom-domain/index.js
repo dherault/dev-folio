@@ -3,6 +3,7 @@ import { exec } from 'node:child_process'
 
 import 'dotenv/config'
 import express from 'express'
+import vine from '@vinejs/vine'
 
 const execPromise = promisify(exec)
 
@@ -10,17 +11,39 @@ const secret = process.env.CUSTOM_DOMAIN_SECRET
 const app = express()
 app.use(express.json())
 
-app.post('/', async (req, res) => {
-  const incomingSecret = req.body.secret
+const schema = vine.object({
+  secret: vine.string(),
+  customDomain: vine.string().minLength(1),
+})
 
-  if (incomingSecret !== secret) {
+app.post('/', async (req, res) => {
+  try {
+    await vine.validate({
+      schema,
+      data: req.body,
+    })
+  }
+  catch {
+    res.status(400).send()
+
+    return
+  }
+
+  if (req.body.secret !== secret) {
     res.status(403).send()
 
     return
   }
 
+  const { customDomain } = req.body
+
   try {
-    const { stdout, stderr } = await execPromise('gcloud version')
+    console.log('Setting custom domain...', customDomain)
+
+    const { stdout, stderr } = await execPromise(`gcloud beta run integrations update custom-domains --parameters='set-mapping=${customDomain}:dev-folio'`)
+
+    console.log('stdout', stdout)
+    console.log('stderr', stderr)
 
     res.send({
       stdout,
@@ -37,5 +60,5 @@ app.post('/', async (req, res) => {
 const port = parseInt(process.env.PORT) || 8080
 
 app.listen(port, () => {
-  console.log(`helloworld: listening on port ${port}`)
+  console.log(`custom-domain: listening on port ${port}`)
 })
