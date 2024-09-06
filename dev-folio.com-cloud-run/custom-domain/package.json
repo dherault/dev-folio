@@ -10,12 +10,14 @@
     "auth": "gcloud auth configure-docker",
     "push": "docker push eu.gcr.io/dev-folio-com/custom-domain:0.0.1",
     "list": "gcloud container images list-tags eu.gcr.io/dev-folio-com/custom-domain",
-    "deploy": "gcloud run deploy --image eu.gcr.io/dev-folio-com/custom-domain:0.0.1"
+    "deploy": "gcloud run deploy --image eu.gcr.io/dev-folio-com/custom-domain:0.0.1",
+    "all": "npm run build && npm run push && npm run deploy"
   },
   "engines": {
     "node": ">=16.0.0"
   },
   "dependencies": {
+    "dotenv": "^16.4.5",
     "express": "^4.19.2"
   },
   "devDependencies": {

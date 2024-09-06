@@ -123,9 +123,9 @@ function PortfolioSettings({ children }: PropsWithChildren) {
     await wait(500)
 
     try {
-      const { data: { message } } = await applyCustomDomain()
+      const { data } = await applyCustomDomain()
 
-      window.alert(message)
+      window.alert(JSON.stringify(data, null, 2))
 
       setCustomDomainSuccess(true)
     }

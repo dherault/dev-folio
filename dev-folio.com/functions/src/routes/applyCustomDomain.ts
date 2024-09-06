@@ -2,7 +2,7 @@ import { HttpsError, onCall } from 'firebase-functions/v2/https'
 
 import { getUserFromCallableRequest } from '../authentication/getUser'
 
-const cutomDomainSecret = process.env.CUSTOM_DOMAIN_SECRET
+const customDomainSecret = process.env.CUSTOM_DOMAIN_SECRET
 const customDomainUrl = 'https://custom-domain-264351709313.us-central1.run.app'
 
 const applyCustomDomain = onCall(
@@ -16,7 +16,7 @@ const applyCustomDomain = onCall(
       const response = await fetch(customDomainUrl, {
         method: 'POST',
         body: JSON.stringify({
-          secret: cutomDomainSecret,
+          secret: customDomainSecret,
         }),
       })
       const data = await response.json()

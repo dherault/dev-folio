@@ -1,12 +1,14 @@
 import { promisify } from 'node:util'
 import { exec } from 'node:child_process'
 
+import 'dotenv/config'
 import express from 'express'
 
 const execPromise = promisify(exec)
 
+const secret = process.env.CUSTOM_DOMAIN_SECRET
 const app = express()
-const secret = process.env.SECRET
+app.use(express.json())
 
 app.post('/', async (req, res) => {
   const incomingSecret = req.body.secret
