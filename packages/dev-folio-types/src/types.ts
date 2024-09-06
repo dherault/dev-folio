@@ -33,6 +33,7 @@ export type PortfolioSectionId = typeof portfolioSections[number]
 
 export type Portfolio = {
   subdomain: string
+  customDomain: string
   deployedAt: string
   sections: PortfolioSectionId[]
   email: string

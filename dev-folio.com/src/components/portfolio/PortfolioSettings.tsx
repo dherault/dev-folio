@@ -6,10 +6,12 @@ import { Check, X } from 'lucide-react'
 
 import { SubdomainValidity } from '~types'
 
-import { deleteSubdomain } from '~firebase'
+import { applyCustomDomain, deleteSubdomain } from '~firebase'
 
 import usePortfolio from '~hooks/portfolio/usePortfolio'
 import useSubdomainValidity from '~hooks/portfolio/useSubdomainValidity'
+
+import wait from '~utils/common/wait'
 
 import {
   Dialog,
@@ -39,13 +41,28 @@ const subdomainFormSchema = z.object({
     .max(64, { message: 'The subdomain must be 64 characters or less' }),
 })
 
+const customDomainFormSchema = z.object({
+  customDomain: z
+    .string()
+    .trim()
+    .regex(/^[a-z0-9-_.]+$/, { message: 'You must input a valid domain name' })
+    .min(1, { message: 'You must input a subdomain' }),
+})
+
 function PortfolioSettings({ children }: PropsWithChildren) {
   const { portfolio, setPortfolio } = usePortfolio()
 
-  const form = useForm<z.infer<typeof subdomainFormSchema>>({
+  const subdomainForm = useForm<z.infer<typeof subdomainFormSchema>>({
     resolver: zodResolver(subdomainFormSchema),
     values: {
       subdomain: portfolio.subdomain,
+    },
+  })
+
+  const customDomainForm = useForm<z.infer<typeof customDomainFormSchema>>({
+    resolver: zodResolver(customDomainFormSchema),
+    values: {
+      customDomain: portfolio.customDomain,
     },
   })
 
@@ -53,8 +70,12 @@ function PortfolioSettings({ children }: PropsWithChildren) {
   const [subdomainLoading, setSubdomainLoading] = useState(false)
   const [subdomainError, setSubdomainError] = useState(false)
   const [subdomainSuccess, setSubdomainSuccess] = useState(false)
-  const subdomain = form.watch('subdomain')
+  const subdomain = subdomainForm.watch('subdomain')
   const subdomainValidity = useSubdomainValidity(subdomain, portfolio.subdomain)
+
+  const [customDomainLoading, setCustomDomainLoading] = useState(false)
+  const [customDomainError, setCustomDomainError] = useState(false)
+  const [customDomainSuccess, setCustomDomainSuccess] = useState(false)
 
   const handleSubdomainSubmit = useCallback(async (values: z.infer<typeof subdomainFormSchema>) => {
     if (subdomainLoading) return
@@ -87,6 +108,37 @@ function PortfolioSettings({ children }: PropsWithChildren) {
     setPortfolio,
   ])
 
+  const handleCustomDomainSubmit = useCallback(async (values: z.infer<typeof customDomainFormSchema>) => {
+    if (customDomainLoading) return
+
+    setCustomDomainLoading(true)
+    setCustomDomainError(false)
+    setCustomDomainSuccess(false)
+
+    setPortfolio(x => ({
+      ...x,
+      customDomain: values.customDomain,
+    }))
+
+    await wait(500)
+
+    try {
+      const { data: { message } } = await applyCustomDomain()
+
+      window.alert(message)
+
+      setCustomDomainSuccess(true)
+    }
+    catch {
+      setCustomDomainError(true)
+    }
+
+    setCustomDomainLoading(false)
+  }, [
+    customDomainLoading,
+    setPortfolio,
+  ])
+
   return (
     <Dialog
       open={open}
@@ -104,13 +156,13 @@ function PortfolioSettings({ children }: PropsWithChildren) {
             <Label>
               Portfolio subdomain
             </Label>
-            <Form {...form}>
+            <Form {...subdomainForm}>
               <form
-                onSubmit={form.handleSubmit(handleSubdomainSubmit)}
+                onSubmit={subdomainForm.handleSubmit(handleSubdomainSubmit)}
                 className="mt-2"
               >
                 <FormField
-                  control={form.control}
+                  control={subdomainForm.control}
                   name="subdomain"
                   render={({ field }) => (
                     <FormItem>
@@ -164,6 +216,51 @@ function PortfolioSettings({ children }: PropsWithChildren) {
                   disabled={!(subdomain && subdomainValidity === SubdomainValidity.Valid)}
                 >
                   Change subdomain
+                </Button>
+              </form>
+            </Form>
+          </section>
+          <section>
+            <Label>
+              Portfolio custom domain
+            </Label>
+            <Form {...customDomainForm}>
+              <form
+                onSubmit={customDomainForm.handleSubmit(handleCustomDomainSubmit)}
+                className="mt-2"
+              >
+                <FormField
+                  control={customDomainForm.control}
+                  name="customDomain"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormControl>
+                        <Input
+                          {...field}
+                          autoComplete="off"
+                          placeholder="example.com"
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                {customDomainError && (
+                  <div className="mt-3 text-red-500 text-sm">
+                    An error occurred. Please contact support.
+                  </div>
+                )}
+                {customDomainSuccess && (
+                  <div className="mt-3 text-green-500 text-sm">
+                    Custom domain applied successfully
+                  </div>
+                )}
+                <Button
+                  type="submit"
+                  className="mt-2"
+                  loading={customDomainLoading}
+                >
+                  Apply custom domain
                 </Button>
               </form>
             </Form>

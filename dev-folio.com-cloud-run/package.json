@@ -1,0 +1,16 @@
+{
+  "private": true,
+  "name": "dev-folio.com-cloud-run",
+  "version": "0.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
