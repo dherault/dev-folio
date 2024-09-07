@@ -38,7 +38,7 @@ app.post('/', async (req, res) => {
   const { customDomain } = req.body
 
   try {
-    console.log('Setting custom domain...', customDomain)
+    console.log('Setting custom domain:', customDomain)
 
     const { stdout, stderr } = await execPromise(`gcloud beta run integrations update custom-domains --parameters='set-mapping=${customDomain}:dev-folio'`)
 
@@ -51,6 +51,8 @@ app.post('/', async (req, res) => {
     })
   }
   catch (error) {
+    console.error(error)
+
     res.send({
       error: error.message,
     })

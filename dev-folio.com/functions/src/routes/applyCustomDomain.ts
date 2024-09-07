@@ -4,16 +4,22 @@ import { HttpsError, onCall } from 'firebase-functions/v2/https'
 import { getUserFromCallableRequest } from '../authentication/getUser'
 
 const customDomainSecret = process.env.CUSTOM_DOMAIN_SECRET
-const customDomainUrl = 'custom-domain.dev-folio.com'
+const customDomainUrl = 'https://custom-domain.dev-folio.com'
 
 const applyCustomDomain = onCall(
-  { enforceAppCheck: true, cors: ['https://dev-folio.com'] },
+  {
+    enforceAppCheck: true,
+    cors: ['https://dev-folio.com'],
+    timeoutSeconds: 540,
+  },
   async request => {
     const { user } = await getUserFromCallableRequest(request)
 
     if (!user) throw new HttpsError('permission-denied', 'You are not authenticated')
 
     try {
+      logger.log('Calling', customDomainUrl)
+
       const response = await fetch(customDomainUrl, {
         method: 'POST',
         body: JSON.stringify({
@@ -24,6 +30,8 @@ const applyCustomDomain = onCall(
           'Content-Type': 'application/json',
         },
       })
+
+      logger.log('Status:', response.status)
 
       if (!response.ok) {
         throw new HttpsError('internal', 'Failed to apply custom domain')
