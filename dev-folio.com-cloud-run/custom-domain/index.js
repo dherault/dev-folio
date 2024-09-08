@@ -1,11 +1,12 @@
 import { promisify } from 'node:util'
-import { exec } from 'node:child_process'
+import { exec, spawn } from 'node:child_process'
 
 import 'dotenv/config'
 import express from 'express'
 import vine from '@vinejs/vine'
 
 const execPromise = promisify(exec)
+const spawnPromise = promisify(spawn)
 
 const secret = process.env.CUSTOM_DOMAIN_SECRET
 const app = express()
