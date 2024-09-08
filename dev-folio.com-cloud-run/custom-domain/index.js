@@ -1,12 +1,12 @@
-import { promisify } from 'node:util'
-import { exec, spawn } from 'node:child_process'
+// import { promisify } from 'node:util'
+// import { exec } from 'node:child_process'
+import { spawn } from 'node:child_process'
 
 import 'dotenv/config'
 import express from 'express'
 import vine from '@vinejs/vine'
 
-const execPromise = promisify(exec)
-const spawnPromise = promisify(spawn)
+// const execPromise = promisify(exec)
 
 const secret = process.env.CUSTOM_DOMAIN_SECRET
 const app = express()
@@ -41,14 +41,26 @@ app.post('/', async (req, res) => {
   try {
     console.log('Setting custom domain:', customDomain)
 
-    const { stdout, stderr } = await execPromise(`gcloud beta run integrations update custom-domains --parameters='set-mapping=${customDomain}:dev-folio'`)
+    // const { stdout, stderr } = await execPromise(`gcloud beta run integrations update custom-domains --parameters='set-mapping=${customDomain}:dev-folio'`)
 
-    console.log('stdout', stdout)
-    console.log('stderr', stderr)
+    const gcloud = spawn(`gcloud beta run integrations update custom-domains --parameters='set-mapping=${customDomain}:dev-folio'`)
 
-    res.send({
-      stdout,
-      stderr,
+    gcloud.stdout.on('data', data => {
+      console.log(`stdout: ${data}`)
+    })
+
+    gcloud.stderr.on('data', data => {
+      console.error(`stderr: ${data}`)
+    })
+
+    gcloud.on('close', () => {
+      res.send({
+        message: 'ok',
+      })
+    })
+
+    gcloud.on('error', error => {
+      console.error(`error: ${error}`)
     })
   }
   catch (error) {
