@@ -11,6 +11,7 @@ import { deleteSubdomain } from '~firebase'
 
 import usePortfolio from '~hooks/portfolio/usePortfolio'
 import useSubdomainValidity from '~hooks/portfolio/useSubdomainValidity'
+import useTheme from '~hooks/ui/useTheme'
 
 import {
   Dialog,
@@ -30,6 +31,7 @@ import { Button } from '~components/ui/Button'
 import { Input } from '~components/ui/Input'
 import { Label } from '~components/ui/Label'
 import Spinner from '~components/common/Spinner'
+import { Switch } from '~components/ui/Switch'
 
 const subdomainFormSchema = z.object({
   subdomain: z
@@ -50,6 +52,7 @@ const customDomainFormSchema = z.object({
 
 function PortfolioSettings({ children }: PropsWithChildren) {
   const { portfolio, setPortfolio } = usePortfolio()
+  const { theme, setTheme } = useTheme()
 
   const subdomainForm = useForm<z.infer<typeof subdomainFormSchema>>({
     resolver: zodResolver(subdomainFormSchema),
@@ -199,6 +202,20 @@ function PortfolioSettings({ children }: PropsWithChildren) {
           </section>
           <section>
             <Label>
+              Dark mode
+            </Label>
+            <div className="mt-2 flex items-center gap-2 text-sm">
+              <Switch
+                checked={theme === 'dark'}
+                onCheckedChange={checked => setTheme(checked ? 'dark' : 'light')}
+              />
+              Dark mode
+              {' '}
+              {theme === 'dark' ? 'on' : 'off'}
+            </div>
+          </section>
+          <section>
+            <Label>
               Portfolio custom domain
             </Label>
             <Form {...customDomainForm}>
@@ -226,7 +243,7 @@ function PortfolioSettings({ children }: PropsWithChildren) {
                   type="submit"
                   className="mt-2"
                 >
-                  Require custom domain
+                  Request custom domain
                 </Button>
                 {customDomainSuccess && (
                   <div className="mt-2 text-sm">
