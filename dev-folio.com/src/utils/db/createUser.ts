@@ -33,6 +33,7 @@ function createUser(user: CreateUserArg): User {
       technologyIds: [],
       technologiesGrouped: false,
       projects: [],
+      theme: 'light',
     },
     createdAt: now,
     updatedAt: now,

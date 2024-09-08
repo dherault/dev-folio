@@ -52,7 +52,7 @@ const customDomainFormSchema = z.object({
 
 function PortfolioSettings({ children }: PropsWithChildren) {
   const { portfolio, setPortfolio } = usePortfolio()
-  const { theme, setTheme } = useTheme()
+  const { setTheme } = useTheme()
 
   const subdomainForm = useForm<z.infer<typeof subdomainFormSchema>>({
     resolver: zodResolver(subdomainFormSchema),
@@ -206,12 +206,15 @@ function PortfolioSettings({ children }: PropsWithChildren) {
             </Label>
             <div className="mt-2 flex items-center gap-2 text-sm">
               <Switch
-                checked={theme === 'dark'}
-                onCheckedChange={checked => setTheme(checked ? 'dark' : 'light')}
+                checked={portfolio.theme === 'dark'}
+                onCheckedChange={checked => {
+                  setPortfolio(x => ({ ...x, theme: checked ? 'dark' : 'light' }))
+                  setTheme(checked ? 'dark' : 'light')
+                }}
               />
               Dark mode
               {' '}
-              {theme === 'dark' ? 'on' : 'off'}
+              {portfolio.theme === 'dark' ? 'on' : 'off'}
             </div>
           </section>
           <section>

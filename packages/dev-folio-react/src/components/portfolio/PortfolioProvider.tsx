@@ -1,14 +1,15 @@
-import { type PropsWithChildren, useCallback, useEffect, useMemo, useState } from 'react'
+import { type PropsWithChildren, type ReactNode, useCallback, useEffect, useMemo, useState } from 'react'
 import { Helmet } from 'react-helmet'
 import type { Portfolio } from 'dev-folio-types'
 
 import PortfolioContext, { type PortfolioContextType } from '~contexts/portfolio/PortfolioContext'
 
 import SpinnerCentered from '~components/common/SpinnerCentered'
+import { ThemeProvider } from '~components/ui/ThemeProvider'
 
 type Props = PropsWithChildren<{
-  isDev?: boolean
   portfolio?: Portfolio
+  isDev?: boolean
 }>
 
 function PortfolioProvider({ children, portfolio, isDev = false }: Props) {
@@ -27,6 +28,19 @@ function PortfolioProvider({ children, portfolio, isDev = false }: Props) {
       console.error('Failed to fetch portfolio', error)
     }
   }, [])
+
+  const wrapThemeProvider = useCallback((children: ReactNode) => {
+    if (isDev) return children
+
+    return (
+      <ThemeProvider theme={portfolio?.theme}>
+        {children}
+      </ThemeProvider>
+    )
+  }, [
+    isDev,
+    portfolio?.theme,
+  ])
 
   useEffect(() => {
     if (portfolio) return
@@ -61,7 +75,7 @@ function PortfolioProvider({ children, portfolio, isDev = false }: Props) {
           </title>
         </Helmet>
       )}
-      {children}
+      {wrapThemeProvider(children)}
     </PortfolioContext.Provider>
   )
 }

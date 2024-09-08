@@ -12,7 +12,7 @@ function PortfolioLayout({ children }: PropsWithChildren) {
 
   return (
     <TooltipProvider>
-      <div className="dfr-min-h-screen dfr-flex dfr-flex-col">
+      <div className="dfr-min-h-screen dfr-flex dfr-flex-col dfr-bg-white dark:dfr-bg-neutral-900">
         {children}
       </div>
     </TooltipProvider>

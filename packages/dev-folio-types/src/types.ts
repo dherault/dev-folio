@@ -27,6 +27,8 @@ export type User = DatabaseResource<{
   Portfolio
 --- */
 
+export type Theme = 'dark' | 'light'
+
 export type PortfolioSocialMedia = typeof socialMedias[number]
 
 export type PortfolioSectionId = typeof portfolioSections[number]
@@ -45,6 +47,7 @@ export type Portfolio = {
   technologyIds: string[]
   technologiesGrouped: boolean
   projects: Project[]
+  theme: Theme
 }
 
 export type TechnologyCategory = typeof technologyCategories[number]

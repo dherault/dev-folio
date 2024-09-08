@@ -1,11 +1,12 @@
 import type { PortfolioSectionId } from 'dev-folio-types'
-import { type PropsWithChildren, useCallback, useMemo, useState } from 'react'
+import { type PropsWithChildren, useCallback, useEffect, useMemo, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 
 import PortfolioContext, { PortfolioContextType } from '~contexts/portfolio/PortfolioContext'
 
 import useDebounce from '~hooks/common/useDebounce'
 import useThrottledEffectNoInitial from '~hooks/common/useThrottledEffectNoInitial'
+import useTheme from '~hooks/ui/useTheme'
 import useUser from '~hooks/user/useUser'
 
 const MODE_SEARCH_PARAMETER_KEY = 'mode'
@@ -17,6 +18,7 @@ const SECTION_SEARCH_PARAMETER_KEY = 'section'
 function PortfolioProvider({ children }: PropsWithChildren) {
   const { user, updateUser } = useUser()
   const [searchParams, setSearchParams] = useSearchParams()
+  const { setTheme } = useTheme()
 
   const edited = searchParams.get(MODE_SEARCH_PARAMETER_KEY) === MODE_EDIT
   const debouncedEdited = useDebounce(edited, 300) || edited
@@ -65,6 +67,13 @@ function PortfolioProvider({ children }: PropsWithChildren) {
     editedSection,
     setEditedSection,
     debouncedEdited,
+  ])
+
+  useEffect(() => {
+    setTheme(portfolio.theme)
+  }, [
+    portfolio.theme,
+    setTheme,
   ])
 
   return (

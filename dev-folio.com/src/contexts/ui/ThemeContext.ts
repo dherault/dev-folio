@@ -1,6 +1,5 @@
 import { createContext } from 'react'
-
-export type Theme = 'dark' | 'light' | 'system'
+import type { Theme } from 'dev-folio-types'
 
 export type ThemeProviderState = {
   theme: Theme
@@ -8,7 +7,7 @@ export type ThemeProviderState = {
 }
 
 const initialState: ThemeProviderState = {
-  theme: 'system',
+  theme: 'light',
   setTheme: () => null,
 }
 
