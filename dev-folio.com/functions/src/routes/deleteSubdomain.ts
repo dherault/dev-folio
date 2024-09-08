@@ -5,7 +5,10 @@ import { getUserFromCallableRequest } from '../authentication/getUser'
 import getBucketId from '../utils/getBucketId'
 
 const deleteSubdomain = onCall(
-  { enforceAppCheck: true, cors: ['https://dev-folio.com'] },
+  {
+    enforceAppCheck: true,
+    cors: ['https://dev-folio.com'],
+  },
   async request => {
     const { user } = await getUserFromCallableRequest(request)
 

@@ -1,5 +1,3 @@
-export { default as applyCustomDomain } from './routes/applyCustomDomain'
-
 export { default as checkSubdomain } from './routes/checkSubdomain'
 
 export { default as deleteSubdomain } from './routes/deleteSubdomain'
