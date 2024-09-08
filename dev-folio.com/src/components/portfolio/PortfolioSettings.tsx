@@ -3,15 +3,14 @@ import * as z from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { Check, X } from 'lucide-react'
+import { Link } from 'react-router-dom'
 
 import { SubdomainValidity } from '~types'
 
-import { applyCustomDomain, deleteSubdomain } from '~firebase'
+import { deleteSubdomain } from '~firebase'
 
 import usePortfolio from '~hooks/portfolio/usePortfolio'
 import useSubdomainValidity from '~hooks/portfolio/useSubdomainValidity'
-
-import wait from '~utils/common/wait'
 
 import {
   Dialog,
@@ -73,8 +72,6 @@ function PortfolioSettings({ children }: PropsWithChildren) {
   const subdomain = subdomainForm.watch('subdomain')
   const subdomainValidity = useSubdomainValidity(subdomain, portfolio.subdomain)
 
-  const [customDomainLoading, setCustomDomainLoading] = useState(false)
-  const [customDomainError, setCustomDomainError] = useState(false)
   const [customDomainSuccess, setCustomDomainSuccess] = useState(false)
 
   const handleSubdomainSubmit = useCallback(async (values: z.infer<typeof subdomainFormSchema>) => {
@@ -109,33 +106,13 @@ function PortfolioSettings({ children }: PropsWithChildren) {
   ])
 
   const handleCustomDomainSubmit = useCallback(async (values: z.infer<typeof customDomainFormSchema>) => {
-    if (customDomainLoading) return
-
-    setCustomDomainLoading(true)
-    setCustomDomainError(false)
-    setCustomDomainSuccess(false)
-
     setPortfolio(x => ({
       ...x,
       customDomain: values.customDomain,
     }))
 
-    await wait(500)
-
-    try {
-      const { data } = await applyCustomDomain()
-
-      window.alert(JSON.stringify(data, null, 2))
-
-      setCustomDomainSuccess(true)
-    }
-    catch {
-      setCustomDomainError(true)
-    }
-
-    setCustomDomainLoading(false)
+    setCustomDomainSuccess(true)
   }, [
-    customDomainLoading,
     setPortfolio,
   ])
 
@@ -245,23 +222,27 @@ function PortfolioSettings({ children }: PropsWithChildren) {
                     </FormItem>
                   )}
                 />
-                {customDomainError && (
-                  <div className="mt-3 text-red-500 text-sm">
-                    An error occurred. Please contact support.
-                  </div>
-                )}
-                {customDomainSuccess && (
-                  <div className="mt-3 text-green-500 text-sm">
-                    Custom domain applied successfully
-                  </div>
-                )}
                 <Button
                   type="submit"
                   className="mt-2"
-                  loading={customDomainLoading}
                 >
-                  Apply custom domain
+                  Require custom domain
                 </Button>
+                {customDomainSuccess && (
+                  <div className="mt-2 text-sm">
+                    To get a custom domain, please contact
+                    {' '}
+                    <Link
+                      to="/support"
+                      className="text-blue hover:underline"
+                    >
+                      support
+                    </Link>
+                    .
+                    <br />
+                    This process is not automated yet, but we will watch out for your request and apply the custom domain in less than a day.
+                  </div>
+                )}
               </form>
             </Form>
           </section>

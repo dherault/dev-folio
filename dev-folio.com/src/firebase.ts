@@ -44,8 +44,6 @@ export const checkSubdomain = httpsCallable<{ subdomain: string }, { exists: boo
 
 export const deleteSubdomain = httpsCallable<{ subdomain: string }, { message: string }>(functions, 'deleteSubdomain')
 
-export const applyCustomDomain = httpsCallable<void, { message: string }>(functions, 'applyCustomDomain')
-
 try {
   getPerformance(app)
 }
