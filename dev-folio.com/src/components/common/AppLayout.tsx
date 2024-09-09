@@ -28,7 +28,7 @@ function AppLayout({ actions, children }: Props) {
           </div>
         </div>
       </nav>
-      <div className="grow flex flex-col bg-neutral-background">
+      <div className="grow flex flex-col bg-neutral-background dark:bg-neutral-700">
         {children}
       </div>
     </div>

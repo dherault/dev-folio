@@ -17,7 +17,7 @@ function Support() {
         <ArrowLeft className="mr-2 h-4 w-4" />
         Go back
       </Button>
-      <div className="mt-2 pt-4 px-4 bg-white border text-center">
+      <div className="mt-2 py-4 px-4 bg-white dark:bg-neutral-900 border text-center">
         <h1 className="text-3xl font-semibold">
           Support
         </h1>

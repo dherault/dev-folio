@@ -23,7 +23,7 @@ function ProjectCard({ project }: Props) {
         )}
         {!!project.description && (
           <div
-            className={_('dfr-p-4 dfr-absolute dfr-inset-0 dfr-bg-white dfr-transition-opacity dfr-overflow-hidden', {
+            className={_('dfr-p-4 dfr-absolute dfr-inset-0 dfr-bg-white dark:dfr-bg-neutral-900 dfr-transition-opacity dfr-overflow-hidden', {
               'dfr-opacity-0 group-hover:dfr-opacity-100': !!project.imageUrl,
             })}
           >

@@ -28,7 +28,7 @@ function PortfolioEditor() {
   ])
 
   return (
-    <div className="h-full w-[512px] border bg-white flex flex-col">
+    <div className="h-full w-[512px] border bg-white dark:bg-neutral-900 flex flex-col">
       <div className="pt-4 px-4">
         <PortfolioEditorSectionSelect />
       </div>

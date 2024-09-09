@@ -46,12 +46,7 @@ function PortfolioContainer({ children }: PropsWithChildren) {
   ])
 
   return (
-    <div
-      className={_('relative grow transition-colors duration-300 overflow-hidden', {
-        'bg-neutral-background': edited,
-        'bg-white': !edited,
-      })}
-    >
+    <div className="relative grow overflow-hidden">
       <motion.div
         initial={initialEdited ? 'open' : 'close'}
         animate={edited ? 'open' : 'close'}
@@ -100,10 +95,11 @@ function PortfolioContainer({ children }: PropsWithChildren) {
       >
         <div
           ref={contentRef}
-          className="bg-white border overflow-y-auto transition-colors duration-300"
+          className={_('bg-white border overflow-y-auto transition-colors duration-300', {
+            'border-transparent': !debouncedEdited,
+          })}
           style={{
             height: debouncedEdited ? 'auto' : `calc(100vh - ${NAVBAR_HEIGHT}px)`,
-            borderColor: debouncedEdited ? '#e5e5e5' : 'transparent',
             borderWidth: debouncedEdited ? 1 : 0,
           }}
         >

@@ -14,9 +14,7 @@ function RootLayout({ children }: PropsWithChildren) {
         <TooltipProvider>
           <ReferenceProvider>
             <AuthenticationProvider>
-              <div className="h-screen overflow-y-auto flex flex-col">
-                {children}
-              </div>
+              {children}
               <Toaster />
             </AuthenticationProvider>
           </ReferenceProvider>
