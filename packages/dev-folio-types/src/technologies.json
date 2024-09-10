@@ -887,423 +887,213 @@
     "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kaggle/kaggle-original.svg"
   },
   {
-    "id": "krakenjs",
-    "name": "Krakenjs",
-    "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/krakenjs/krakenjs-original.svg"
-  },
-  {
-    "id": "kubernetes",
-    "name": "Kubernetes",
-    "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg"
-  },
-  {
     "id": "labview",
-    "name": "Labview",
+    "name": "LabVIEW",
+    "category": "tooling",
     "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/labview/labview-original.svg"
   },
   {
     "id": "laravel",
     "name": "Laravel",
+    "category": "backend",
     "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-plain.svg"
   },
   {
     "id": "latex",
     "name": "Latex",
+    "category": "other",
     "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/latex/latex-original.svg"
   },
   {
     "id": "less",
     "name": "Less",
+    "category": "frontend",
     "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/less/less-plain-wordmark.svg"
-  },
-  {
-    "id": "linkedin",
-    "name": "Linkedin",
-    "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg"
   },
   {
     "id": "linux",
     "name": "Linux",
+    "category": "other",
     "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg"
   },
   {
     "id": "lua",
     "name": "Lua",
+    "category": "language",
     "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/lua/lua-original.svg"
   },
   {
-    "id": "magento",
-    "name": "Magento",
-    "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/magento/magento-original.svg"
-  },
-  {
-    "id": "markdown",
-    "name": "Markdown",
-    "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/markdown/markdown-original.svg"
-  },
-  {
     "id": "materialui",
-    "name": "Materialui",
+    "name": "Material UI",
+    "category": "frontend",
     "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/materialui/materialui-original.svg"
   },
   {
     "id": "matlab",
     "name": "Matlab",
+    "category": "language",
     "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/matlab/matlab-original.svg"
   },
   {
     "id": "maya",
     "name": "Maya",
+    "category": "design",
     "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/maya/maya-original.svg"
-  },
-  {
-    "id": "meteor",
-    "name": "Meteor",
-    "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/meteor/meteor-original.svg"
-  },
-  {
-    "id": "microsoftsqlserver",
-    "name": "Microsoftsqlserver",
-    "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftsqlserver/microsoftsqlserver-plain.svg"
   },
   {
     "id": "minitab",
     "name": "Minitab",
+    "category": "tooling",
     "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/minitab/minitab-original.svg"
   },
   {
     "id": "mocha",
     "name": "Mocha",
+    "category": "testing",
     "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mocha/mocha-plain.svg"
   },
   {
-    "id": "modx",
-    "name": "Modx",
-    "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/modx/modx-original.svg"
-  },
-  {
-    "id": "mongodb",
-    "name": "Mongodb",
-    "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg"
-  },
-  {
-    "id": "moodle",
-    "name": "Moodle",
-    "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/moodle/moodle-original.svg"
-  },
-  {
     "id": "msdos",
-    "name": "Msdos",
+    "name": "MS-DOS",
+    "category": "other",
     "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/msdos/msdos-original.svg"
-  },
-  {
-    "id": "mysql",
-    "name": "Mysql",
-    "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg"
   },
   {
     "id": "neo4j",
     "name": "Neo4j",
+    "category": "database",
     "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/neo4j/neo4j-original.svg"
   },
   {
     "id": "nestjs",
     "name": "Nestjs",
+    "category": "backend",
     "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nestjs/nestjs-original.svg"
   },
   {
     "id": "networkx",
     "name": "Networkx",
+    "category": "machine-learning",
     "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/networkx/networkx-original.svg"
-  },
-  {
-    "id": "nextjs",
-    "name": "Nextjs",
-    "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg"
-  },
-  {
-    "id": "nginx",
-    "name": "Nginx",
-    "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nginx/nginx-original.svg"
-  },
-  {
-    "id": "nixos",
-    "name": "Nixos",
-    "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nixos/nixos-original.svg"
-  },
-  {
-    "id": "nodejs",
-    "name": "Nodejs",
-    "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg"
-  },
-  {
-    "id": "nodewebkit",
-    "name": "Nodewebkit",
-    "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodewebkit/nodewebkit-original.svg"
-  },
-  {
-    "id": "npm",
-    "name": "Npm",
-    "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/npm/npm-original-wordmark.svg"
-  },
-  {
-    "id": "nuget",
-    "name": "Nuget",
-    "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nuget/nuget-original.svg"
   },
   {
     "id": "numpy",
     "name": "Numpy",
+    "category": "machine-learning",
     "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg"
   },
   {
     "id": "nuxtjs",
     "name": "Nuxtjs",
+    "category": "frontend",
     "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nuxtjs/nuxtjs-original.svg"
   },
   {
     "id": "objectivec",
-    "name": "Objectivec",
+    "name": "Objective-C",
+    "category": "language",
     "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/objectivec/objectivec-plain.svg"
   },
   {
     "id": "ocaml",
-    "name": "Ocaml",
+    "name": "OCaml",
+    "category": "language",
     "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ocaml/ocaml-original.svg"
   },
   {
-    "id": "openal",
-    "name": "Openal",
-    "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/openal/openal-original.svg"
-  },
-  {
-    "id": "opencv",
-    "name": "Opencv",
-    "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/opencv/opencv-original.svg"
-  },
-  {
     "id": "opengl",
-    "name": "Opengl",
+    "name": "OpenGL",
+    "category": "other",
     "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/opengl/opengl-original.svg"
-  },
-  {
-    "id": "opensuse",
-    "name": "Opensuse",
-    "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/opensuse/opensuse-original.svg"
-  },
-  {
-    "id": "opera",
-    "name": "Opera",
-    "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/opera/opera-original.svg"
-  },
-  {
-    "id": "oracle",
-    "name": "Oracle",
-    "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/oracle/oracle-original.svg"
   },
   {
     "id": "packer",
     "name": "Packer",
+    "category": "devops",
     "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/packer/packer-original.svg"
   },
   {
     "id": "pandas",
     "name": "Pandas",
+    "category": "machine-learning",
     "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg"
   },
   {
     "id": "perl",
     "name": "Perl",
+    "category": "language",
     "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/perl/perl-original.svg"
   },
   {
     "id": "phalcon",
     "name": "Phalcon",
+    "category": "backend",
     "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/phalcon/phalcon-original.svg"
-  },
-  {
-    "id": "phoenix",
-    "name": "Phoenix",
-    "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/phoenix/phoenix-original.svg"
   },
   {
     "id": "photoshop",
     "name": "Photoshop",
+    "category": "design",
     "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/photoshop/photoshop-plain.svg"
-  },
-  {
-    "id": "php",
-    "name": "Php",
-    "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg"
-  },
-  {
-    "id": "phpstorm",
-    "name": "Phpstorm",
-    "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/phpstorm/phpstorm-original.svg"
   },
   {
     "id": "podman",
     "name": "Podman",
+    "category": "devops",
     "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/podman/podman-original.svg"
-  },
-  {
-    "id": "polygon",
-    "name": "Polygon",
-    "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/polygon/polygon-original.svg"
   },
   {
     "id": "postgresql",
     "name": "Postgresql",
+    "category": "database",
     "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg"
-  },
-  {
-    "id": "premierepro",
-    "name": "Premierepro",
-    "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/premierepro/premierepro-plain.svg"
-  },
-  {
-    "id": "processing",
-    "name": "Processing",
-    "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/processing/processing-original.svg"
-  },
-  {
-    "id": "prometheus",
-    "name": "Prometheus",
-    "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/prometheus/prometheus-original.svg"
-  },
-  {
-    "id": "protractor",
-    "name": "Protractor",
-    "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/protractor/protractor-plain.svg"
   },
   {
     "id": "putty",
     "name": "Putty",
+    "category": "tooling",
     "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/putty/putty-original.svg"
-  },
-  {
-    "id": "pycharm",
-    "name": "Pycharm",
-    "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pycharm/pycharm-original.svg"
   },
   {
     "id": "pytest",
     "name": "Pytest",
+    "category": "testing",
     "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytest/pytest-original.svg"
   },
   {
-    "id": "python",
-    "name": "Python",
-    "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
-  },
-  {
-    "id": "pytorch",
-    "name": "Pytorch",
-    "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg"
-  },
-  {
-    "id": "qt",
-    "name": "Qt",
-    "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/qt/qt-original.svg"
-  },
-  {
-    "id": "r",
-    "name": "R",
-    "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/r/r-original.svg"
-  },
-  {
-    "id": "rails",
-    "name": "Rails",
-    "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rails/rails-original-wordmark.svg"
-  },
-  {
     "id": "raspberrypi",
-    "name": "Raspberrypi",
+    "name": "Raspberry PI",
+    "category": "other",
     "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/raspberrypi/raspberrypi-original.svg"
-  },
-  {
-    "id": "react",
-    "name": "React",
-    "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
-  },
-  {
-    "id": "rect",
-    "name": "Rect",
-    "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rect/rect-original.svg"
-  },
-  {
-    "id": "redhat",
-    "name": "Redhat",
-    "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redhat/redhat-original.svg"
-  },
-  {
-    "id": "redis",
-    "name": "Redis",
-    "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg"
   },
   {
     "id": "redux",
     "name": "Redux",
+    "category": "frontend",
     "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg"
   },
   {
-    "id": "rocksdb",
-    "name": "Rocksdb",
-    "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rocksdb/rocksdb-plain.svg"
-  },
-  {
     "id": "rspec",
-    "name": "Rspec",
+    "name": "RSpec",
+    "category": "testing",
     "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rspec/rspec-original.svg"
-  },
-  {
-    "id": "rstudio",
-    "name": "Rstudio",
-    "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rstudio/rstudio-original.svg"
-  },
-  {
-    "id": "ruby",
-    "name": "Ruby",
-    "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ruby/ruby-original.svg"
-  },
-  {
-    "id": "rubymine",
-    "name": "Rubymine",
-    "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rubymine/rubymine-original.svg"
-  },
-  {
-    "id": "rust",
-    "name": "Rust",
-    "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rust/rust-original.svg"
-  },
-  {
-    "id": "safari",
-    "name": "Safari",
-    "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/safari/safari-original.svg"
   },
   {
     "id": "salesforce",
     "name": "Salesforce",
+    "category": "other",
     "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/salesforce/salesforce-original.svg"
-  },
-  {
-    "id": "sass",
-    "name": "Sass",
-    "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sass/sass-original.svg"
-  },
-  {
-    "id": "scala",
-    "name": "Scala",
-    "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/scala/scala-original.svg"
   },
   {
     "id": "sdl",
     "name": "Sdl",
+    "category": "other",
     "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sdl/sdl-original.svg"
   },
   {
     "id": "selenium",
     "name": "Selenium",
+    "category": "testing",
     "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/selenium/selenium-original.svg"
   },
   {
