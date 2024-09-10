@@ -2,7 +2,7 @@ import { type PropsWithChildren, useCallback, useState } from 'react'
 import * as z from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
-import { Check, X } from 'lucide-react'
+import { Check, Crown, X } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
 import { SubdomainValidity } from '~types'
@@ -12,6 +12,7 @@ import { deleteSubdomain } from '~firebase'
 import usePortfolio from '~hooks/portfolio/usePortfolio'
 import useSubdomainValidity from '~hooks/portfolio/useSubdomainValidity'
 import useTheme from '~hooks/ui/useTheme'
+import useUser from '~hooks/user/useUser'
 
 import {
   Dialog,
@@ -32,6 +33,7 @@ import { Input } from '~components/ui/Input'
 import { Label } from '~components/ui/Label'
 import Spinner from '~components/common/Spinner'
 import { Switch } from '~components/ui/Switch'
+import PortfolioSettingsPremiumSection from '~components/portfolio/PortfolioSettingsPremiumSection'
 
 const subdomainFormSchema = z.object({
   subdomain: z
@@ -51,6 +53,7 @@ const customDomainFormSchema = z.object({
 })
 
 function PortfolioSettings({ children }: PropsWithChildren) {
+  const { isPremium } = useUser()
   const { portfolio, setPortfolio } = usePortfolio()
   const { setTheme } = useTheme()
 
@@ -131,7 +134,7 @@ function PortfolioSettings({ children }: PropsWithChildren) {
         <DialogHeader>
           Portfolio settings
         </DialogHeader>
-        <div className="space-y-4">
+        <div className="space-y-6">
           <section>
             <Label>
               Portfolio subdomain
@@ -200,24 +203,16 @@ function PortfolioSettings({ children }: PropsWithChildren) {
               </form>
             </Form>
           </section>
-          <section>
-            <Label>
-              Dark mode
-            </Label>
-            <div className="mt-2 flex items-center gap-2 text-sm">
-              <Switch
-                checked={portfolio.theme === 'dark'}
-                onCheckedChange={checked => {
-                  setPortfolio(x => ({ ...x, theme: checked ? 'dark' : 'light' }))
-                  setTheme(checked ? 'dark' : 'light')
-                }}
-              />
-              Dark mode
-              {' '}
-              {portfolio.theme === 'dark' ? 'on' : 'off'}
+          {!isPremium && (
+            <div>
+              <hr />
+              <div className="mt-3 flex items-center gap-2 text-sm">
+                <Crown className="h-4 w-4 text-amber-400" />
+                Premium features
+              </div>
             </div>
-          </section>
-          <section>
+          )}
+          <PortfolioSettingsPremiumSection>
             <Label>
               Portfolio custom domain
             </Label>
@@ -236,6 +231,7 @@ function PortfolioSettings({ children }: PropsWithChildren) {
                           {...field}
                           autoComplete="off"
                           placeholder="example.com"
+                          disabled={!isPremium}
                         />
                       </FormControl>
                       <FormMessage />
@@ -245,6 +241,7 @@ function PortfolioSettings({ children }: PropsWithChildren) {
                 <Button
                   type="submit"
                   className="mt-2"
+                  disabled={!isPremium}
                 >
                   Request custom domain
                 </Button>
@@ -265,7 +262,36 @@ function PortfolioSettings({ children }: PropsWithChildren) {
                 )}
               </form>
             </Form>
-          </section>
+          </PortfolioSettingsPremiumSection>
+          <PortfolioSettingsPremiumSection>
+            <Label>
+              Dark mode
+            </Label>
+            <div className="mt-2 flex items-center gap-2 text-sm">
+              <Switch
+                checked={portfolio.theme === 'dark'}
+                onCheckedChange={checked => {
+                  setPortfolio(x => ({ ...x, theme: checked ? 'dark' : 'light' }))
+                  setTheme(checked ? 'dark' : 'light')
+                }}
+                disabled={!isPremium}
+              />
+              Dark mode
+              {' '}
+              {portfolio.theme === 'dark' ? 'on' : 'off'}
+            </div>
+          </PortfolioSettingsPremiumSection>
+          <PortfolioSettingsPremiumSection>
+            <Label>
+              Download portfolio files
+            </Label>
+            <Button
+              disabled={!isPremium}
+              className="mt-2"
+            >
+              Download files
+            </Button>
+          </PortfolioSettingsPremiumSection>
         </div>
         <DialogFooter>
           <Button
