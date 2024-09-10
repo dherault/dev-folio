@@ -57,6 +57,7 @@ export type Technology = {
   name: string
   category: TechnologyCategory
   imagePadding?: boolean
+  imageUrl?: string
 }
 
 export type Project = {

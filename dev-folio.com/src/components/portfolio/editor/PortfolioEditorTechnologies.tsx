@@ -36,6 +36,7 @@ function PortfolioEditorTechnologies() {
             {technologyCategoryLabels[category]}
           </Label>
           <div className="mt-2 text-sm">
+            {/* @ts-expect-error */}
             {technologies.filter(technology => technology.category === category)
             .sort((a, b) => a.name.localeCompare(b.name))
             .map(technology => (

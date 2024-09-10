@@ -19,6 +19,9 @@ function Technologies() {
     const misses: string[] = []
 
     for (const technology of technologies) {
+      // @ts-expect-error
+      if (technology.imageUrl) continue
+
       try {
         const response = await fetch(`/images/technologies/${technology.id}.png`)
         const blob = await response.blob()

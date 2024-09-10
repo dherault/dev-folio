@@ -25,6 +25,7 @@ export const technologyCategories = [
   'testing',
   'tooling',
   'machine-learning',
+  'design',
   'other',
 ] as const
 
@@ -39,5 +40,6 @@ export const technologyCategoryLabels: Record<typeof technologyCategories[number
   testing: 'Testing',
   tooling: 'Tooling',
   'machine-learning': 'Machine Learning',
+  design: 'Design',
   other: 'Other',
 }

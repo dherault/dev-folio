@@ -11,15 +11,20 @@ function PortfolioTechnologies() {
 
   const technologiessByCategory = useMemo(() => (
     portfolio.technologyIds.reduce((acc, technologyId) => {
-      const skill = technologies.find(t => t.id === technologyId)
+      const technology = technologies.find(t => t.id === technologyId)
 
-      if (!skill) return acc
+      if (!technology) return acc
+      // @ts-expect-error
+      if (!technology.category) return acc
 
-      if (!acc[skill.category]) {
-        acc[skill.category] = []
+      // @ts-expect-error
+      if (!acc[technology.category]) {
+        // @ts-expect-error
+        acc[technology.category] = []
       }
 
-      acc[skill.category].push(skill)
+      // @ts-expect-error
+      acc[technology.category].push(technology)
 
       return acc
     }, {} as Record<TechnologyCategory, Technology[]>)
