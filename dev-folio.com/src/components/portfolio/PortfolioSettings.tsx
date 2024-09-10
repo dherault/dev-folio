@@ -7,12 +7,14 @@ import { Link } from 'react-router-dom'
 
 import { SubdomainValidity } from '~types'
 
-import { deleteSubdomain } from '~firebase'
+import { deleteSubdomain, setCustomDomain } from '~firebase'
 
 import usePortfolio from '~hooks/portfolio/usePortfolio'
 import useSubdomainValidity from '~hooks/portfolio/useSubdomainValidity'
 import useTheme from '~hooks/ui/useTheme'
 import useUser from '~hooks/user/useUser'
+
+import wait from '~utils/common/wait'
 
 import {
   Dialog,
@@ -78,6 +80,8 @@ function PortfolioSettings({ children }: PropsWithChildren) {
   const subdomain = subdomainForm.watch('subdomain')
   const subdomainValidity = useSubdomainValidity(subdomain, portfolio.subdomain)
 
+  const [customDomainLoading, setCustomDomainLoading] = useState(false)
+  const [customDomainError, setCustomDomainError] = useState(false)
   const [customDomainSuccess, setCustomDomainSuccess] = useState(false)
 
   const handleSubdomainSubmit = useCallback(async (values: z.infer<typeof subdomainFormSchema>) => {
@@ -112,13 +116,31 @@ function PortfolioSettings({ children }: PropsWithChildren) {
   ])
 
   const handleCustomDomainSubmit = useCallback(async (values: z.infer<typeof customDomainFormSchema>) => {
+    if (customDomainLoading) return
+
+    setCustomDomainLoading(true)
+    setCustomDomainError(false)
+    setCustomDomainSuccess(false)
+
     setPortfolio(x => ({
       ...x,
       customDomain: values.customDomain,
     }))
 
-    setCustomDomainSuccess(true)
+    await wait(1000)
+
+    try {
+      await setCustomDomain()
+
+      setCustomDomainSuccess(true)
+    }
+    catch {
+      setCustomDomainError(true)
+    }
+
+    setCustomDomainLoading(false)
   }, [
+    customDomainLoading,
     setPortfolio,
   ])
 
@@ -242,9 +264,15 @@ function PortfolioSettings({ children }: PropsWithChildren) {
                   type="submit"
                   className="mt-2"
                   disabled={!isPremium}
+                  loading={customDomainLoading}
                 >
                   Request custom domain
                 </Button>
+                {customDomainError && (
+                  <div className="mt-3 text-red-500 text-sm">
+                    An error occurred. Please contact support.
+                  </div>
+                )}
                 {customDomainSuccess && (
                   <div className="mt-2 text-sm">
                     To get a custom domain, please contact

@@ -6,14 +6,15 @@ const app = express()
 
 const storageClient = new storage.Storage()
 const customDomainMapping = {
-  'portfolio.dherault.com': 'dherault-dev-folio-com',
+  'portfolio.dherault.com': 'dherault',
 }
 
 app.get(['/', '/*'], async (req, res) => {
   try {
     const host = req.get('host')
+
     const [subdomain] = req.subdomains
-    const bucketId = customDomainMapping[host] ?? `${subdomain}-dev-folio-com`
+    const bucketId = `${customDomainMapping[host] ?? subdomain}-dev-folio-com`
     const bucket = storageClient.bucket(bucketId)
     const [buckedExists] = await bucket.exists()
 

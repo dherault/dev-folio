@@ -201,7 +201,7 @@ function AuthenticationProvider({ children }: PropsWithChildren) {
     viewer,
     user,
     loading: loading || loadingAuthentication,
-    isPremium: false,
+    isPremium: true,
     updateUser: handleUpdateUser,
     signOut: handleSignOut,
   }), [
