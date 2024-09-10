@@ -4,11 +4,16 @@ const storage = require('@google-cloud/storage')
 
 const app = express()
 
+const storageClient = new storage.Storage()
+const customDomainMapping = {
+  'portfolio.dherault.com': 'dherault-dev-folio-com',
+}
+
 app.get(['/', '/*'], async (req, res) => {
   try {
+    const host = req.get('host')
     const [subdomain] = req.subdomains
-    const storageClient = new storage.Storage()
-    const bucketId = `${subdomain}-dev-folio-com`
+    const bucketId = customDomainMapping[host] ?? `${subdomain}-dev-folio-com`
     const bucket = storageClient.bucket(bucketId)
     const [buckedExists] = await bucket.exists()
 
@@ -18,11 +23,11 @@ app.get(['/', '/*'], async (req, res) => {
       return
     }
 
-    const url = req.originalUrl.split('?')[0]
+    const fileLocation = req.originalUrl.split('?')[0]
 
-    console.log('serving bucketId and url', bucketId, url)
+    console.log('serving bucketId and url', bucketId, fileLocation)
 
-    if (url === '/') {
+    if (fileLocation === '/') {
       const file = bucket.file('index.html')
       const [fileBuffer] = await file.download()
 
@@ -32,7 +37,7 @@ app.get(['/', '/*'], async (req, res) => {
       return
     }
 
-    res.redirect(301, `https://storage.googleapis.com/${bucketId}${url}`)
+    res.redirect(301, `https://storage.googleapis.com/${bucketId}${fileLocation}`)
   }
   catch (error) {
     console.error(error)
