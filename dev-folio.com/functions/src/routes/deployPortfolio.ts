@@ -39,7 +39,7 @@ const deployPortfolio = onCall(
         {
           maxAgeSeconds: 3600,
           method: ['GET'],
-          origin: ['https://*.dev-folio.com'],
+          origin: [`https://${subdomain}.dev-folio.com`],
           responseHeader: ['Content-Type'],
         },
       ])

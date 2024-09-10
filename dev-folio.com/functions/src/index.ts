@@ -5,3 +5,5 @@ export { default as deleteSubdomain } from './routes/deleteSubdomain'
 export { default as deployPortfolio } from './routes/deployPortfolio'
 
 export { default as getOpenGraphImage } from './routes/getOpenGraphImage'
+
+export { default as setCustomDomain } from './routes/setCustomDomain'
