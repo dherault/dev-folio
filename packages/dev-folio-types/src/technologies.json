@@ -1099,6 +1099,7 @@
   {
     "id": "sequelize",
     "name": "Sequelize",
+    "category": "backend",
     "imageUrl": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sequelize/sequelize-original.svg"
   },
   {
