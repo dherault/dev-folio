@@ -1,4 +1,4 @@
-export { default as assignPremiumStatus } from './routes/assignPremiumStatus'
+export { default as assignIsPremium } from './routes/assignIsPremium'
 
 export { default as checkSubdomain } from './routes/checkSubdomain'
 

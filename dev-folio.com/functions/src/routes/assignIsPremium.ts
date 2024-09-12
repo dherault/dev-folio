@@ -4,7 +4,7 @@ import { firestore } from '../firebase'
 import stripe from '../stripe-instance'
 import { getUserFromCallableRequest } from '../authentication/getUser'
 
-const assignPremiumStatus = onCall(
+const assignIsPremium = onCall(
   {
     enforceAppCheck: true,
     cors: ['https://dev-folio.com'],
@@ -41,4 +41,4 @@ const assignPremiumStatus = onCall(
   }
 )
 
-export default assignPremiumStatus
+export default assignIsPremium
