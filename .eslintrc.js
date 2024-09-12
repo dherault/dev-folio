@@ -40,6 +40,11 @@ module.exports = {
             position: 'after',
           },
           {
+            pattern: '~stripe',
+            group: 'internal',
+            position: 'after',
+          },
+          {
             pattern: '~logic/**',
             group: 'internal',
             position: 'after',

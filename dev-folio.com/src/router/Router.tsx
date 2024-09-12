@@ -8,6 +8,7 @@ import App from '~app/page'
 import NotFound from '~components/common/NotFound'
 import CenteredSpinner from '~components/common/CenteredSpinner'
 
+const PricingSubRouter = lazy(() => import('~router/subRouters/PricingSubRouter'))
 const AuthenticationSubRouter = lazy(() => import('~router/subRouters/AuthenticationSubRouter'))
 const AdministratorSubRouter = lazy(() => import('~router/subRouters/AdministratorSubRouter'))
 const TildeSubRouter = lazy(() => import('~router/subRouters/TildeSubRouter'))
@@ -28,6 +29,10 @@ function Router() {
             <Route
               index
               element={<App />}
+            />
+            <Route
+              path="pricing/*"
+              element={<Suspense fallback={<CenteredSpinner />}><PricingSubRouter /></Suspense>}
             />
             <Route
               path="authentication/*"

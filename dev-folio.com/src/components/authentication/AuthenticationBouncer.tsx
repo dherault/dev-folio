@@ -22,7 +22,7 @@ function AuthenticationBouncer({ children }: PropsWithChildren) {
     navigate,
   ])
 
-  if (loading) {
+  if (loading || !viewer) {
     return (
       <CenteredSpinner />
     )

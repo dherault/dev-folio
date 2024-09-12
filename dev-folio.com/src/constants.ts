@@ -20,6 +20,14 @@ export const AUTHENTICATION_ERRORS = {
 }
 
 /* ---
+  Stripe
+--- */
+
+export const PRO_PLAN_PRICE_ID = 'price_1Py7AbKxkNSsWVP6SGLMiPZi'
+
+export const PRICING_SUCCESS_SEARCH_PARAMETER_KEY = 'pricing-success'
+
+/* ---
   Legal
 --- */
 

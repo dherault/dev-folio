@@ -80,6 +80,9 @@
     },
     "eslint-plugin-turbo": {
       "eslint": "^8.57.0"
-    }
+    },
+    "@firebase/app": "^0.10.0",
+    "@firebase/auth": "^1.7.8",
+    "@firebase/firestore": "^4.7.1"
   }
 }

@@ -6,6 +6,7 @@
       "~types": ["types.ts"],
       "~constants": ["constants.ts"],
       "~firebase": ["firebase.ts"],
+      "~stripe": ["stripe.ts"],
       "~vendor/*": ["../public/vendor/*"],
       "~logic/*": ["logic/*"],
       "~contexts/*": ["contexts/*"],
