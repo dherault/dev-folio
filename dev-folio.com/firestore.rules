@@ -11,12 +11,19 @@ service cloud.firestore {
       return !request.resource.data.diff(resource.data).affectedKeys().hasAny(['isAdministrator']);
     }
 
+    function isNotAffectingIsPremium() {
+      return !request.resource.data.diff(resource.data).affectedKeys().hasAny(['isPremium']);
+    }
+
     match /users/{userId} {
       allow list: if isAdministrator();
       allow get: if request.auth != null && request.auth.uid == userId;
-      allow create: if request.auth != null && request.auth.uid == userId && !request.resource.data.isAdministrator;
+      allow create: if request.auth != null && request.auth.uid == userId
+        && !request.resource.data.isAdministrator
+        && !request.resource.data.isPremium;
       allow update: if isAdministrator() || request.auth != null && request.auth.uid == userId
-        && isNotAffectingIsAdministrator();
+        && isNotAffectingIsAdministrator()
+        && isNotAffectingIsPremium();
       allow delete: if isAdministrator() || request.auth != null && request.auth.uid == userId;
 
       match /checkout_sessions/{id} {

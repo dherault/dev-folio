@@ -5,6 +5,7 @@ type CreateUserArg = Omit<
   'hasSentSignupMessages'
   | 'hasCompletedTutorial'
   | 'isAdministrator'
+  | 'isPremium'
   | 'portfolio'
   | 'createdAt'
   | 'updatedAt'
@@ -19,6 +20,7 @@ function createUser(user: CreateUserArg): User {
     hasSentSignupMessages: false,
     hasCompletedTutorial: false,
     isAdministrator: false,
+    isPremium: false,
     portfolio: {
       subdomain: '',
       customDomain: '',

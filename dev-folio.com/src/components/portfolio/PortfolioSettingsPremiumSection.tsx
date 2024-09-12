@@ -3,11 +3,11 @@ import type { PropsWithChildren } from 'react'
 import useUser from '~hooks/user/useUser'
 
 function PortfolioSettingsPremiumSection({ children }: PropsWithChildren) {
-  const { isPremium } = useUser()
+  const { user } = useUser()
 
   return (
     <section className="relative">
-      {!isPremium && (
+      {!user?.isPremium && (
         <div className="absolute inset-0 bg-white/50" />
       )}
       {children}

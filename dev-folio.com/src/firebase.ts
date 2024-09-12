@@ -36,7 +36,7 @@ export const storage = getStorage(app)
 
 export const functions = getFunctions(app)
 
-export const checkPremiumStatus = httpsCallable<void, { isPremium: boolean }>(functions, 'checkPremiumStatus')
+export const assignPremiumStatus = httpsCallable<void, { message: string }>(functions, 'assignPremiumStatus')
 
 export const checkSubdomain = httpsCallable<{ subdomain: string }, { exists: boolean }>(functions, 'checkSubdomain')
 

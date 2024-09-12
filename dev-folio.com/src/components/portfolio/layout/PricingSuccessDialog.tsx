@@ -1,7 +1,9 @@
-import { type PropsWithChildren, useCallback } from 'react'
+import { type PropsWithChildren, useCallback, useEffect } from 'react'
 import { useSearchParams } from 'react-router-dom'
 
 import { PRICING_SUCCESS_SEARCH_PARAMETER_KEY } from '~constants'
+
+import { assignPremiumStatus } from '~firebase'
 
 import { Button } from '~components/ui/Button'
 import {
@@ -25,6 +27,16 @@ function PricingSuccessDialog({ children }: PropsWithChildren) {
     })
   }, [
     setSearchParams,
+  ])
+
+  const handleAssignPremium = useCallback(async () => {
+    await assignPremiumStatus()
+  }, [])
+
+  useEffect(() => {
+    handleAssignPremium()
+  }, [
+    handleAssignPremium,
   ])
 
   return (

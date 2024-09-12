@@ -4,17 +4,19 @@ import { firestore } from '../firebase'
 import stripe from '../stripe-instance'
 import { getUserFromCallableRequest } from '../authentication/getUser'
 
-const checkPremiumStatus = onCall(
+const assignPremiumStatus = onCall(
   {
     enforceAppCheck: true,
     cors: ['https://dev-folio.com'],
   },
   async request => {
-    const { user } = await getUserFromCallableRequest(request)
+    const { user, userDocument } = await getUserFromCallableRequest(request)
 
     if (!user) throw new HttpsError('permission-denied', 'You are not authenticated')
 
     const checkoutSessionSnapshot = await firestore.collection('users').doc(user.id).collection('checkout_sessions').get()
+
+    let isPremium = false
 
     for (const checkoutSessionDocument of checkoutSessionSnapshot.docs) {
       const { sessionId } = checkoutSessionDocument.data()
@@ -24,16 +26,19 @@ const checkPremiumStatus = onCall(
       const session = await stripe.checkout.sessions.retrieve(sessionId)
 
       if (session.payment_status === 'paid') {
-        return {
-          isPremium: true,
-        }
+        isPremium = true
+        break
       }
     }
 
+    await userDocument.update({
+      isPremium,
+    })
+
     return {
-      isPremium: false,
+      message: 'ok',
     }
   }
 )
 
-export default checkPremiumStatus
+export default assignPremiumStatus

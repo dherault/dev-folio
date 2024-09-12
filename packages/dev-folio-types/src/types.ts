@@ -23,6 +23,7 @@ export type User = DatabaseResource<{
   portfolio: Portfolio
   stripeId?: string
   stripeLink?: string
+  isPremium: boolean
 }>
 
 /* ---

@@ -6,9 +6,9 @@ import useUser from '~hooks/user/useUser'
 import { Button } from '~components/ui/Button'
 
 function ProPlanButton() {
-  const { isPremium, loadingPremium } = useUser()
+  const { user } = useUser()
 
-  if (isPremium || loadingPremium) return null
+  if (user?.isPremium) return null
 
   return (
     <Link

@@ -26,7 +26,6 @@ import { NULL_DOCUMENT_ID } from '~constants'
 
 import {
   auth,
-  checkPremiumStatus,
   db,
   logAnalytics,
   persistancePromise,
@@ -48,8 +47,6 @@ function AuthenticationProvider({ children }: PropsWithChildren) {
 
   const { data: user, error, loading } = useLiveDocument<User>(userDocument, !!userId)
 
-  const [isPremium, setIsPremium] = useState(false)
-  const [loadingPremium, setLoadingPremium] = useState(true)
   const [loadingAuthentication, setLoadingAuthentication] = useState(true)
 
   const navigate = useNavigate()
@@ -163,26 +160,6 @@ function AuthenticationProvider({ children }: PropsWithChildren) {
     handleUpdateUser,
   ])
 
-  const checkPremium = useCallback(async () => {
-    setLoadingPremium(true)
-    setIsPremium(false)
-
-    try {
-      const { data } = await checkPremiumStatus()
-
-      setIsPremium(data.isPremium)
-    }
-    catch (error) {
-      console.error('Error while checkPremiumStatus', error)
-    }
-
-    setLoadingPremium(false)
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [
-    user?.id,
-    user?.stripeId,
-  ])
-
   // Listen for auth change
   useEffect(() => {
     handleAuthenticationStateChange()
@@ -211,13 +188,6 @@ function AuthenticationProvider({ children }: PropsWithChildren) {
     handleFirstTimeUser,
   ])
 
-  // Check if user is premium
-  useEffect(() => {
-    checkPremium()
-  }, [
-    checkPremium,
-  ])
-
   // Identify Logrocket user
   useEffect(() => {
     if (!user || !import.meta.env.PROD) return
@@ -232,8 +202,6 @@ function AuthenticationProvider({ children }: PropsWithChildren) {
     viewer,
     user,
     loading: loading || loadingAuthentication,
-    isPremium,
-    loadingPremium,
     updateUser: handleUpdateUser,
     signOut: handleSignOut,
   }), [
@@ -241,8 +209,6 @@ function AuthenticationProvider({ children }: PropsWithChildren) {
     user,
     loading,
     loadingAuthentication,
-    isPremium,
-    loadingPremium,
     handleUpdateUser,
     handleSignOut,
   ])

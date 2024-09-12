@@ -55,7 +55,7 @@ const customDomainFormSchema = z.object({
 })
 
 function PortfolioSettings({ children }: PropsWithChildren) {
-  const { isPremium } = useUser()
+  const { user } = useUser()
   const { portfolio, setPortfolio } = usePortfolio()
   const { setTheme } = useTheme()
 
@@ -225,7 +225,7 @@ function PortfolioSettings({ children }: PropsWithChildren) {
               </form>
             </Form>
           </section>
-          {!isPremium && (
+          {!user?.isPremium && (
             <div>
               <hr />
               <div className="mt-3 flex items-center gap-2 text-sm">
@@ -253,7 +253,7 @@ function PortfolioSettings({ children }: PropsWithChildren) {
                           {...field}
                           autoComplete="off"
                           placeholder="example.com"
-                          disabled={!isPremium}
+                          disabled={!user?.isPremium}
                         />
                       </FormControl>
                       <FormMessage />
@@ -263,7 +263,7 @@ function PortfolioSettings({ children }: PropsWithChildren) {
                 <Button
                   type="submit"
                   className="mt-2"
-                  disabled={!isPremium}
+                  disabled={!user?.isPremium}
                   loading={customDomainLoading}
                 >
                   Request custom domain
@@ -302,7 +302,7 @@ function PortfolioSettings({ children }: PropsWithChildren) {
                   setPortfolio(x => ({ ...x, theme: checked ? 'dark' : 'light' }))
                   setTheme(checked ? 'dark' : 'light')
                 }}
-                disabled={!isPremium}
+                disabled={!user?.isPremium}
               />
               Dark mode
               {' '}
@@ -314,7 +314,7 @@ function PortfolioSettings({ children }: PropsWithChildren) {
               Download portfolio files
             </Label>
             <Button
-              disabled={!isPremium}
+              disabled={!user?.isPremium}
               className="mt-2"
             >
               Download files
