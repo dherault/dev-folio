@@ -1,3 +1,5 @@
+export { default as checkPremiumStatus } from './routes/checkPremiumStatus'
+
 export { default as checkSubdomain } from './routes/checkSubdomain'
 
 export { default as deleteSubdomain } from './routes/deleteSubdomain'

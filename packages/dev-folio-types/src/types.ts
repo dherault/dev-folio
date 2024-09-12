@@ -21,6 +21,8 @@ export type User = DatabaseResource<{
   hasCompletedTutorial: boolean
   isAdministrator: boolean
   portfolio: Portfolio
+  stripeId?: string
+  stripeLink?: string
 }>
 
 /* ---

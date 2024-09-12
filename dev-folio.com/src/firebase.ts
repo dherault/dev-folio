@@ -36,13 +36,15 @@ export const storage = getStorage(app)
 
 export const functions = getFunctions(app)
 
-export const deployPortfolio = httpsCallable<void, { message: string }>(functions, 'deployPortfolio')
-
-export const getOpenGraphImage = httpsCallable<{ url: string }, { imageUrl: string }>(functions, 'getOpenGraphImage')
+export const checkPremiumStatus = httpsCallable<void, { isPremium: boolean }>(functions, 'checkPremiumStatus')
 
 export const checkSubdomain = httpsCallable<{ subdomain: string }, { exists: boolean }>(functions, 'checkSubdomain')
 
 export const deleteSubdomain = httpsCallable<{ subdomain: string }, { message: string }>(functions, 'deleteSubdomain')
+
+export const deployPortfolio = httpsCallable<void, { message: string }>(functions, 'deployPortfolio')
+
+export const getOpenGraphImage = httpsCallable<{ url: string }, { imageUrl: string }>(functions, 'getOpenGraphImage')
 
 export const setCustomDomain = httpsCallable<void, { message: string }>(functions, 'setCustomDomain')
 

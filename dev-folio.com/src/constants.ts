@@ -23,7 +23,9 @@ export const AUTHENTICATION_ERRORS = {
   Stripe
 --- */
 
-export const PRO_PLAN_PRICE_ID = 'price_1Py7AbKxkNSsWVP6SGLMiPZi'
+export const PRO_PLAN_PRICE_ID = import.meta.env.DEV
+  ? 'price_1Py7AbKxkNSsWVP6SGLMiPZi'
+  : 'price_1Py7BbKxkNSsWVP6WDRPhfPZ'
 
 export const PRICING_SUCCESS_SEARCH_PARAMETER_KEY = 'pricing-success'
 

@@ -7,6 +7,7 @@ export type UserContextType = {
   viewer: Viewer | null
   user: User | null
   isPremium: boolean
+  loadingPremium: boolean
   updateUser: (payload: Record<string, any>) => Promise<void>
   signOut: () => Promise<void>
 }
@@ -16,6 +17,7 @@ export default createContext<UserContextType>({
   viewer: null,
   user: null,
   isPremium: false,
+  loadingPremium: true,
   signOut: async () => {},
   updateUser: async () => {},
 })

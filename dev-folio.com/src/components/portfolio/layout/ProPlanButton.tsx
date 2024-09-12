@@ -1,9 +1,15 @@
 import { Crown } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
+import useUser from '~hooks/user/useUser'
+
 import { Button } from '~components/ui/Button'
 
 function ProPlanButton() {
+  const { isPremium, loadingPremium } = useUser()
+
+  if (isPremium || loadingPremium) return null
+
   return (
     <Link
       to="/pricing"

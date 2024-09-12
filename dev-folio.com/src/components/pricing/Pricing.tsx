@@ -5,7 +5,7 @@ import { ArrowLeft } from 'lucide-react'
 
 import { PRICING_SUCCESS_SEARCH_PARAMETER_KEY, PRO_PLAN_PRICE_ID } from '~constants'
 
-import stripePayments from '~stripe'
+import { stripePayments } from '~stripe'
 
 import { Button } from '~components/ui/Button'
 
