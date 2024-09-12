@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "dev-folio-com"
-  }
+  },
+  "targets": {},
+  "etags": {
+    "dev-folio-com": {
+      "extensionInstances": {
+        "firestore-stripe-payments": "ba9f610b5dadd543d6bf631f9288c82f6a0000ad936568f20a8fad1aa52e7db5"
+      }
+    }
+  },
+  "dataconnectEmulatorConfig": {}
 }
