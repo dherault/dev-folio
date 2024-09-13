@@ -7,7 +7,7 @@
   },
   "dependencies": {
     "@google-cloud/storage": "^7.12.1",
-    "express": "^4.19.2"
+    "express": "^4.21.0"
   },
   "devDependencies": {
     "@types/express": "^4.17.21"

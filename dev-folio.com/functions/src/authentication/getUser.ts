@@ -1,5 +1,5 @@
 import { logger } from 'firebase-functions'
-import type { Request } from 'firebase-functions'
+import type { Request } from 'firebase-functions/v1'
 import type { CallableRequest } from 'firebase-functions/v2/https'
 import type { User } from 'dev-folio-types'
 
