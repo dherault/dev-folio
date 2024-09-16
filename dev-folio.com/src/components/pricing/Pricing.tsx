@@ -8,6 +8,7 @@ import { PRICING_SUCCESS_SEARCH_PARAMETER_KEY, PRO_PLAN_PRICE_ID } from '~consta
 import { stripePayments } from '~stripe'
 
 import { Button } from '~components/ui/Button'
+import PricingTable from '~components/pricing/PricingTable'
 
 function Pricing() {
   const [checkoutSessionLoading, setCheckoutSessionLoading] = useState(false)
@@ -45,21 +46,20 @@ function Pricing() {
           Back to portfolio
         </Button>
       </Link>
-      <h1 className="mt-1 text-3xl font-semibold">
+      <h1 className="mt-1 text-3xl font-semibold text-center">
         Pricing
       </h1>
-      <Button
-        onClick={handleProPlanClick}
-        loading={checkoutSessionLoading}
-        className="mt-2"
-      >
-        Upgrade to Pro
-      </Button>
       {checkoutSessionError && (
         <div className="mt-2 text-red-500">
           An error occurred occured, please try again later or contact support.
         </div>
       )}
+      <div className="mt-4">
+        <PricingTable
+          onProPlanClick={handleProPlanClick}
+          proPlanLoading={checkoutSessionLoading}
+        />
+      </div>
     </div>
   )
 }

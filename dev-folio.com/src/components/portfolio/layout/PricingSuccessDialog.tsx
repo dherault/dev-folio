@@ -3,7 +3,7 @@ import { useSearchParams } from 'react-router-dom'
 
 import { PRICING_SUCCESS_SEARCH_PARAMETER_KEY } from '~constants'
 
-import { assignPremiumStatus } from '~firebase'
+import { assignIsPremium } from '~firebase'
 
 import { Button } from '~components/ui/Button'
 import {
@@ -24,19 +24,21 @@ function PricingSuccessDialog({ children }: PropsWithChildren) {
       x.delete(PRICING_SUCCESS_SEARCH_PARAMETER_KEY)
 
       return x
+    }, {
+      replace: true,
     })
   }, [
     setSearchParams,
   ])
 
-  const handleAssignPremium = useCallback(async () => {
-    await assignPremiumStatus()
+  const handleAssignIsPremium = useCallback(async () => {
+    await assignIsPremium()
   }, [])
 
   useEffect(() => {
-    handleAssignPremium()
+    handleAssignIsPremium()
   }, [
-    handleAssignPremium,
+    handleAssignIsPremium,
   ])
 
   return (
